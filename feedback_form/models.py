@@ -53,17 +53,24 @@ class course(models.Model):
 	course_name = models.CharField(max_length = 20)
 	stream = models.CharField(max_length = 15)
 	number_of_sem = models.IntegerField(max_length = 2)
+	
 	def __unicode__(self):
-		return (self.course_id)
+		return self.course_id
 
 class batch(models.Model):
 	batch_id = models.CharField(primary_key = True, max_length = 20)
 	course_id = models.ForeignKey(course)
 	session = models.IntegerField("Year of the batch", max_length = 10)
 
+	def __unicode__(self):
+		return self.batch_id
+
 class section_info(models.Model):
 	batch_id = models.ForeignKey(batch)
 	section = models.CharField(max_length = 5)
+
+	def __unicode__(self):
+		return str(self.batch_id)
 
 class faculty_table(models.Model):
 	user_id = models.AutoField(primary_key = True, max_length = 20)
@@ -77,6 +84,37 @@ class faculty_table(models.Model):
 	contact_number = models.CharField(max_length = 20)
 	type = models.IntegerField(max_length = 1)
 	status = models.IntegerField(max_length = 1)
+
+	def __unicode__(self):
+		return self.name
+
+class subject(models.Model):
+	subject_id = models.CharField(primary_key = True, max_length = 20)
+	course_id = models.ForeignKey(course)
+	name_of_subject = models.CharField(max_length = 50)
+	semester = models.IntegerField(max_length = 2)
+	credits = models.IntegerField(max_length = 2)
+	status = models.IntegerField(max_length = 1)
+	is_viva_or_lab = models.IntegerField(max_length = 1)
+
+	def __unicode__(self):
+		return self.name_of_subject
+
+class time_table(models.Model):
+	s_no = models.AutoField(primary_key = True)
+	course_id = models.ForeignKey(course)
+	subject_id = models.ForeignKey(subject)
+	faculty_id = models.ForeignKey(faculty_table)
+	batch_id = models.ForeignKey(batch)
+	year = models.IntegerField(max_length = 10)
+	section = models.CharField(max_length = 2)
+	day = models.CharField(max_length = 20)
+	time_from = models.TimeField(auto_now=False, auto_now_add=False)
+	time_to = models.TimeField(auto_now=False, auto_now_add=False)
+	room_number = models.CharField(max_length = 10)
+
+	def __unicode__(self):
+		return str(self.s_no)
 
 		
 
