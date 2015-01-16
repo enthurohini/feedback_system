@@ -11,4 +11,7 @@ def index(request):
 	#return HttpResponse("Hello")
 	#template = loader.get_template('feedback_form/index.html')
 	#return HttpResponse(template.render)
+	try:
+		p = get_object_or_404(feedback_student_info)
+	
 	return render(request, 'feedback_form/index.html')
