@@ -8,7 +8,7 @@ class feedback_student_info(models.Model):
 	batch_id = models.CharField(max_length = 20)
 	course = models.CharField(max_length = 10)
 	semester = models.IntegerField(max_length =2)
-	section = models.CharField(max_length = 1)
+	section = models.CharField(max_length = 1, blank = True)
 	feedback_session = models.IntegerField(max_length = 4)
 	
 	def __unicode__(self):              # __str__ on Python 3
@@ -42,8 +42,8 @@ class academic_assessment_info(models.Model):
 	outside_guidance = models.IntegerField(max_length = 1)
 	syllabus_industry_relevance = models.IntegerField(max_length = 1)
 	sufficiency_of_course = models.IntegerField(max_length = 1)
-	suggestion_for_subject = models.CharField(max_length = 80000)
-	suggestion_for_course = models.CharField(max_length = 80000)
+	suggestion_for_subject = models.CharField(max_length = 80000, blank = True)
+	suggestion_for_course = models.CharField(max_length = 80000, blank = True)
 	
 	def __unicode__(self):
 		return str(self.fs_id)
@@ -75,15 +75,17 @@ class section_info(models.Model):
 class faculty_table(models.Model):
 	user_id = models.AutoField(primary_key = True, max_length = 20)
 	name = models.CharField(max_length = 50)
-	qualification = models.CharField(max_length = 50)
+	qualification = models.CharField(max_length = 50, blank = True)
 	date_of_birth = models.DateField()
-	email = models.EmailField(max_length = 100)
-	discipline = models.CharField(max_length = 20)
+	email = models.EmailField(max_length = 100, blank = True)
+	discipline = models.CharField(max_length = 20, blank = True)
+	responsibility = models.CharField(max_length = 30, blank = True)
+	designation = models.CharField(max_length = 50, blank = True)
 	gender = models.CharField(max_length = 10)
-	area_of_interest = models.CharField(max_length = 50)
-	contact_number = models.CharField(max_length = 20)
-	type = models.IntegerField(max_length = 1)
-	status = models.IntegerField(max_length = 1)
+	area_of_interest = models.CharField(max_length = 50, blank = True)
+	contact_number = models.CharField(max_length = 20, blank = True)
+	type = models.IntegerField(max_length = 1, default = 2)
+	status = models.IntegerField(max_length = 1, default = 1)
 
 	def __unicode__(self):
 		return self.name
@@ -93,8 +95,8 @@ class subject(models.Model):
 	course_id = models.ForeignKey(course)
 	name_of_subject = models.CharField(max_length = 50)
 	semester = models.IntegerField(max_length = 2)
-	credits = models.IntegerField(max_length = 2)
-	status = models.IntegerField(max_length = 1)
+	credits = models.IntegerField(max_length = 2, default = 5)
+	status = models.IntegerField(max_length = 1, default = 0)
 	is_viva_or_lab = models.IntegerField(max_length = 1)
 
 	def __unicode__(self):
@@ -107,8 +109,8 @@ class time_table(models.Model):
 	faculty_id = models.ForeignKey(faculty_table)
 	batch_id = models.ForeignKey(batch)
 	year = models.IntegerField(max_length = 10)
-	section = models.CharField(max_length = 2)
-	day = models.CharField(max_length = 20)
+	section = models.CharField(max_length = 2, blank = True)
+	day = models.CharField(max_length = 20, blank = True)
 	time_from = models.TimeField(auto_now=False, auto_now_add=False)
 	time_to = models.TimeField(auto_now=False, auto_now_add=False)
 	room_number = models.CharField(max_length = 10)
