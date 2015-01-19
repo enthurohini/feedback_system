@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 14, 2015 at 05:31 PM
+-- Generation Time: Jan 15, 2015 at 08:32 PM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$12000$RbrJHc8b63Xt$vQtfl+klWrYpxmB04htRVt8CS3XGI0QKPhdsIl599Xg=', '2015-01-14 11:51:44', 1, 'rohini', '', '', 'chaudhary.rohini241@gmail.com', 1, 1, '2015-01-06 06:55:15'),
+(1, 'pbkdf2_sha256$12000$RbrJHc8b63Xt$vQtfl+klWrYpxmB04htRVt8CS3XGI0QKPhdsIl599Xg=', '2015-01-14 15:52:31', 1, 'rohini', '', '', 'chaudhary.rohini241@gmail.com', 1, 1, '2015-01-06 06:55:15'),
 (2, 'pbkdf2_sha256$12000$ZuND5p24rFr4$6/O8lvfL55/t2ep66TEL2mQOCR99avd7sY2Mz2SAfN0=', '2015-01-08 06:39:19', 1, 'swati', '', '', 'mahajanswati108@gmail.com', 1, 1, '2015-01-08 06:39:19');
 
 -- --------------------------------------------------------
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
   PRIMARY KEY (`id`),
   KEY `django_admin_log_417f1b1c` (`content_type_id`),
   KEY `django_admin_log_e8701ad4` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `django_admin_log`
@@ -231,7 +231,18 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (29, '2015-01-14 11:58:27', '7', 'IC-2K-13', 1, '', 12, 1),
 (30, '2015-01-14 11:58:36', '8', 'IC-2K-13', 1, '', 12, 1),
 (31, '2015-01-14 11:58:44', '9', 'IC-2K-14', 1, '', 12, 1),
-(32, '2015-01-14 11:58:52', '10', 'IC-2K-14', 1, '', 12, 1);
+(32, '2015-01-14 11:58:52', '10', 'IC-2K-14', 1, '', 12, 1),
+(33, '2015-01-14 12:50:12', '1', 'Mrs Shraddha Soni', 1, '', 13, 1),
+(34, '2015-01-14 12:57:18', '7', '7', 1, '', 7, 1),
+(35, '2015-01-14 13:01:32', '8', '8', 1, '', 7, 1),
+(36, '2015-01-14 13:03:11', '9', '9', 1, '', 7, 1),
+(37, '2015-01-14 13:10:14', '10', '10', 1, '', 7, 1),
+(38, '2015-01-14 13:10:39', '11', '11', 1, '', 7, 1),
+(39, '2015-01-14 13:22:56', '12', '12', 1, '', 7, 1),
+(40, '2015-01-14 13:26:41', '12', '12', 2, 'Added infrastructure_support_info "12". Added academic_assessment_info "12".', 7, 1),
+(41, '2015-01-14 14:59:36', '2', 'Mr. Rahul Shanghai', 1, '', 13, 1),
+(42, '2015-01-14 15:07:52', 'IC-801', 'Algorithem Analysis And Design', 1, '', 14, 1),
+(43, '2015-01-14 15:16:02', '1', '1', 1, '', 15, 1);
 
 -- --------------------------------------------------------
 
@@ -281,7 +292,7 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `django_migrations`
@@ -299,7 +310,16 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (15, 'feedback_form', '0005_faculty_table', '2015-01-12 06:19:57'),
 (16, 'feedback_form', '0006_subject', '2015-01-12 07:22:09'),
 (17, 'feedback_form', '0007_time_table', '2015-01-14 11:45:46'),
-(18, 'feedback_form', '0008_auto_20150114_1142', '2015-01-14 11:45:47');
+(18, 'feedback_form', '0008_auto_20150114_1142', '2015-01-14 11:45:47'),
+(19, 'feedback_form', '0009_auto_20150114_1259', '2015-01-14 12:59:45'),
+(20, 'feedback_form', '0010_auto_20150114_1302', '2015-01-14 13:02:12'),
+(21, 'feedback_form', '0011_auto_20150114_1308', '2015-01-14 13:08:58'),
+(22, 'feedback_form', '0012_auto_20150114_1323', '2015-01-14 13:23:47'),
+(23, 'feedback_form', '0013_auto_20150114_1330', '2015-01-14 13:30:36'),
+(24, 'feedback_form', '0014_auto_20150114_1454', '2015-01-14 14:54:58'),
+(25, 'feedback_form', '0015_auto_20150114_1503', '2015-01-14 15:03:42'),
+(26, 'feedback_form', '0016_auto_20150114_1507', '2015-01-14 15:07:08'),
+(27, 'feedback_form', '0017_auto_20150114_1514', '2015-01-14 15:14:45');
 
 -- --------------------------------------------------------
 
@@ -326,6 +346,7 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('9iysjnnyiweu2r4cjaebd0t122bv9p2n', 'NTEyNTc5YmQ0YTc5YTVmODM5MWE2MzU2OTdkMWFhNzRhZGZiYmZkNTp7fQ==', '2015-01-22 06:58:46'),
 ('eevmor4pb1h9k17fh5gxb6mxfpvh1855', 'NTEyNTc5YmQ0YTc5YTVmODM5MWE2MzU2OTdkMWFhNzRhZGZiYmZkNTp7fQ==', '2015-01-22 06:55:30'),
 ('fvccgf6x78eq8j0s2rqq76vli2iin9vh', 'NTEyNTc5YmQ0YTc5YTVmODM5MWE2MzU2OTdkMWFhNzRhZGZiYmZkNTp7fQ==', '2015-01-22 06:59:23'),
+('ivs2lq32rbowf81qs7rnnwj6gwyu732e', 'NzdjNTZlOTcxNjk1YmFjNTFhZGQwZjM0NTkyMWY1ZGYwYTdkODA3Yjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9', '2015-01-28 15:52:31'),
 ('oq5g9hdcycb03hv2j4xldg8939tknd32', 'NTEyNTc5YmQ0YTc5YTVmODM5MWE2MzU2OTdkMWFhNzRhZGZiYmZkNTp7fQ==', '2015-01-22 06:58:48'),
 ('tfltrxbc4taphlxf8z6av1uj7xhwvda0', 'NzdjNTZlOTcxNjk1YmFjNTFhZGQwZjM0NTkyMWY1ZGYwYTdkODA3Yjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9', '2015-01-22 07:00:32');
 
@@ -355,7 +376,14 @@ CREATE TABLE IF NOT EXISTS `feedback_form_academic_assessment_info` (
   `suggestion_for_course` mediumtext NOT NULL,
   `fs_id_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `feedback_form_academic_assessment_info`
+--
+
+INSERT INTO `feedback_form_academic_assessment_info` (`id`, `subject_id`, `faculty_id`, `conceptual_clarity`, `subject_knowledge`, `practical_example`, `handling_capability`, `motivation`, `control_ability`, `course_completion`, `communication_skill`, `regularity_punctuality`, `outside_guidance`, `syllabus_industry_relevance`, `sufficiency_of_course`, `suggestion_for_subject`, `suggestion_for_course`, `fs_id_id`) VALUES
+(1, '1', '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'dsgfhsgfyuieyfisekljdnasmdmbajbgjsahdyiaudiouasodnasm,dnm,asbdjsa', 'SFDHSAGDJ.''/.;sdfaghdjad', 12);
 
 -- --------------------------------------------------------
 
@@ -431,7 +459,15 @@ CREATE TABLE IF NOT EXISTS `feedback_form_faculty_table` (
   `designation` varchar(50) NOT NULL,
   `responsibility` varchar(30) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `feedback_form_faculty_table`
+--
+
+INSERT INTO `feedback_form_faculty_table` (`user_id`, `name`, `qualification`, `date_of_birth`, `email`, `discipline`, `gender`, `area_of_interest`, `contact_number`, `type`, `status`, `designation`, `responsibility`) VALUES
+(1, 'Mrs Shraddha Soni', 'MCA', '2015-01-14', 'ddd@gmail.com', 'cs', 'female', 'cs', '4566555', 1, 1, 'reader', 'mentor'),
+(2, 'Mr. Rahul Shanghai', '', '2015-01-14', '', '', 'M', '', '', 2, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -447,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `feedback_form_feedback_student_info` (
   `section` varchar(1) NOT NULL,
   `feedback_session` int(11) NOT NULL,
   PRIMARY KEY (`fs_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `feedback_form_feedback_student_info`
@@ -455,7 +491,13 @@ CREATE TABLE IF NOT EXISTS `feedback_form_feedback_student_info` (
 
 INSERT INTO `feedback_form_feedback_student_info` (`fs_id`, `batch_id`, `course`, `semester`, `section`, `feedback_session`) VALUES
 (5, 'IC', 'MCA', 7, 'B', 2014),
-(6, 'IC', 'MCA', 8, 'A', 2014);
+(6, 'IC', 'MCA', 8, 'A', 2014),
+(7, 'IC-2K-10', 'IC', 5, 'A', 2014),
+(8, 'IC-2K-10', 'IC', 1, ' ', 2014),
+(9, 'IC-2K-10', 'IC', 4, ' ', 2014),
+(10, 'IC-2K-10', 'IC', 5, '', 2),
+(11, 'IC-2K-10', 'IC', 6, '', 2014),
+(12, 'IC-2K-10', 'IC', 3, 'A', 2014);
 
 -- --------------------------------------------------------
 
@@ -474,7 +516,14 @@ CREATE TABLE IF NOT EXISTS `feedback_form_infrastructure_support_info` (
   `fs_id_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `feedback_form_infrastructure_support_info_38d333c1` (`fs_id_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `feedback_form_infrastructure_support_info`
+--
+
+INSERT INTO `feedback_form_infrastructure_support_info` (`id`, `books_availability`, `basic_requirements`, `technological_support`, `study_material`, `resourse_availability`, `cleaniliness_of_class`, `fs_id_id`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 12);
 
 -- --------------------------------------------------------
 
@@ -524,6 +573,13 @@ CREATE TABLE IF NOT EXISTS `feedback_form_subject` (
   KEY `feedback_form_subject_4c30cc1b` (`course_id_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `feedback_form_subject`
+--
+
+INSERT INTO `feedback_form_subject` (`subject_id`, `name_of_subject`, `semester`, `credits`, `status`, `is_viva_or_lab`, `course_id_id`) VALUES
+('IC-801', 'Algorithem Analysis And Design', 8, 5, 0, 0, 'IC');
+
 -- --------------------------------------------------------
 
 --
@@ -547,7 +603,14 @@ CREATE TABLE IF NOT EXISTS `feedback_form_time_table` (
   KEY `feedback_form_time_table_4c30cc1b` (`course_id_id`),
   KEY `feedback_form_time_table_d3f9e98e` (`faculty_id_id`),
   KEY `feedback_form_time_table_4a83a6b6` (`subject_id_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `feedback_form_time_table`
+--
+
+INSERT INTO `feedback_form_time_table` (`s_no`, `year`, `section`, `day`, `time_from`, `time_to`, `room_number`, `batch_id_id`, `course_id_id`, `faculty_id_id`, `subject_id_id`) VALUES
+(1, 2014, '', '', '15:15:49', '15:15:50', '201', 'IC-2K-11', 'IC', 2, 'IC-801');
 
 --
 -- Constraints for dumped tables
