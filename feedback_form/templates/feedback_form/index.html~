@@ -20,12 +20,12 @@
           </p>
   </div>
 
-<form method="post" action="{% url 'action' %}" id = 'feedback__login_form' name="feedback_login_form">
+<form name="feedback_login_form" method="post" action="" id = 'feedback__login_form'>
 	{% csrf_token %}
 
               <label>Name of programmes</label>
                <select name="course">
-                    <option >Course</option>
+                    <option >Select Course</option>
                     <option >MTECH</option>
                     <option >MCA</option>
                                     
@@ -34,7 +34,6 @@
               </br></br>
               <label>Semester</label>
               	<select name="semester">
-              		 <option>Select Semester</option>>
                      <option>1 SEM</option>
                      <option>2 SEM</option>
                      <option>3 SEM</option>
@@ -52,7 +51,6 @@
               </br></br>
               <label>Course ID</label>
                <select name="course_id">
-               		 <option>Select Course Id</option>>
                      <option>IC</option>
                      <option>IT</option>
                </select> 
@@ -60,7 +58,6 @@
               </br></br>
               <label>Batch ID</label>
                <select name="batch_id">
-               		 <option>Select Batch Id</option>
                      <option>2K9</option>
                      <option>2K10</option>
                      <option>2K11</option>
