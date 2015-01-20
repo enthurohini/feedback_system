@@ -27,12 +27,12 @@ def login(request):
 	if request.method == 'POST':
 		form = loginForm(request.POST)
 		if form.is_valid():
-			return HttpResponseRedirect('feedback_form/thnaks/')
+			return HttpResponseRedirect('/feedback_system/thankyou/')
 	else:
 		form = loginForm()
 
 	return render(request, 'feedback_form/loginForm.html', {'form': form})
 
-def thnaks(request):
+def thanks(request):
 	return render(request, 'feedback_form/thankyou.html')
 
