@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 #from django.template import RequestContext, loader
 
+from feedback_form.forms import loginForm
 from feedback_form.models import feedback_student_info
 
 # Create your views here.
@@ -21,4 +22,17 @@ def action(request):
 	else:
 		message = 'You submitted an empty form.'
 	return HttpResponse(message)
+
+def login(request):
+	if request.method == 'POST':
+		form = loginForm(request.POST)
+		if form.is_valid():
+			return HttpResponseRedirect('feedback_form/thnaks/')
+	else:
+		form = loginForm()
+
+	return render(request, 'feedback_form/loginForm.html', {'form': form})
+
+def thnaks(request):
+	return render(request, 'feedback_form/thankyou.html')
 
