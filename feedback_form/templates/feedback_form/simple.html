@@ -1,0 +1,6 @@
+{% extends "feedback_form/loginForm.html" %}
+{% block choice %}
+{% for c in batch %}
+    <option value="{{ c.batch_id }}">{{ c.batch_id|title }}</option>
+{% endfor %}
+{% endblock %}

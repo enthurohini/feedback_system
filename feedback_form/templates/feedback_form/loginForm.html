@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-<hed>
+<head>
 	<title>Feedback|Home</title>
+	<!--#<script type="text/javascript" src="../../static/feedback_form/prototype.js"></script>
+    #<script type="text/javascript" src="../../static/feedback_form/select_batch.js"></script>-->
 </head>
 <body>
 	<h1> Feedback|Home </h1>
@@ -16,9 +18,33 @@
     	<table>
     		{{ form.as_table }}
     	</table>
+        {% block choice %}
+
+        {% endblock %}
     	{% csrf_token%}
     	<input type="submit" value="Submit">
     </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    	
+$(document).ready(function(){
+    $('select#id_course_name').change(function(){
+        c_id = $(this).val();
+        request_url = '/get_batch/' + c_id + '/';
+        $.ajax({
+            url: request_url,
+            success: function(data){
+                $.each(data[0], function(key, value){
+                    $('select#id_batch').html('<option value="' + this.key + '">' + this.value +'</option>');
+                });  
+            }
+            return false;
+        })
+    })
+}); 
+
+    </script>
 
 </body>
 </html>
