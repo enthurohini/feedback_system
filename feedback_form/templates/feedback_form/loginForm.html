@@ -29,17 +29,22 @@
     <script>
     	
 $(document).ready(function(){
-    $('select#id_course_name').change(function(){
+    $('#id_course_name').change(function(){
         c_id = $(this).val();
-        request_url = '/get_batch/' + c_id + '/';
+        request_url = 'login/get_batch/' + c_id + '/';
         $.ajax({
             url: request_url,
             success: function(data){
-                $.each(data[0], function(key, value){
-                    $('select#id_batch').html('<option value="' + this.key + '">' + this.value +'</option>');
+                data = $.parseJSON(data);
+                console.log(data);
+                $.each(data, function(key, value){
+                    console.log(key, value);
+                    $('#id_batch').append('<option value="' + key + '">' + value +'</option>');
                 });  
+            }, 
+            errors: function(e) {
+                alert(e);
             }
-            return false;
         })
     })
 }); 

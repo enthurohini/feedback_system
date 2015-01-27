@@ -54,6 +54,8 @@ def get_batch(request, c_id):
     batch_dict = {}
     for batch in batches:
         batch_dict[batch.batch_id] = batch.batch_id
-    return HttpResponse(json.dumps(batch_dict), mimetype="application/json")
+    #batch = $.parseJSON(batch_dict);
+    return HttpResponse(json.dumps(batch_dict))
 
-    #, mimetype="application/json"
+
+    #return HttpResponse(json.dumps(batch_dict), mimetype="application/json")

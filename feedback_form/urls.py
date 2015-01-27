@@ -8,7 +8,7 @@ urlpatterns = patterns('',
 		url(r'^login/$', views.login, name = 'login'),
 		url(r'^thankyou/$', views.thanks, name = 'thanks'),
 		url(r'^ajax_color_request/$', views.ajax_color_request),
-		url(r'^get_batch/(?P<c_id>\w+)/$', views.get_batch, name = 'get_batch'),
+		url(r'^login/login/get_batch/(?P<c_id>\w+)/$', views.get_batch, name = 'get_batch'),
 	)
 
 
