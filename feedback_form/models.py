@@ -57,9 +57,6 @@ class course(models.Model):
 	def __unicode__(self):
 		return self.course_id
 
-	#def sem(self):
-	#	return self.course_name
-
 class batch(models.Model):
 	batch_id = models.CharField(primary_key = True, max_length = 20)
 	course_id = models.ForeignKey(course)
@@ -73,7 +70,7 @@ class section_info(models.Model):
 	section = models.CharField(max_length = 5)
 
 	def __unicode__(self):
-		return str(self.batch_id)
+		return str(self.section)
 
 class faculty_table(models.Model):
 	user_id = models.AutoField(primary_key = True, max_length = 20)
