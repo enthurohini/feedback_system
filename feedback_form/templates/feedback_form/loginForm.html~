@@ -43,7 +43,7 @@ $(document).ready(function(){
 	    $('.hatYar').css('display', 'none');
 	}
 	else
-	    $('.hatYar').css('display', 'inherit');
+	    $('.hatYar').css('display', 'table-cell');
         request_url = 'login/get_batch/' + c_id + '/';
         $.ajax({
             url: request_url,
