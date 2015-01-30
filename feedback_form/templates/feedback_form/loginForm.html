@@ -31,12 +31,16 @@
 $(document).ready(function(){
     $('#id_course_name').change(function(){
         c_id = $(this).val();
+        console.log(c_id);
+        if( c_id = "MTECH")
+            $('#id_section').css('visibility','hidden');
         request_url = 'login/get_batch/' + c_id + '/';
         $.ajax({
             url: request_url,
             success: function(data){
                 data = $.parseJSON(data);
                 console.log(data);
+                $('#id_batch').html('<option selected="' + "selected" + '">' + '' +'</option>');
                 $.each(data, function(key, value){
                     console.log(key, value);
                     $('#id_batch').append('<option value="' + key + '">' + value +'</option>');
