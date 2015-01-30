@@ -30,28 +30,25 @@
     	
 $(document).ready(function(){
     $('#id_course_name').change(function(){
-        $('#id_section').parent().addClass('remove');
-        $('.remove').parent().addClass('hatYar');
         c_id = $(this).val();
-        console.log(c_id);
-        if( c_id == "MTECH")
-        {
-           // $('#id_section').css('visibility','hidden');
-          
-	        // $('#id_section').hide();
-	        // $('.hatYar').css('visibility', 'hidden');
-	        $('.hatYar').css('display', 'none');
-	    }
-	   else
-	       $('.hatYar').css('display', 'block');
-
+	$('#id_section').parent().addClass('remove');
+	$('.remove').parent().addClass('hatYar');
+	if(c_id == "MTECH")
+	{
+	    console.log($('#id_section').parent()[0]);
+	    
+	    console.log($('.remove').parent()[0]);
+	   // $('#id_section').hide();
+	   // $('.hatYar').css('visibility', 'hidden');
+	    $('.hatYar').css('display', 'none');
+	}
+	else
+	    $('.hatYar').css('display', 'table-cell');
         request_url = 'login/get_batch/' + c_id + '/';
         $.ajax({
             url: request_url,
             success: function(data){
                 data = $.parseJSON(data);
-                //console.log(data);
-                $('#id_batch').html('<option selected="' + "selected" + '">' + '' +'</option>');
                 //console.log(data);
                 $.each(data, function(key, value){
                     //console.log(key, value);
