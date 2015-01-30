@@ -12,4 +12,3 @@ class Meta:
         model = batch
         fields = ('course_name', 'batch')
 
-#class infrastructure_form():
