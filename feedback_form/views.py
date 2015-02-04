@@ -51,11 +51,20 @@ def ajax_color_request(request):
 def get_batch(request, c_id):
     current_course = feedback_form.models.course.objects.get(course_name=c_id)
     batches = feedback_form.models.batch.objects.all().filter(course_id=current_course)
+    no_of_sem = feedback_form.models.course.objects.values_list('number_of_sem', flat=True).filter(course_id = current_course)
+    no_of_sem = int(no_of_sem[0])
     batch_dict = {}
     for batch in batches:
         batch_dict[batch.batch_id] = batch.batch_id
-    #batch = $.parseJSON(batch_dict);
-    return HttpResponse(json.dumps(batch_dict))
+    sem = {}
+    sem[no_of_sem] = no_of_sem
+    data = [batch_dict, no_of_sem]
+    return HttpResponse(json.dumps(data))
+    #return HttpResponse(json.dumps(batch_dict))
+    #return HttpResponse(json.dumps(sem))
 
+def get_no_of_semester(request, c_id):
+	current_course = feedback_form.models.course.objects.get(course_name=c_id)
+	no_of_sem = feedback_form.models.course.objects.values('number_of_sem').filter(course_id = current_course)
+	return HttpResponse(json.dumps(no_of_sem), mimetype = application/json)
 
-    #return HttpResponse(json.dumps(batch_dict), mimetype="application/json")
