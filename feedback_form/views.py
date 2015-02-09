@@ -2,11 +2,14 @@ from django.shortcuts import render, get_object_or_404, render_to_response
 from feedback_form.models import feedback_student_info
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-
+from django.utils import timezone
+#import datetime
+from django import forms
+from feedback_form.models import course, batch, section_info
 #import json as simplejson
 import json
 import feedback_form.models
-#from django.template import RequestContext, loader
+from django.template import RequestContext, loader, context
 
 from feedback_form.forms import loginForm
 from feedback_form.models import feedback_student_info
@@ -21,7 +24,7 @@ def index(request):
 def action(request):
 	if ('course' and 'semester' and 'course_id' and 'batch_id' and 'section') in request.POST:
 		message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course'], request.POST['semester'], request.POST['course_id'], request.POST['batch_id'], request.POST['section'])
-		q = feedback_student_info(batch_id = request.POST['batch_id'],course = request.POST['course'], semester = request.POST['semester'][:2], section = request.POST['section'], feedback_session = 2014)
+		q = feedback_student_info(batch_id = request.POST['batch_id'],course = request.POST['course'], semester = request.POST['semester'][:2], section = request.POST['section'], feedback_session = timezone.now().year)
 		q.save()
 	else:
 		message = 'You submitted an empty form.'
@@ -30,8 +33,17 @@ def action(request):
 def login(request):
 	if request.method == 'POST' and request.is_ajax:
 		form = loginForm(request.POST)
+		sem = request.POST.get('semester')
+		form.fields['semester'].choices = [(sem, sem)]
+		b = request.POST.get('batch')
+		form.fields['batch'].choices = [(b, b)]
+        #semester = forms.ChoiceField([(sem,sem)],required=True, widget=forms.Select())
 		if form.is_valid():
-			return HttpResponseRedirect('/feedback_system/thankyou/')
+			message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course_name'], request.POST['semester'], request.POST['section'], request.POST['batch'], request.POST['section'])
+			q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['course_name'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = 2014)
+			q.save()
+			return HttpResponse(message)
+			#return HttpResponseRedirect('/feedback_system/thankyou/')
 	else:
 		form = loginForm()
 
@@ -63,8 +75,6 @@ def get_batch(request, c_id):
     #return HttpResponse(json.dumps(batch_dict))
     #return HttpResponse(json.dumps(sem))
 
-def get_no_of_semester(request, c_id):
-	current_course = feedback_form.models.course.objects.get(course_name=c_id)
-	no_of_sem = feedback_form.models.course.objects.values('number_of_sem').filter(course_id = current_course)
-	return HttpResponse(json.dumps(no_of_sem), mimetype = application/json)
+def infrastructure_support(request):
+	return render(request, 'feedback_form/infrastructure_support_info.html')
 
