@@ -2,11 +2,38 @@
 <html>
 <head>
 	<title>Feedback|Home</title>
+    <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
 	<!--#<script type="text/javascript" src="../../static/feedback_form/prototype.js"></script>
     #<script type="text/javascript" src="../../static/feedback_form/select_batch.js"></script>-->
 </head>
-<body>
-	<h1> Feedback|Home </h1>
+<body> 
+    <!--<div class="panel panel-primary"> -->
+      <div class="panel-title">   
+        <div class="container">    
+            <div class="row">
+	           <h1 align="center"> Feedback|Home </h1>
+              </div> 
+        </div>     
+    </div> 
+<!--</div>-->
+<table>  
+    
+   <div class="text-center" align="center">
+        <h3><strong class="col-md-12" >Thank-you for registering with IIPS. You may now proceed for feedback anonymously.
+      </strong></h3><br>
+   </div>
+ </table>
+ </br><br>
+   </div>
+   <div> <div class="container-fluid">
+        <h3><strong>INSTRUCTIONS:</strong></h3>
+          <p><small>1.)You are requested to give your frank and objective opinion about various aspects of the subject taught to you for improving and maintaining quality of teaching.</br>
+          2.) Your response will be kept confidential.</br>
+          3.) Specify the BatchId correctly you have provided e.g:IC-2k10</small>
+          </p>
+  </div>
+</div>  
+  
 
 	{% if form.errors %}
 		<p style="color: red;">
@@ -15,6 +42,9 @@
     {% endif %}
 
     <form action="" method="post">
+       <div class="jumbotron container-custom">
+            <div class="form-group">
+               <div class="row" align="center">   
     	<table>
     		{{ form.as_table }}
     	</table>
@@ -22,7 +52,14 @@
 
         {% endblock %}
     	{% csrf_token%}
-    	<input type="submit" value="Submit">
+       </div>
+      </div>
+  </div>
+</div>
+     <div class="col-md-offset-3" align="center">
+    	 <input type="submit" value="Submit" class="btn btn-primary"></input>
+         <!--<button type="button" class="btn btn-primary">Submit</button>-->
+         </div>
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -78,6 +115,6 @@ $(document).ready(function(){
 }); 
 
     </script>
-
+ <script src="./../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

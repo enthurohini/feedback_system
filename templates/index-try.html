@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<link rel="stylesheet"type="text/css" href="feedback-interface.css"/>
+<html>
+  <head>
+    <title>
+     Student Feedback Form
+    </title>
+	</head>
+<body>
+  <script Language="JavaScript">
+    function f1()
+   { 
+      text1.style.visibility="hidden";
+    a1.style.visibility="visible";
+      }
+     function f2()
+    {
+        text1.style.visibility = "visible";
+                a1.style.visibility="visible";
+      }
+ </script>
+         <div class="text-center"> 
+          <h2  align="center">STUDENT's FEEDBACK</h2>
+             
+   <div class="text-center" align="center">
+   		<strong class="col-md-12" >Thank-you for registering with IIPS. You may now proceed for feedback anonymously.</strong><br>
+   </div> 
+    
+   </div>
+   <div>
+        <h3><strong>INSTRUCTIONS:</strong></h3>
+          <p><small>1.)You are requested to give your frank and objective opinion about various aspects of the subject taught to you for improving and maintaining quality of teaching.</br>
+          2.) Your response will be kept confidential.</br>
+          3.) Specify the BatchId correctly you have provided e.g:IC-2k10</small>
+          </p>
+  </div>
+
+<form method="post" action="{% url 'action' %}" id = 'feedback__login_form' name="feedback_login_form">
+	<!--{% csrf_token %}-->
+         
+          <div class="row" align="center">
+            <div class="row1">
+               
+                <label>Name of programmes</label>
+
+               <select name="course">
+                    <option >Course</option>
+                    <option >MTECH</option>
+                    <option >MCA</option>
+                                    
+               </select> 
+
+               </div>
+              </br></br>
+              <div class="row2">                
+                  <label>Semester</label>
+              	<select name="semester">
+              		 <option>Select Semester</option>>
+                     <option>1 SEM</option>
+                     <option>2 SEM</option>
+                     <option>3 SEM</option>
+                     <option>4 SEM</option>
+                     <option>5 SEM</option>
+                     <option>6 SEM</option>
+                     <option>7 SEM</option>
+                     <option>8 SEM</option>
+                     <option>9 SEM</option>
+                     <option>10 SEM</option>
+                     <option>11 SEM</option>
+                     <option>12 SEM</option>
+                </select> 
+           
+              </div>
+              </br></br>
+
+              <div class="row3">
+
+              <label>Course ID</label>
+               <select name="course_id">
+               		 <option>Select Course Id</option>>
+                     <option>IC</option>
+                     <option>IT</option>
+               </select> 
+  
+             </div>
+              </br></br>
+              <div class="row4">
+
+              <label>Batch ID</label>
+               <select name="batch_id">
+               		 <option>Select Batch Id</option>
+                     <option>2K9</option>
+                     <option>2K10</option>
+                     <option>2K11</option>
+                     <option>2K12</option>
+                     <option>2K13</option>
+                     <option>2K14</option>              
+               </select>
+              </div>
+              </br></br>
+              <div class="row5">
+              <label class="control-lab el col-sm-offset-2 col-sm-2"  for="company">Section</label>
+                <select name="section" class="form-control">
+                  <option>Select Section</option>
+                  <option>A</option>
+                  <option>B</option>              
+               </select>     
+            </div>
+           </br>
+           </br>
+          </div>
+        
+           <div  align="center">
+               <button type="submit" name="submit" class="btn btn-primary btn-lg active" onmousemove="f1();" onmouseout="f2();">Submit</button>
+                <button type="button" class="btn btn-danger">Exit</button>     
+           </div>
+         
+</form>
+</body>
+</html>
+    
