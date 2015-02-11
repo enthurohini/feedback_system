@@ -1,14 +1,19 @@
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<h1>{{Question.type|default:"nothing"}}</h1>
 
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <form action=" " method="post">
 {% csrf_token %}
+
+{% for q in Question.objects.all %}
 <label>
-	radio button
-</label>
+		
+		{{Question.objects.all}}
+</label>{% endfor %}
     {% for i in "12345" %}
-        <input type = "radio" name="test" value={{i}} /> {{i}}
+        <input type = "radio" name="tset" value={{i}} /> {{i}}
 {% endfor %}
+
 <br/>
-<input type="submit" value="Vote" />
+<input type="submit" value="Submit And Next" />
 </form>
 
