@@ -118,5 +118,10 @@ class time_table(models.Model):
 	def __unicode__(self):
 		return str(self.s_no)
 
-		
+class Question(models.Model):
+	question_text = models.TextField()
+	type = models.CharField(max_length = 50)
+
+	def __unicode__(self):
+		return self.question_text 
 
