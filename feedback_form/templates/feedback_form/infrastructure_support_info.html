@@ -1,19 +1,29 @@
-<h1>{{Question.type|default:"nothing"}}</h1>
+{% if infrastructure_qlist%}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<h2 class="panel-title text-center"><u>InfraStructure Support</u></h2>
+<strong>Instructions</strong>
+                  <div>
+                     <label>1-Very poor</label> 
+                     <label>2-Poor</label>
+                     <label>3-Good</label>
+                     <label>4-Average</label>
+                     <label>5-Excellence</label>
+                  </div>
+</br>
+</br>
 <form action=" " method="post">
-{% csrf_token %}
+	{% csrf_token %}
 
-{% for q in Question.objects.all %}
-<label>
-		
-		{{Question.objects.all}}
-</label>{% endfor %}
-    {% for i in "12345" %}
-        <input type = "radio" name="tset" value={{i}} /> {{i}}
-{% endfor %}
+	{% for q in infrastructure_qlist %}
+	<label>{{q.question_text}}</label>
+		{% for i in "12345" %}
+        	<input type = "radio" name={{q.id}} value={{i}} /> {{i}} 
+    	{% endfor %}
+	</br>
+	{% endfor %}
 
-<br/>
-<input type="submit" value="Submit And Next" />
+	<br/>
+	<input type="submit" value="Submit And Next" />
 </form>
-
+{% endif %}

@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 #import datetime
 from django import forms
-from feedback_form.models import course, batch, section_info
+from feedback_form.models import course, batch, section_info, Question
 #import json as simplejson
 import json
 import feedback_form.models
@@ -76,5 +76,7 @@ def get_batch(request, c_id):
     #return HttpResponse(json.dumps(sem))
 
 def infrastructure_support(request):
-	return render(request, 'feedback_form/infrastructure_support_info.html')
+	infrastructure_qlist = Question.objects.filter(type = 'infrastructure support')
+	context = {'infrastructure_qlist':infrastructure_qlist}
+	return render(request, 'feedback_form/infrastructure_support_info.html', context)
 
