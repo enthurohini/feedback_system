@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 #import datetime
 from django import forms
-from feedback_form.models import course, batch, section_info, Question
+from feedback_form.models import course, batch, section_info, Question, infrastructure_support_info
 #import json as simplejson
 import json
 import feedback_form.models
@@ -78,5 +78,15 @@ def get_batch(request, c_id):
 def infrastructure_support(request):
 	infrastructure_qlist = Question.objects.filter(type = 'infrastructure support')
 	context = {'infrastructure_qlist':infrastructure_qlist}
+	if request.method == 'POST':
+		#form = infrastructure_support_info(request.POST)
+		#if form.is_valid():
+			#message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['1'], request.POST['2'], request.POST['3'], request.POST['4'], request.POST['5'], request.POST['6'])
+			q = infrastructure_support_info(books_availability = int(request.POST['1']),basic_requirements = int(request.POST['2']), technological_support = int(request.POST['3']), study_material = int(request.POST['4']), resourse_availability = int(request.POST['5']), cleaniliness_of_class = int(request.POST['6']), fs_id = 12)
+			q.save()
+			#return HttpResponse(message)
+			#return HttpResponseRedirect('/feedback_system/thankyou/')
+	else:
+		form = loginForm()
 	return render(request, 'feedback_form/infrastructure_support_info.html', context)
 
