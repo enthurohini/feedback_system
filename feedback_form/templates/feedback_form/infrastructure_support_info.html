@@ -12,7 +12,7 @@
                   </div>
 </br>
 </br>
-<form action=" " method="post">
+<form action="{% url 'infrastructure_action' %}" method="post">
 	{% csrf_token %}
 
 	{% for q in infrastructure_qlist %}
