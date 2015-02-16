@@ -1,0 +1,62 @@
+{% if faculty_qlist and course_qlist and comment %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h2 class="panel-title text-center"><u>Academic Assessment</u></h2>
+
+<strong>Instructions</strong>
+                  <div>
+                     <label>1-Very poor</label> 
+                     <label>2-Poor</label>
+                     <label>3-Good</label>
+                     <label>4-Average</label>
+                     <label>5-Excellence</label>
+                  </div>
+</br>
+</br>
+
+<form action=" " method="post">
+	{% csrf_token %}
+
+	{% for q in faculty_qlist %}
+	<label>{{q.question_text}}</label>
+		{% for i in "12345" %}
+        	<input type = "radio" name={{q.id}} value={{i}} /> {{i}} 
+    	{% endfor %}
+	</br>
+
+	{% endfor %}
+
+	</br>
+
+	{% for c in comment %}
+	<label>{{c.question_text}}</label>
+	<textarea name = "comment1"></textarea>
+	{% endfor %}
+
+	</br> </br>
+
+	{% for c in course_qlist %}
+	<label>{{c.question_text}}</label>
+		{% for i in "12345" %}
+        	<input type = "radio" name={{c.id}} value={{i}} /> {{i}} 
+    	{% endfor %}
+	</br>
+
+	{% endfor %}
+
+	</br>
+
+	{% for c in comment %}
+	<label>{{c.question_text}}</label>
+	<textarea name = "comment2"></textarea>
+	{% endfor %}
+
+	</br> </br>
+
+	</br> </br>
+
+	<input type="submit" value="Submit And Next" />
+</form>
+
+{% endif %}

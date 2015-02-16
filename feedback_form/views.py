@@ -26,8 +26,10 @@ def action(request):
 		message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course'], request.POST['semester'], request.POST['course_id'], request.POST['batch_id'], request.POST['section'])
 		q = feedback_student_info(batch_id = request.POST['batch_id'],course = request.POST['course'], semester = request.POST['semester'][:2], section = request.POST['section'], feedback_session = timezone.now().year)
 		q.save()
+
 	else:
 		message = 'You submitted an empty form.'
+
 	return HttpResponse(message)
 
 def login(request):
@@ -37,19 +39,21 @@ def login(request):
 		form.fields['semester'].choices = [(sem, sem)]
 		b = request.POST.get('batch')
 		form.fields['batch'].choices = [(b, b)]
-        #semester = forms.ChoiceField([(sem,sem)],required=True, widget=forms.Select())
+        
 		if form.is_valid():
 			message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course_name'], request.POST['semester'], request.POST['section'], request.POST['batch'], request.POST['section'])
-			q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['course_name'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = 2014)
+			q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['course_name'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = timezone.now().year)
 			q.save()
-			return HttpResponse(message)
-			#return HttpResponseRedirect('/feedback_system/thankyou/')
+			request.session['fs_id'] = q.fs_id
+			
+			return HttpResponseRedirect('/feedback_system/infrastructure_support/')
 	else:
 		form = loginForm()
 
 	return render(request, 'feedback_form/loginForm.html', {'form': form})
 
 def thanks(request):
+	del request.session['fs_id']
 	return render(request, 'feedback_form/thankyou.html')
 
 def ajax_color_request(request):
@@ -65,28 +69,46 @@ def get_batch(request, c_id):
     batches = feedback_form.models.batch.objects.all().filter(course_id=current_course)
     no_of_sem = feedback_form.models.course.objects.values_list('number_of_sem', flat=True).filter(course_id = current_course)
     no_of_sem = int(no_of_sem[0])
+
     batch_dict = {}
     for batch in batches:
         batch_dict[batch.batch_id] = batch.batch_id
+
     sem = {}
     sem[no_of_sem] = no_of_sem
     data = [batch_dict, no_of_sem]
+
     return HttpResponse(json.dumps(data))
-    #return HttpResponse(json.dumps(batch_dict))
-    #return HttpResponse(json.dumps(sem))
 
 def infrastructure_support(request):
 	infrastructure_qlist = Question.objects.filter(type = 'infrastructure support')
 	context = {'infrastructure_qlist':infrastructure_qlist}
-	if request.method == 'POST':
-		#form = infrastructure_support_info(request.POST)
-		#if form.is_valid():
-			#message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['1'], request.POST['2'], request.POST['3'], request.POST['4'], request.POST['5'], request.POST['6'])
-			q = infrastructure_support_info(books_availability = int(request.POST['1']),basic_requirements = int(request.POST['2']), technological_support = int(request.POST['3']), study_material = int(request.POST['4']), resourse_availability = int(request.POST['5']), cleaniliness_of_class = int(request.POST['6']), fs_id = 12)
-			q.save()
-			#return HttpResponse(message)
-			#return HttpResponseRedirect('/feedback_system/thankyou/')
-	else:
-		form = loginForm()
+	
 	return render(request, 'feedback_form/infrastructure_support_info.html', context)
 
+def infrastructure_action(request):
+	if ('1' and '2' and '3' and '4' and '5' and '6') in request.POST:	
+		if 'fs_id' in request.session:
+			std_id = request.session['fs_id']
+			message = "Your submitted entry is: %s , %s, %s, %s, %s, %s" % (int(request.POST['1']), request.POST['2'], request.POST['3'], request.POST['4'], request.POST['5'], request.POST['6'])
+			q = feedback_student_info.objects.get(pk=std_id)
+			q.infrastructure_support_info_set.create(books_availability=request.POST['1'], basic_requirements=request.POST['2'], technological_support=request.POST['3'], study_material=request.POST['4'], resourse_availability=request.POST['5'], cleaniliness_of_class=request.POST['6'])
+
+			return HttpResponseRedirect('/feedback_system/academic_assessment/')
+			
+		else:
+			return HttpResponse('You submitted an empty form.')
+	
+def academic_assessment(request):
+	faculty_qlist = Question.objects.filter(type = 'faculty assesment')
+	course_qlist = Question.objects.filter(type = 'course assessment')
+	comment = Question.objects.filter(type = 'subject comment')
+	context = {'faculty_qlist': faculty_qlist, 'course_qlist': course_qlist, 'comment': comment}
+
+	return render(request, 'feedback_form/academic_assessment_info.html', context)
+
+def academic_action(request):
+	if ('7' and '8' and '9' and '10' and '11' and '12' and '13' and '14' and '15' and '16' and 'comment1' and '18' and '19' and 'comment2') in request.POST:
+		if 'fs_id' in request.session:
+			std_id = request.session['fs_id']
+			message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['1']), request.POST['2'], request.POST['3'], request.POST['4'], request.POST['5'], request.POST['6'])
