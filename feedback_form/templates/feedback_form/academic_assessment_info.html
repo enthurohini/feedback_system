@@ -15,8 +15,27 @@
 </br>
 </br>
 
-<form action=" " method="post">
+<form action="{% url 'academic_action' %}" method="post">
 	{% csrf_token %}
+
+	<label>Subject</label>
+	<select name="subject">
+	{% for s in  subject_list%}
+		<option value = {{s.name_of_subject}}>{{s.name_of_subject}}</option>
+	{% endfor %}
+	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
+
+	<label>Faculty</label>
+	<select name="faculty">
+	{% for f in  faculty_name_list%}
+		{% for i in f%}
+		<option value = {{i}} >{{i}}</option>
+		}
+	{% endfor %}
+	{% endfor %}
+	</select>
+
+	<br/> <br/>
 
 	{% for q in faculty_qlist %}
 	<label>{{q.question_text}}</label>

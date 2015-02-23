@@ -3,10 +3,8 @@ from feedback_form.models import feedback_student_info
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils import timezone
-#import datetime
 from django import forms
-from feedback_form.models import course, batch, section_info, Question, infrastructure_support_info
-#import json as simplejson
+from feedback_form.models import course, batch, section_info, Question, infrastructure_support_info, feedback_student_info, subject, faculty_table, time_table
 import json
 import feedback_form.models
 from django.template import RequestContext, loader, context
@@ -44,7 +42,14 @@ def login(request):
 			message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course_name'], request.POST['semester'], request.POST['section'], request.POST['batch'], request.POST['section'])
 			q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['course_name'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = timezone.now().year)
 			q.save()
+
+			''' --- sessions of the variables are maintained here --- '''
 			request.session['fs_id'] = q.fs_id
+			request.session['course_name'] = q.course
+			request.session['semester'] = q.semester
+			request.session['section'] = q.section
+			request.session['course_id'] = q.batch_id[:2]
+			request.session['batch_id'] = q.batch_id
 			
 			return HttpResponseRedirect('/feedback_system/infrastructure_support/')
 	else:
@@ -88,8 +93,11 @@ def infrastructure_support(request):
 
 def infrastructure_action(request):
 	if ('1' and '2' and '3' and '4' and '5' and '6') in request.POST:	
+
+		''' --- fetching the session variables --- '''
 		if 'fs_id' in request.session:
 			std_id = request.session['fs_id']
+
 			message = "Your submitted entry is: %s , %s, %s, %s, %s, %s" % (int(request.POST['1']), request.POST['2'], request.POST['3'], request.POST['4'], request.POST['5'], request.POST['6'])
 			q = feedback_student_info.objects.get(pk=std_id)
 			q.infrastructure_support_info_set.create(books_availability=request.POST['1'], basic_requirements=request.POST['2'], technological_support=request.POST['3'], study_material=request.POST['4'], resourse_availability=request.POST['5'], cleaniliness_of_class=request.POST['6'])
@@ -100,15 +108,37 @@ def infrastructure_action(request):
 			return HttpResponse('You submitted an empty form.')
 	
 def academic_assessment(request):
+
+	''' fetching the data from the session variables '''
+	courseId = request.session['course_id']
+	sem = request.session['semester']
+	batch = request.session['batch_id']
+	section = request.session['section']
+
+	''' --- queries to fetch data from the model ---'''
+	subject_list = subject.objects.filter(course_id = courseId, semester = sem, is_viva_or_lab = 0)
+	faculty_id_list = time_table.objects.values_list('faculty_id', flat = True).filter(batch_id = batch, section = section)
+	faculty_name_list = []
+	for f in faculty_id_list:
+		faculty_name_list.append(faculty_table.objects.filter(user_id = f))
+	faculty = faculty_table.objects.filter(user_id = faculty_id_list[2])
 	faculty_qlist = Question.objects.filter(type = 'faculty assesment')
 	course_qlist = Question.objects.filter(type = 'course assessment')
 	comment = Question.objects.filter(type = 'subject comment')
-	context = {'faculty_qlist': faculty_qlist, 'course_qlist': course_qlist, 'comment': comment}
+
+	context = {'subject_list': subject_list, 'faculty_qlist': faculty_qlist, 'faculty_name_list': faculty_name_list, 'course_qlist': course_qlist, 'comment': comment}
 
 	return render(request, 'feedback_form/academic_assessment_info.html', context)
+	#return HttpResponse(len(faculty_name_list))
 
 def academic_action(request):
 	if ('7' and '8' and '9' and '10' and '11' and '12' and '13' and '14' and '15' and '16' and 'comment1' and '18' and '19' and 'comment2') in request.POST:
 		if 'fs_id' in request.session:
 			std_id = request.session['fs_id']
-			message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['1']), request.POST['2'], request.POST['3'], request.POST['4'], request.POST['5'], request.POST['6'])
+			
+			#message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['7']), request.POST['8'], request.POST['9'], request.POST['10'], request.POST['11'], request.POST['12'], request.POST['13'], request.POST['14'], request.POST['15'], request.POST['16'], request.POST['comment1'], request.POST['18'], request.POST['19'], request.POST['comment2'])
+
+			return HttpResponse(course_id)
+
+	else:
+		return HttpResponse('You submitted an empty form.')
