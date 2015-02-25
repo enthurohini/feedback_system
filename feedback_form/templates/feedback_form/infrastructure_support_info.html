@@ -1,29 +1,91 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Infrastructure Support</title>
+<link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
+<style type="text/css">
+
+             h2{           
+                 font-weight: bold;
+               }
+     .container{
+                 font-size: 15px;
+               }
+          label{
+                padding:10px;
+              }
+           hr{
+               margin-top:10px;
+             }
+             .panel-title{
+              /*background-color: #5bc0de;*/
+              background-color: #8878c3;
+              /*background-color: #b666d2;*/
+        }
+      
+</style>
+</head>
+
+
+<body>
+
+
 {% if infrastructure_qlist%}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<h2 class="panel-title text-center"><u>InfraStructure Support</u></h2>
-<strong>Instructions</strong>
-                  <div>
+<div class="panel panel-primary"> <!--Outermost panel-->
+  <div class="panel-title">   <!--paneltitle-->
+      <div class="container"> <!--container-->
+         <div class="panel-title text-center">
+           <u><h1>InfraStructure Support</h1></u>
+         </div>
+      </div>     <!--closing of class=container-->
+  </div>       <!--closing of class=panelheading-->
+</div>         <!--closing of outermost panel--> 
+
+
+ <!--<div class="panel panel-primary">  Outermost panel panel-primary-->
+   <div class="container"><!--class container-->
+      <div class="panel-body">    <!--class=panelbody-->
+            <div class=" row alert alert-info">
+                     <strong class="col-md-6">Instructions</strong>
+                  <div class="col-sm-6" style="margin-left:-10px;">
                      <label>1-Very poor</label> 
                      <label>2-Poor</label>
                      <label>3-Good</label>
                      <label>4-Average</label>
                      <label>5-Excellence</label>
-                  </div>
+                  </div><!-- Closing of class colm-sm-6-->
+            </div><!-- Closing of class row-->
+          </div> <!-- Closing of class panrl body-->
+        </div> <!-- Closing of class container-->
 </br>
 </br>
-<form action="{% url 'infrastructure_action' %}" method="post">
-	{% csrf_token %}
+<form action="{% url 'infrastructure_action' %}" method="post" class="form-inline">
+  {% csrf_token %}
+<!--<div class="col-md-6">-->
+ <div  <div class="panel panel-default" style="margin-left:75px;"><!-- div class panel-->
+  {% for q in infrastructure_qlist %}
+  <label >{{q.question_text}}</label>
+    {% for i in "12345" %}
+          <input type = "radio" name={{q.id}} value={{i}} /> {{i}} 
+      {% endfor %}
 
-	{% for q in infrastructure_qlist %}
-	<label>{{q.question_text}}</label>
-		{% for i in "12345" %}
-        	<input type = "radio" name={{q.id}} value={{i}} /> {{i}} 
-    	{% endfor %}
-	</br>
-	{% endfor %}
-
-	<br/>
-	<input type="submit" value="Submit And Next" />
-</form>
+  </br>
+  
+  {% endfor %}
+ <!--</div>-->
+ 
+  <br/>
+  </div>  <!-- Closing of class panel-->
+   <div class="col-sm-offset-6"> 
+    <input type="submit" value="Submit" class="btn btn-primary"></input>
+     </div>
+ </form>
+<!--</div>  Closing of class panel primary-->
 {% endif %}
+
+<script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

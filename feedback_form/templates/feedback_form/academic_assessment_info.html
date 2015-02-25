@@ -1,22 +1,71 @@
+{<!DOCTYPE html PUBLIC >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Academic Assessment</title>
+<link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
+<style type="text/css">
+
+             h2{           
+                 font-weight: bold;
+
+               }
+     .container{
+                 font-size: 15px;
+               }
+          label{
+                padding:10px;
+              }
+           hr{
+               margin-top:10px;
+             }
+        .panel-title{
+              background-color: #5bc0de;
+        }
+</style>
+</head>
+
+
+<body>
+
+
 {% if faculty_qlist and course_qlist and comment %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<div class="panel panel-primary"> <!--Outermost panel-->
+  <div class="panel-title">   <!--paneltitle-->
+      <div class="container"> <!--container-->
+         <div class="panel-title text-center">
+	       <u><h1>Academic Assessment</h1></u>
+         </div>	
+      </div>     <!--closing of class=container-->
+  </div>       <!--closing of class=panelheading-->
+</div>         <!--closing of outermost panel--> 
 
-<h2 class="panel-title text-center"><u>Academic Assessment</u></h2>
-
-<strong>Instructions</strong>
-                  <div>
+<div class="panel panel-primary">   <!-- Outermost panel panel-primary-->
+   <div class="container">
+      <div class="panel-body">    <!--class=panelbody-->
+            <div class=" row alert alert-info">
+                     <strong class="col-md-6">Instructions</strong>
+                  <div class="col-sm-6" style="margin-left:-10px;">
                      <label>1-Very poor</label> 
                      <label>2-Poor</label>
                      <label>3-Good</label>
                      <label>4-Average</label>
                      <label>5-Excellence</label>
-                  </div>
+                  </div><!-- Closing of class colm-sm-6-->
+            </div><!-- Closing of class row-->
+          </div> <!-- Closing of class panel body-->
+        </div> <!-- Closing of class container-->
+      
 </br>
 </br>
 
 <form action="{% url 'academic_action' %}" method="post">
 	{% csrf_token %}
+<<<<<<< HEAD
+   <div  class= "panel" style="margin-left:75px;"><!-- div class panel-->
+=======
 
 	<label>Subject</label>
 	<select name="subject">
@@ -37,15 +86,18 @@
 
 	<br/> <br/>
 
+>>>>>>> 4e70f973b039555ff1149239c5c18102144b615b
 	{% for q in faculty_qlist %}
-	<label>{{q.question_text}}</label>
+	<label >{{q.question_text}}</label>
 		{% for i in "12345" %}
-        	<input type = "radio" name={{q.id}} value={{i}} /> {{i}} 
+		<label class="radio-inline">
+        	<input type = "radio" name={{q.id}} value={{i}} /> {{i}}
+        </label> 
     	{% endfor %}
 	</br>
 
 	{% endfor %}
-
+ </div> <!-- Closing of class panel body-->
 	</br>
 
 	{% for c in comment %}
@@ -74,8 +126,12 @@
 	</br> </br>
 
 	</br> </br>
-
-	<input type="submit" value="Submit And Next" />
+  <div class="col-sm-offset-6"> <!--div class sm offfset-->
+    <input type="submit" value="Submit" class="btn btn-primary"></input>
+     </div>  <!-- Closing of class sm offfset--> 
 </form>
-
+</div>   <!-- Closing of class panel primary-->
 {% endif %}
+<script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
