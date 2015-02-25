@@ -62,23 +62,26 @@
          </div>
     </form>
 
+   <!-- JavaScript Section -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
     <script>
     	
-$(document).ready(function(){
-    $('#id_course_name').change(function(){
-        $('#id_section').parent().addClass('remove');
-        $('.remove').parent().addClass('hatYar');
-        c_id = $(this).val();
-        if( c_id == "MTECH")
-	        $('.hatYar').css('display', 'none');
-	    else
-	       $('.hatYar').css('display', 'block');
+      $(document).ready(function(){
+          $('#id_course_name').change(function(){
+            $('#id_section').parent().addClass('remove');
+            $('.remove').parent().addClass('hatYar');
+            c_id = $(this).val();
+            if( c_id == "MTECH")
+	             $('.hatYar').css('display', 'none');
+	          else
+	             $('.hatYar').css('display', 'block');
 
-        request_url = 'login/get_batch/' + c_id + '/';
-        $.ajax({
-            url: request_url,
-            success: function(data){
+           request_url = 'login/get_batch/' + c_id + '/';
+            $.ajax({
+                url: request_url,
+                success: function(data){
                 data = $.parseJSON(data);
                 //console.log(data);
                 $('#id_batch').html('<option selected="' + "selected" + '">' + '' +'</option>');

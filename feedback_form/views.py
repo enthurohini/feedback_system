@@ -14,9 +14,6 @@ from feedback_form.models import feedback_student_info
 
 # Create your views here.
 def index(request):
-	#return HttpResponse("Hello")
-	#template = loader.get_template('feedback_form/index.html')
-	#return HttpResponse(template.render)
 	return render(request, 'feedback_form/index.html')
 
 def action(request):
@@ -121,18 +118,24 @@ def academic_assessment(request):
 	faculty_name_list = []
 	for f in faculty_id_list:
 		faculty_name_list.append(faculty_table.objects.filter(user_id = f))
-	faculty = faculty_table.objects.filter(user_id = faculty_id_list[2])
 	faculty_qlist = Question.objects.filter(type = 'faculty assesment')
 	course_qlist = Question.objects.filter(type = 'course assessment')
 	comment = Question.objects.filter(type = 'subject comment')
 
+	''' ----- maintaining session of subject_list into dictionary ----- '''
+	#subject_dict = {(subject, subject) for subject in subject_list}
+	#request.session['subject_dict'] = subject_dict
+	#subject_list_session = serializers.serialize('json', subject_list)
+
 	context = {'subject_list': subject_list, 'faculty_qlist': faculty_qlist, 'faculty_name_list': faculty_name_list, 'course_qlist': course_qlist, 'comment': comment}
 
 	return render(request, 'feedback_form/academic_assessment_info.html', context)
-	#return HttpResponse(len(faculty_name_list))
+	#return HttpResponse()
 
 def academic_action(request):
-	if ('7' and '8' and '9' and '10' and '11' and '12' and '13' and '14' and '15' and '16' and 'comment1' and '18' and '19' and 'comment2') in request.POST:
+	#return HttpResponse(request.session['subject_list'])
+
+	'''if ('7' and '8' and '9' and '10' and '11' and '12' and '13' and '14' and '15' and '16' and 'comment1' and '18' and '19' and 'comment2') in request.POST:
 		if 'fs_id' in request.session:
 			std_id = request.session['fs_id']
 			
@@ -141,4 +144,4 @@ def academic_action(request):
 			return HttpResponse(course_id)
 
 	else:
-		return HttpResponse('You submitted an empty form.')
+		return HttpResponse('You submitted an empty form.') '''
