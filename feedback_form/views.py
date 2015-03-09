@@ -7,6 +7,7 @@ from django import forms
 from feedback_form.models import course, batch, section_info, Question, infrastructure_support_info, feedback_student_info, subject, faculty_table, time_table
 import json
 import feedback_form.models
+from django.core import serializers
 from django.template import RequestContext, loader, context
 
 from feedback_form.forms import loginForm
@@ -123,25 +124,42 @@ def academic_assessment(request):
 	comment = Question.objects.filter(type = 'subject comment')
 
 	''' ----- maintaining session of subject_list into dictionary ----- '''
-	#subject_dict = {(subject, subject) for subject in subject_list}
-	#request.session['subject_dict'] = subject_dict
-	#subject_list_session = serializers.serialize('json', subject_list)
+	subject_list_session = serializers.serialize('json', list(subject_list), fields =('name_of_subject'))
+	request.session['subject_list_session'] = subject_list_session
+	request.session['total_subject'] = len(subject_list)
 
 	context = {'subject_list': subject_list, 'faculty_qlist': faculty_qlist, 'faculty_name_list': faculty_name_list, 'course_qlist': course_qlist, 'comment': comment}
-
+	
 	return render(request, 'feedback_form/academic_assessment_info.html', context)
-	#return HttpResponse()
+	#return HttpResponse(no_subject)
 
 def academic_action(request):
-	#return HttpResponse(request.session['subject_list'])
 
-	'''if ('7' and '8' and '9' and '10' and '11' and '12' and '13' and '14' and '15' and '16' and 'comment1' and '18' and '19' and 'comment2') in request.POST:
+	''' ~~~~~~~~~~ Accessing the session elements ~~~~~~~~~~~ '''
+	s_list = request.session['subject_list_session']
+	no_of_subject = request.session['total_subject']
+	#return HttpResponse(no_of_subject)
+	
+	if ('subject' and '7' and '8' and '9' and '10' and '11' and '12' and '13' and '14' and '15' and '16' and 'comment1' and '18' and '19' and 'comment2') in request.POST:
 		if 'fs_id' in request.session:
 			std_id = request.session['fs_id']
-			
-			#message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['7']), request.POST['8'], request.POST['9'], request.POST['10'], request.POST['11'], request.POST['12'], request.POST['13'], request.POST['14'], request.POST['15'], request.POST['16'], request.POST['comment1'], request.POST['18'], request.POST['19'], request.POST['comment2'])
+		a = feedback_student_info.objects.get(pk=std_id)
+		#a.academic_assessment_info_set.create(subject_id = request.POST['subject'], faculty_id = )
+		return HttpResponseRedirect('/feedback_form/thankyou/')
+	#if ('subject' and '7' and '8' and 'comment1' and '18') in request.POST:		
+	#		#message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['7']), request.POST['8'], request.POST['9'], request.POST['10'], request.POST['11'], request.POST['12'], request.POST['13'], request.POST['14'], request.POST['15'], request.POST['16'], request.POST['comment1'], request.POST['18'], request.POST['19'], request.POST['comment2'])
+	#		message = request.POST['subject']+request.POST['7']+request.POST['8']+request.POST['comment1']+request.POST['18']
 
-			return HttpResponse(course_id)
+	#		return HttpResponse(message)
 
 	else:
-		return HttpResponse('You submitted an empty form.') '''
+		return HttpResponse('You submitted an empty form.') 
+
+def get_faculty_name(request, sub_name):
+	current_course_id = request.session['course_id']
+	current_section = request.session['section']
+
+	current_subject_id = subject.objects.values_list('subject_id', flat = True).filter(name_of_subject = sub_name, course_id = current_course_id)
+	current_faculty_id = time_table.objects.values_list('faculty_id', flat = True).filter(subject_id = current_subject_id)
+	faculty_name = faculty_table.objects.filter(user_id = current_faculty_id)
+	return HttpResponse(json.dumps(faculty_name))

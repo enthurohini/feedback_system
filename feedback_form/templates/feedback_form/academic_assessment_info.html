@@ -1,4 +1,4 @@
-{<!DOCTYPE html PUBLIC >
+<!DOCTYPE html PUBLIC >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -62,15 +62,16 @@
 </br>
 
 <form action="{% url 'academic_action' %}" method="post">
-	{% csrf_token %}
-<<<<<<< HEAD
+   {% csrf_token %}
+
    <div  class= "panel" style="margin-left:75px;"><!-- div class panel-->
-=======
+
 
 	<label>Subject</label>
-	<select name="subject">
+	<select name="subject" id = "id_subject">
+	<option>--- Select Subject ---</option>
 	{% for s in  subject_list%}
-		<option value = {{s.name_of_subject}}>{{s.name_of_subject}}</option>
+		<option>{{s.name_of_subject}}</option>
 	{% endfor %}
 	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
 
@@ -86,7 +87,7 @@
 
 	<br/> <br/>
 
->>>>>>> 4e70f973b039555ff1149239c5c18102144b615b
+
 	{% for q in faculty_qlist %}
 	<label >{{q.question_text}}</label>
 		{% for i in "12345" %}
@@ -132,6 +133,34 @@
 </form>
 </div>   <!-- Closing of class panel primary-->
 {% endif %}
-<script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<!-- JavaScript Section -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src = "../../static/feedback_form/jquery.js"></script>   
+<script>
+    console.log("hello");
+    $(document).ready(function(){
+    	$('#id_subject').change(function(){
+    		sub_name = $(this).val();
+
+    		request_url = 'get_faculty_name/' + sub_name + '/';
+    		console.log(request_url);
+    		$.ajax({
+                url: request_url,
+                success: function(faculty_name){
+                data = $.parseJSON(faculty_name);
+                //console.log(data);
+            }
+
+    	}) 
+    	})
+    	});
+</script>
+
+<!-- End of JavaScript section -->
+
+<script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script> 
 </body>
 </html>
