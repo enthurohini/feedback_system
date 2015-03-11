@@ -71,8 +71,8 @@
 	<select name="subject" id = "id_subject">
 	<option>--- Select Subject ---</option>
 	{% for s in  subject_list%}
-		<option value = {{s.subject_id}}>{{s.name_of_subject}}</option>
-		   <!-- <option value = {{s}}>{{subject_list[s]}}</option> -->
+		<option value = {{s.subject_id}}> {{s.name_of_subject}} </option>
+		   
 	{% endfor %}
 	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
 
@@ -134,8 +134,9 @@
     <input type="submit" value="Submit" class="btn btn-primary"></input>
      </div>  <!-- Closing of class sm offfset--> 
 
-</div>
 </form>
+
+</div> <!-- Closing of hidden paragraph -- >
 </div>   <!-- Closing of class panel primary-->
 {% endif %}
 
@@ -149,6 +150,7 @@
     $(document).ready(function(){
     	console.log("hiii");
     	$('#id_subject').change(function(){
+    		$('#id_questions').css('visibility', 'visible');
     		sub_name = $(this).val();
 
     		console.log("hii");
