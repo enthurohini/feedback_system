@@ -1,4 +1,4 @@
-{<!DOCTYPE html PUBLIC >
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -10,25 +10,45 @@
                  font-weight: bold;
 
                }
-     .container{
+            .container{
                  font-size: 15px;
                }
-          label{
+             label{
                 padding:10px;
-              }
-           hr{
+               }
+             hr{
                margin-top:10px;
-             }
-        .panel-title{
-              background-color: #5bc0de;
-        }
+               }
+            .panel-title{
+              background-color: #8878c3;
+               }
+            .radio_button{
+                position: relative;
+                left: 30%;
+                display: inline;
+                margin-left:15px;
+                margin-top: 100px;
+              }
+            #inlineRadio{
+                margin-left: 1.5em;
+                margin-top: -0.55em;
+                display: inline;
+              }
+            /*input{
+              width: 250px;
+            }*/
+            .form-control{
+              width: 18%;
+              margin-top: -0.70em;
+            }
+            #subject{
+             margin-left: 8.5em;
+            }
 </style>
 </head>
 
 
 <body>
-
-
 {% if faculty_qlist and course_qlist and comment %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -36,8 +56,8 @@
   <div class="panel-title">   <!--paneltitle-->
       <div class="container"> <!--container-->
          <div class="panel-title text-center">
-	       <u><h1>Academic Assessment</h1></u>
-         </div>	
+         <u><h1>Academic Assessment</h1></u>
+         </div> 
       </div>     <!--closing of class=container-->
   </div>       <!--closing of class=panelheading-->
 </div>         <!--closing of outermost panel--> 
@@ -62,74 +82,92 @@
 </br>
 
 <form action="{% url 'academic_action' %}" method="post">
-	{% csrf_token %}
-<<<<<<< HEAD
+  {% csrf_token %}
+ <!--HEAD-->
    <div  class= "panel" style="margin-left:75px;"><!-- div class panel-->
-=======
+<!--=======-->
+   <!--<div id="subject">  opening div id subject-->
+  <label  >Subject</label>
+<!--</div>  closing div id subject-->
+  <select name="subject" class="form-control">
+  {% for s in  subject_list%}
+  <div id="subject">
+    <option value = {{s.name_of_subject}}>{{s.name_of_subject}}</option>
+  </div>
+  {% endfor %}
+  </select> &nbsp; &nbsp; &nbsp; &nbsp; 
 
-	<label>Subject</label>
-	<select name="subject">
-	{% for s in  subject_list%}
-		<option value = {{s.name_of_subject}}>{{s.name_of_subject}}</option>
-	{% endfor %}
-	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
+  <label class="control-label col-sm-offset-1 col-sm-1">Faculty</label>
+  <select name="faculty" class="form-control">
+    
+  {% for f in  faculty_name_list%}
+   <div class="col-md-4 col-md-4">
+    {% for i in f%}
+    
+    <option value = {{i}} >{{i}}</option>
+    }</div>
+  {% endfor %}
+  {% endfor %}
 
-	<label>Faculty</label>
-	<select name="faculty">
-	{% for f in  faculty_name_list%}
-		{% for i in f%}
-		<option value = {{i}} >{{i}}</option>
-		}
-	{% endfor %}
-	{% endfor %}
-	</select>
+  </select>
 
-	<br/> <br/>
+  <br/> <br/>
 
->>>>>>> 4e70f973b039555ff1149239c5c18102144b615b
-	{% for q in faculty_qlist %}
-	<label >{{q.question_text}}</label>
-		{% for i in "12345" %}
-		<label class="radio-inline">
-        	<input type = "radio" name={{q.id}} value={{i}} /> {{i}}
+<!-->>>>>>> 4e70f973b039555ff1149239c5c18102144b615b-->
+  {% for q in faculty_qlist %}
+ <div class="panel panel-default"> <!-- div class panel_default-->
+  <label >{{q.question_text}}</label>
+    {% for i in "12345" %}
+    
+      <div class="radio_button"> <!-- div class radio_button-->
+        <label class="radio-inline">
+          <input type = "radio" id="inlineRadio" name={{q.id}} value={{i}} /> {{i}}
         </label> 
-    	{% endfor %}
-	</br>
+        </div> <!-- div closing radio_button-->
+      {% endfor %}
+      </div>  <!--  closing class panel_default-->
+  </br>
 
-	{% endfor %}
- </div> <!-- Closing of class panel body-->
-	</br>
+  {% endfor %}
+ 
+  </br>
 
-	{% for c in comment %}
-	<label>{{c.question_text}}</label>
-	<textarea name = "comment1"></textarea>
-	{% endfor %}
+  {% for c in comment %}
+  <label>{{c.question_text}}</label>
+  <textarea name = "comment1"></textarea>
+  {% endfor %}
 
-	</br> </br>
+  </br> </br>
 
-	{% for c in course_qlist %}
-	<label>{{c.question_text}}</label>
-		{% for i in "12345" %}
-        	<input type = "radio" name={{c.id}} value={{i}} /> {{i}} 
-    	{% endfor %}
-	</br>
+  {% for c in course_qlist %}
+   <div class="panel panel-default"> <!-- div class panel_default-->
+  <label>{{c.question_text}}</label>
+    {% for i in "12345" %}
+    <div class="radio_button"> <!-- div class radio_button-->
+      <label class="radio-inline">
+          <input type = "radio" id="inlineRadio" name={{c.id}} value={{i}} /> {{i}} 
+      </label> 
+    </div> <!-- div closing radio_button-->
+      {% endfor %}
+       </div>  <!--  closing class panel_default-->
+  </br>
 
-	{% endfor %}
+  {% endfor %}
 
-	</br>
+  </br>
 
-	{% for c in comment %}
-	<label>{{c.question_text}}</label>
-	<textarea name = "comment2"></textarea>
-	{% endfor %}
+  {% for c in comment %}
+  <label>{{c.question_text}}</label>
+  <textarea name = "comment2"></textarea>
+  {% endfor %}
+  </div> <!--Closing of class panel body-->
+  </br> </br>
 
-	</br> </br>
-
-	</br> </br>
+  </br> </br>
   <div class="col-sm-offset-6"> <!--div class sm offfset-->
     <input type="submit" value="Submit" class="btn btn-primary"></input>
      </div>  <!-- Closing of class sm offfset--> 
-</form>
+</form></br></br>
 </div>   <!-- Closing of class panel primary-->
 {% endif %}
 <script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
