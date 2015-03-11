@@ -3,8 +3,16 @@
 <head>
 	<title>Feedback|Home</title>
   <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css"> 
-	<!--#<script type="text/javascript" src="../../static/feedback_form/prototype.js"></script>
-    #<script type="text/javascript" src="../../static/feedback_form/select_batch.js"></script>-->
+	<style type="text/css">
+
+     .panel-title{
+              background-color: #8878c3;
+               }
+      #form{
+        /*background-color: #c1b9e0;*/
+        background-color: #d4cfe9;
+      }
+</style>
 </head>
 <body> 
     <div class="panel panel-primary">
@@ -18,10 +26,10 @@
 </div>
 <table>  
     
-   <div class="text-center" align="center">
+   <!--<div class="text-center" align="center">
         <h3><strong class="col-md-12" >Thank-you for registering with IIPS. You may now proceed for feedback anonymously.
       </strong></h3><br>
-   </div>
+   </div>-->
  </table>
  </br><br>
    </div>
@@ -42,19 +50,20 @@
     {% endif %}
 
     <form action="" method="post">
-       <div class="jumbotron container-custom">
-            <div class="form-group">
-               <div class="row" align="center">   
+       <div class="jumbotron container-custom" id="form"><!--opening class jumbotron container-custom"-->
+            <div class="form-group"><!--opening class form group-->
+               <div class="row" align="center"> <!--opening class row-->  
     	<table>
     		{{ form.as_table }}
     	</table>
+     
         {% block choice %}
 
         {% endblock %}
     	{% csrf_token%}
-       </div>
-      </div>
-  </div>
+       </div> <!--closing class row--> 
+      </div><!--closing class form group-->
+  </div><!--closing class jumbotron container-custom"-->
 </div>
      <div class="col-md-offset-3" align="center">
     	 <input type="submit" value="Submit" class="btn btn-primary"></input>
