@@ -6,22 +6,45 @@
 <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css"> 
 <style type="text/css">
 
+            
              h2{           
                  font-weight: bold;
 
                }
-     .container{
+            .container{
                  font-size: 15px;
                }
-          label{
+             label{
                 padding:10px;
-              }
-           hr{
+               }
+             hr{
                margin-top:10px;
-             }
-        .panel-title{
-              background-color: #5bc0de;
-        }
+               }
+            .panel-title{
+              background-color: #8878c3;
+               }
+            .radio_button{
+                position: relative;
+                left: 30%;
+                display: inline;
+                margin-left:15px;
+                margin-top: 100px;
+              }
+            #inlineRadio{
+                margin-left: 1.5em;
+                margin-top: -0.55em;
+                display: inline;
+              }
+            /*input{
+              width: 250px;
+            }*/
+            .form-control{
+              width: 18%;
+              margin-top: -0.70em;
+            }
+            #subject{
+             margin-left: 8.5em;
+            }
 </style>
 </head>
 
@@ -68,17 +91,18 @@
 
 
 	<label>Subject</label>
-	<select name="subject" id = "id_subject">
+	<select name="subject" id = "id_subject" class="form-control">
 	<option>--- Select Subject ---</option>
 	{% for s in  subject_list%}
+  <div id="subject">
 		<option value = {{s.subject_id}}> {{s.name_of_subject}} </option>
-		   
+		   </div>
 	{% endfor %}
 	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
 
 	<label>Faculty</label>
 	<!--<label id = "id_faculty_name">-->
-	<select name="faculty" id = "id_faculty_name">
+	<select name="faculty" id = "id_faculty_name" class="form-control">
 	<!--{% for f in  faculty_name_list%}
 		{% for i in f%}
 		<option value = {{i}} >{{i}}</option>
@@ -92,12 +116,17 @@
 	<div id = "id_questions" style = 'visibility:hidden;'>
 
 	{% for q in faculty_qlist %}
+   <div class="panel panel-default"> <!-- div class panel_default-->
 	<label >{{q.question_text}}</label>
 		{% for i in "12345" %}
+    <div class="radio_button"> <!-- div class radio_button-->
+      <label class="radio-inline">
 		<label class="radio-inline">
         	<input type = "radio" name={{q.id}} value={{i}} /> {{i}}
         </label> 
-    	{% endfor %}
+    	</div> <!-- div closing radio_button-->
+      {% endfor %}
+       </div>  <!--  closing class panel_default-->
 	</br>
 
 	{% endfor %}
@@ -112,10 +141,16 @@
 	</br> </br>
 
 	{% for c in course_qlist %}
+   <div class="panel panel-default"> <!-- div class panel_default-->
 	<label>{{c.question_text}}</label>
 		{% for i in "12345" %}
+    <div class="radio_button"> <!-- div class radio_button-->
+      <label class="radio-inline">
         	<input type = "radio" name={{c.id}} value={{i}} /> {{i}} 
+          </label> 
+    </div> <!-- div closing radio_button-->
     	{% endfor %}
+       </div>  <!--  closing class panel_default-->
 	</br>
 
 	{% endfor %}
@@ -137,7 +172,6 @@
 </form>
 
 </div> <!-- Closing of hidden paragraph -- >
-</div>   <!-- Closing of class panel primary-->
 {% endif %}
 
 
@@ -173,6 +207,7 @@
 </script>
 
 <!-- End of JavaScript section -->
+</div>   <!-- Closing of class panel primary-->
 
 <script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script> 
 </body>
