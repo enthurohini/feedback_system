@@ -8,21 +8,44 @@
 
              h2{           
                  font-weight: bold;
-               }
-     .container{
+                 }
+             .container{
                  font-size: 15px;
-               }
-          label{
+                 }
+              label{
                 padding:10px;
-              }
-           hr{
+                }
+              hr{
                margin-top:10px;
-             }
+                }
              .panel-title{
               /*background-color: #5bc0de;*/
               background-color: #8878c3;
               /*background-color: #b666d2;*/
-        }
+                }
+              .radio_button{
+                position: relative;
+                left: 30%;
+                /*margin-left:0.9em;*/
+                display: inline;
+                margin-left:15px;
+
+              }
+              /*.panel-default{
+                height: 50%;
+              }*/
+              #inlineRadio{
+                margin-left: 1.5em;
+                margin-top: -0.55em;
+                display: inline;
+              }
+              /*.form-inline{
+                background-color:  #8878c3;
+              }
+              #A{
+                background-color:  #8878c3;
+              }*/
+
       
 </style>
 </head>
@@ -60,18 +83,28 @@
             </div><!-- Closing of class row-->
           </div> <!-- Closing of class panrl body-->
         </div> <!-- Closing of class container-->
+       
 </br>
 </br>
-<form action="{% url 'infrastructure_action' %}" method="post" class="form-inline">
+</div>
+<form action="{% url 'infrastructure_action' %}" method="post" class="form-inline" class="form-control">
   {% csrf_token %}
 <!--<div class="col-md-6">-->
- <div  <div class="panel panel-default" style="margin-left:75px;"><!-- div class panel-->
-  {% for q in infrastructure_qlist %}
-  <label >{{q.question_text}}</label>
+ <div  style="margin-left:75px;"><!-- div class panel-->
+  
+   {% for q in infrastructure_qlist %}
+   <div class="panel panel-default"> <!-- div class panel_default-->
+   <label>{{q.question_text}}</label>
+  
     {% for i in "12345" %}
-          <input type = "radio" name={{q.id}} value={{i}} /> {{i}} 
-      {% endfor %}
+        <div class="radio_button" > <!-- div class radio_button-->
+           <label class="radio-inline">
+             <input type = "radio" id="inlineRadio" name={{q.id}} value={{i}} /> {{i}}
+           </label> 
+        </div> <!-- div closing radio_button-->
 
+      {% endfor %}
+       </div>  <!--  closing class panel_default-->
   </br>
   
   {% endfor %}
@@ -83,9 +116,10 @@
     <input type="submit" value="Submit" class="btn btn-primary"></input>
      </div>
  </form>
-<!--</div>  Closing of class panel primary-->
-{% endif %}
 
+
+{% endif %}
+<!--</div>  Closing of class panel primary-->
 <script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
