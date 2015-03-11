@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 		url(r'^thankyou/$', views.thanks, name = 'thanks'),
 		url(r'^ajax_color_request/$', views.ajax_color_request),
 		url(r'^login/login/get_batch/(?P<c_id>\w+)/$', views.get_batch, name = 'get_batch'),
-		url(r'^get_faculty_name/(?P<sub_name>\s+)/$', views.get_faculty_name, name = 'get_faculty_name'),
+		url(r'^academic_assessment/academic_assessment/get_faculty_name/(?P<sub_name>\S+)/$', views.get_faculty_name, name = 'get_faculty_name'),
 	)
 
 

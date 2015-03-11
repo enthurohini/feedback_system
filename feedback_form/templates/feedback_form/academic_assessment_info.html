@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Academic Assessment</title>
-<link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css"> 
 <style type="text/css">
 
              h2{           
@@ -71,22 +71,25 @@
 	<select name="subject" id = "id_subject">
 	<option>--- Select Subject ---</option>
 	{% for s in  subject_list%}
-		<option>{{s.name_of_subject}}</option>
+		<option value = {{s.subject_id}}>{{s.name_of_subject}}</option>
+		   <!-- <option value = {{s}}>{{subject_list[s]}}</option> -->
 	{% endfor %}
 	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
 
 	<label>Faculty</label>
-	<select name="faculty">
-	{% for f in  faculty_name_list%}
+	<!--<label id = "id_faculty_name">-->
+	<select name="faculty" id = "id_faculty_name">
+	<!--{% for f in  faculty_name_list%}
 		{% for i in f%}
 		<option value = {{i}} >{{i}}</option>
 		}
 	{% endfor %}
-	{% endfor %}
+	{% endfor %}-->
 	</select>
 
 	<br/> <br/>
 
+	<div id = "id_questions" style = 'visibility:hidden;'>
 
 	{% for q in faculty_qlist %}
 	<label >{{q.question_text}}</label>
@@ -130,6 +133,8 @@
   <div class="col-sm-offset-6"> <!--div class sm offfset-->
     <input type="submit" value="Submit" class="btn btn-primary"></input>
      </div>  <!-- Closing of class sm offfset--> 
+
+</div>
 </form>
 </div>   <!-- Closing of class panel primary-->
 {% endif %}
@@ -137,26 +142,32 @@
 
 <!-- JavaScript Section -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src = "../../static/feedback_form/jquery.js"></script>   
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>   
 <script>
-    console.log("hello");
+    
     $(document).ready(function(){
+    	console.log("hiii");
     	$('#id_subject').change(function(){
     		sub_name = $(this).val();
 
-    		request_url = 'get_faculty_name/' + sub_name + '/';
+    		console.log("hii");
+    		request_url = 'academic_assessment/get_faculty_name/' + sub_name + '/';
     		console.log(request_url);
     		$.ajax({
                 url: request_url,
                 success: function(faculty_name){
                 data = $.parseJSON(faculty_name);
-                //console.log(data);
+                console.log(faculty_name);
+                console.log(data[0])
+                //$('#id_faculty_name').html()
+                $('#id_faculty_name').html('<option >'  + data[0] +'</option>');
             }
-
-    	}) 
+    	
     	})
     	});
+
+    });
 </script>
 
 <!-- End of JavaScript section -->

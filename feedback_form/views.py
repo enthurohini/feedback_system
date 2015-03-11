@@ -124,7 +124,10 @@ def academic_assessment(request):
 	comment = Question.objects.filter(type = 'subject comment')
 
 	''' ----- maintaining session of subject_list into dictionary ----- '''
-	subject_list_session = serializers.serialize('json', list(subject_list), fields =('name_of_subject'))
+	#subject_list_session = serializers.serialize('json', list(subject_list), fields =('name_of_subject'))
+	subject_list_session = {}
+	for s in subject_list:
+		subject_list_session[s.subject_id] = s.name_of_subject 
 	request.session['subject_list_session'] = subject_list_session
 	request.session['total_subject'] = len(subject_list)
 
@@ -138,14 +141,20 @@ def academic_action(request):
 	''' ~~~~~~~~~~ Accessing the session elements ~~~~~~~~~~~ '''
 	s_list = request.session['subject_list_session']
 	no_of_subject = request.session['total_subject']
-	#return HttpResponse(no_of_subject)
+	for s in s_list:
+		return HttpResponse(s_list[s])
+
+	''' ~~~~~~~~~~~ Fetching faculty_id using faculty_name in request.POST ~~~~~~~~~~~ '''
+	'''faculty_id = faculty_table.objects.values_list('user_id', flat = True).filter(name = request.POST['faculty'])
+	current_faculty_id = int(faculty_id[0])
+	#return HttpResponse(current_faculty_id)
 	
 	if ('subject' and '7' and '8' and '9' and '10' and '11' and '12' and '13' and '14' and '15' and '16' and 'comment1' and '18' and '19' and 'comment2') in request.POST:
 		if 'fs_id' in request.session:
 			std_id = request.session['fs_id']
 		a = feedback_student_info.objects.get(pk=std_id)
-		#a.academic_assessment_info_set.create(subject_id = request.POST['subject'], faculty_id = )
-		return HttpResponseRedirect('/feedback_form/thankyou/')
+		a.academic_assessment_info_set.create(subject_id = request.POST['subject'], faculty_id = current_faculty_id, conceptual_clarity = request.POST['7'], subject_knowledge = request.POST['8'], practical_example = request.POST['9'], handling_capability = request.POST['10'], motivation = request.POST['11'], control_ability = request.POST['12'], course_completion = request.POST['13'], communication_skill = request.POST['14'], regularity_punctuality = request.POST['15'], outside_guidance = request.POST['16'], syllabus_industry_relevance = request.POST['18'], sufficiency_of_course = request.POST['19'], suggestion_for_subject = request.POST['comment1'], suggestion_for_course = request.POST['comment2'])
+		return HttpResponseRedirect('/feedback_system/academic_assessment/')
 	#if ('subject' and '7' and '8' and 'comment1' and '18') in request.POST:		
 	#		#message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['7']), request.POST['8'], request.POST['9'], request.POST['10'], request.POST['11'], request.POST['12'], request.POST['13'], request.POST['14'], request.POST['15'], request.POST['16'], request.POST['comment1'], request.POST['18'], request.POST['19'], request.POST['comment2'])
 	#		message = request.POST['subject']+request.POST['7']+request.POST['8']+request.POST['comment1']+request.POST['18']
@@ -153,13 +162,17 @@ def academic_action(request):
 	#		return HttpResponse(message)
 
 	else:
-		return HttpResponse('You submitted an empty form.') 
+		return HttpResponse('You submitted an empty form.') '''
 
 def get_faculty_name(request, sub_name):
 	current_course_id = request.session['course_id']
 	current_section = request.session['section']
 
-	current_subject_id = subject.objects.values_list('subject_id', flat = True).filter(name_of_subject = sub_name, course_id = current_course_id)
-	current_faculty_id = time_table.objects.values_list('faculty_id', flat = True).filter(subject_id = current_subject_id)
+	#current_subject_id = subject.objects.values_list('subject_id', flat = True).filter(name_of_subject = sub_name, course_id = current_course_id)
+	current_faculty_id = time_table.objects.values_list('faculty_id', flat = True).filter(subject_id = sub_name, section = current_section)
 	faculty_name = faculty_table.objects.filter(user_id = current_faculty_id)
-	return HttpResponse(json.dumps(faculty_name))
+	data = []
+	for f in faculty_name:
+		data = [f.name]
+	
+	return HttpResponse(json.dumps(data))
