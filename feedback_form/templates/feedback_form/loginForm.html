@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Feedback|Home</title>
-    <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css"> 
 	<!--#<script type="text/javascript" src="../../static/feedback_form/prototype.js"></script>
     #<script type="text/javascript" src="../../static/feedback_form/select_batch.js"></script>-->
 </head>
@@ -65,10 +65,10 @@
    <!-- JavaScript Section -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
+    <!--<script type="text/javascript" src = "../../static/feedback_form/jquery.js"></script> -->
     <script>
-    	
-      $(document).ready(function(){
+
+    $(document).ready(function(){
           $('#id_course_name').change(function(){
             $('#id_section').parent().addClass('remove');
             $('.remove').parent().addClass('hatYar');
@@ -108,6 +108,6 @@
 }); 
 
     </script>
- <script src="./../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
