@@ -20,15 +20,19 @@
              hr{
                margin-top:10px;
                }
+               #instructions{
+                  background-color: #d4cfe9;
+                }
             .panel-title{
               background-color: #8878c3;
                }
             .radio_button{
                 position: relative;
                 left: 30%;
+                /*margin-left:0.9em;*/
                 display: inline;
                 margin-left:15px;
-                margin-top: 100px;
+
               }
             #inlineRadio{
                 margin-left: 1.5em;
@@ -39,11 +43,28 @@
               width: 250px;
             }*/
             .form-control{
-              width: 18%;
-              margin-top: -0.70em;
+              width: 25%;
+              margin-top: -0.98em;
+              /*margin-bottom:-7.7em;*/
+              margin-left: 9.5em;
             }
             #subject{
-             margin-left: 8.5em;
+             margin-top: 1.5em;
+             margin-left:3.9em;
+            }
+            /*#select_subject{
+              margin-left: 9.5em;
+            }*/
+            #id_subject{
+              margin-top: -2.99em;
+            }
+            #faculty{
+             margin-top: -5.1em;
+             margin-left:32.9em;
+            }
+            #id_faculty_name{
+              margin-top: -4.99em;
+              margin-left: 40.9em;
             }
 </style>
 </head>
@@ -67,8 +88,8 @@
 
 <div class="panel panel-primary">   <!-- Outermost panel panel-primary-->
    <div class="container">
-      <div class="panel-body">    <!--class=panelbody-->
-            <div class=" row alert alert-info">
+      <div class="panel-body" id="instructions">    <!--class=panelbody-->
+            <div ><!--class=" row alert alert-info"-->
                      <strong class="col-md-6">Instructions</strong>
                   <div class="col-sm-6" style="margin-left:-10px;">
                      <label>1-Very poor</label> 
@@ -89,20 +110,22 @@
 
    <div  class= "panel" style="margin-left:75px;"><!-- div class panel-->
 
-
-	<label>Subject</label>
-	<select name="subject" id = "id_subject" class="form-control">
-	<option>--- Select Subject ---</option>
+ <!-- <div class="row" class="form-inline">div class row-->
+	<label id="subject">Subject</label>
+	<select name="subject" id="id_subject" class="form-inline form-control"><!--class="form-inline"-->
+    <!--<div id="select_subject"-->
+	<option >--- Select Subject ---</option>
 	{% for s in  subject_list%}
-  <div id="subject">
+  
 		<option value = {{s.subject_id}}> {{s.name_of_subject}} </option>
-		   </div>
+		  <!-- </div-->
 	{% endfor %}
 	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
 
-	<label>Faculty</label>
+
+	<label id="faculty">Faculty</label>
 	<!--<label id = "id_faculty_name">-->
-	<select name="faculty" id = "id_faculty_name" class="form-control">
+	<select name="faculty" id = "id_faculty_name" class="form-inline form-control" ><!--class="form-control"-->
 	<!--{% for f in  faculty_name_list%}
 		{% for i in f%}
 		<option value = {{i}} >{{i}}</option>
@@ -110,8 +133,8 @@
 	{% endfor %}
 	{% endfor %}-->
 	</select>
-
-	<br/> <br/>
+<!--</div>  closing div class row-->
+	<br/> <br/> 
 
 	<div id = "id_questions" style = 'visibility:hidden;'>
 
@@ -121,8 +144,7 @@
 		{% for i in "12345" %}
     <div class="radio_button"> <!-- div class radio_button-->
       <label class="radio-inline">
-		<label class="radio-inline">
-        	<input type = "radio" name={{q.id}} value={{i}} /> {{i}}
+        	<input type = "radio" id="inlineRadio" name={{q.id}} value={{i}} /> {{i}}
         </label> 
     	</div> <!-- div closing radio_button-->
       {% endfor %}
@@ -146,7 +168,7 @@
 		{% for i in "12345" %}
     <div class="radio_button"> <!-- div class radio_button-->
       <label class="radio-inline">
-        	<input type = "radio" name={{c.id}} value={{i}} /> {{i}} 
+        	<input type = "radio" id="inlineRadio" name={{c.id}} value={{i}} /> {{i}} 
           </label> 
     </div> <!-- div closing radio_button-->
     	{% endfor %}
