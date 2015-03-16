@@ -1,24 +1,28 @@
-from django import forms
-from feedback_form.models import course, batch, section_info
+''' ~~~~~~~~~~~~~~~~~~~ Import Statements ~~~~~~~~~~~~~~~~~~~~ '''
+from django import forms                                       # importing Django's forms library
+from feedback_form.models import course, batch, section_info   # importing models of feedback_form app
 
+''' ~~~~~~~~~~~~~~~~~~~ Defining a Form class as liginForm ~~~~~~~~~~~~~~~~ '''
 class loginForm(forms.Form):
-	iquery1 = course.objects.values_list('course_name', flat = True)
-	iquery1_choices = [('', '----------')] + [(id, id) for id in iquery1]
 
-	section_query = section_info.objects.values_list('section', flat = True).distinct()
-	section_choices = [('', '-------')] + [(id, id) for id in section_query]
+	''' ~~~~~~~~~~~~ Query for fetching all available course and provivding them as choices ~~~~~~~~~~~~~~ '''
+	available_courses = course.objects.values_list('course_name', flat = True)
+	course_choices = [('', '----------')] + [(id, id) for id in available_courses]
 
+	''' ~~~~~~~~~~~~ Query for fetching available sections and provivding them as choices ~~~~~~~~~~~~~~~~~ '''
+	#section_query = section_info.objects.values_list('section', flat = True).distinct()
+	#section_choices = [('', '-------')] + [(id, id) for id in section_query]
+	section_choices = [('0', '-----')]
+
+	''' ~~~~~~~~~~~~~~~~ providing initial semester choices else will be fetched through ajax ~~~~~~~~~~~~~~~'''
 	sem_choices = [('0', '-----')]
 
-	course_name = forms.ChoiceField(iquery1_choices,required=True, widget=forms.Select())
-	#course_name = forms.ModelChoiceField(queryset=course.objects.values_list('course_name', flat = True))
+	''' ~~~~~~~~~~~~~~~~~~~~~~~ loginForm fields ~~~~~~~~~~~~~~~~~~~~~~ '''
+	programme = forms.ChoiceField(course_choices,required=True, widget=forms.Select())
 	semester = forms.ChoiceField(sem_choices,required=True, widget=forms.Select())
-	#semester = forms.CharField()
-	#semester = forms.ModelChoiceField(queryset=course.objects.none())
 	section = forms.ChoiceField(section_choices, required= False, widget=forms.Select())
-	#section = forms.ModelChoiceField(queryset=section_info.objects.values_list('section', flat = True).distinct())
 	batch = forms.ChoiceField(sem_choices,required=True, widget=forms.Select())
-	#feedback_session = forms.IntegerField()
+	
 
 class Meta:
         model = batch, course
