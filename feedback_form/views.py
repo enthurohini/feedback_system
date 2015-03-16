@@ -35,10 +35,12 @@ def login(request):
 		form.fields['semester'].choices = [(sem, sem)]
 		b = request.POST.get('batch')
 		form.fields['batch'].choices = [(b, b)]
+		s = request.POST.get('section')
+		form.fields['section'].choices = [(s, s)]
         
 		if form.is_valid():
-			message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course_name'], request.POST['semester'], request.POST['section'], request.POST['batch'], request.POST['section'])
-			q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['course_name'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = timezone.now().year)
+			#message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course_name'], request.POST['semester'], request.POST['section'], request.POST['batch'], request.POST['section'])
+			q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['programme'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = timezone.now().year)
 			q.save()
 
 			''' --- sessions of the variables are maintained here --- '''
@@ -82,6 +84,16 @@ def get_batch(request, c_id):
     data = [batch_dict, no_of_sem]
 
     return HttpResponse(json.dumps(data))
+
+def get_section(request, current_batch):
+	batches_with_section = section_info.objects.values_list('batch_id', flat = True)
+	section_list = []
+	if current_batch in batches_with_section:
+    	 available_section = section_info.objects.filter(batch_id = current_batch)
+    	 for i in available_section:
+    	 	section_list.append(i.section)
+
+	return HttpResponse(json.dumps(section_list))
 
 def infrastructure_support(request):
 	infrastructure_qlist = Question.objects.filter(type = 'infrastructure support')

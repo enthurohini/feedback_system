@@ -19,7 +19,7 @@
       <div class="panel-title">   
         <div class="container">    
             <div class="row">
-	           <h1 align="center"> Feedback|Home </h1>
+	           <h1 class = 'tetxt-center' align="center"> Feedback|Home </h1>
               </div> 
         </div>     
     </div> 
@@ -51,18 +51,69 @@
 
     <form action="" method="post">
        <div class="jumbotron container-custom" id="form"><!--opening class jumbotron container-custom"-->
-            <div class="form-group"><!--opening class form group-->
-               <div class="row" align="center"> <!--opening class row-->  
-    	<table>
+            <!--<div class="form-group"><!--opening class form group--> 
+               <div class="row" align="centre"> <!--opening class row-->  
+    <!--	<table>
     		{{ form.as_table }}
-    	</table>
-     
-        {% block choice %}
+    	</table> -->
+     {{ form.non_field_errors }}
+<div class="form-group">
+<div class="row"> 
+<div class="fieldWrapper">
+    {{ form.programme.errors }}
+    <label class="control-label col-sm-offset-4 col-sm-2" for="id_programme">Programme Name:</label>
+    
+    <!-- <select class="form-control"> <option>{{ form.programme }} </option></select> -->
+    {{ form.programme }}
+</div>
+</div>    
+</div>
 
-        {% endblock %}
+<div class="form-group">
+<div class="row">
+<div class="fieldWrapper">
+    {{ form.semester.errors }}
+    <label class="control-label col-sm-offset-4 col-sm-2" for="id_semester">Semester:</label>
+    
+    {{ form.semester }}
+    
+</div>
+</div>
+</div>
+
+<div class="form-group">
+<div class="row">
+<div class="fieldWrapper">
+    {{ form.batch.errors }}
+    <label class="control-label col-sm-offset-4 col-sm-2" for="id_batch">Batch Id:</label>
+    
+    {{ form.batch }}
+
+</div> 
+</div>
+</div>
+
+<div id = 'id_toggle_section' style = "display: none;">
+<div class="form-group">
+<div class="row">
+<div class="fieldWrapper">
+    {{ form.section.errors }}
+    <label class="control-label col-sm-offset-4 col-sm-2" for="id_section">Section:</label>
+    
+    {{ form.section }}
+    
+</div> 
+</div>
+</div>
+</div>
+
+
+
+
+
     	{% csrf_token%}
        </div> <!--closing class row--> 
-      </div><!--closing class form group-->
+     <!-- </div><!--closing class form group-->
   </div><!--closing class jumbotron container-custom"-->
 </div>
      <div class="col-md-offset-1" align="center">
@@ -72,20 +123,23 @@
     </form>
 
    <!-- JavaScript Section -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!--<script type="text/javascript" src = "../../static/feedback_form/jquery.js"></script> -->
+    <script type="text/javascript" src = "../../static/feedback_form/loginForm.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+    
+    <script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>
     <script>
 
     $(document).ready(function(){
-          $('#id_course_name').change(function(){
-            $('#id_section').parent().addClass('remove');
-            $('.remove').parent().addClass('hatYar');
-            c_id = $(this).val();
-            if( c_id == "MTECH")
+
+          $('#id_programme').change(function(){
+          // $('#id_section').parent().addClass('remove');
+          //  $('.remove').parent().addClass('hatYar');
+          //  $('#hatYar').css('display', 'none');
+            c_id =$(this).val();
+            /*if( c_id == "MTECH")
 	             $('.hatYar').css('display', 'none');
 	          else
-	             $('.hatYar').css('display', 'block');
+	             $('.hatYar').css('display', 'block'); */
 
            request_url = 'login/get_batch/' + c_id + '/';
             $.ajax({
@@ -113,10 +167,42 @@
             }
         })
 
-    })
+    });
+
+      $('#id_batch').change(function(){  
+        current_batch = $(this).val();
+        console.log(current_batch);
+
+        request_url = 'login/get_section/' + current_batch + '/';
+        $.ajax({
+                url: request_url,
+                success: function(data){
+                data = $.parseJSON(data);
+                console.log(data);
+                if (data.length != 0)
+                {
+                  $('#id_toggle_section').css('display', 'block');
+                  $('#id_section').html('<option selected="' + "selected" + '">' + '' +'</option>');
+                 /* $.each(data, function(key){
+                      console.log(key);
+                      $('#id_batch').append('<option value="' + key + '">' + key +'</option>');
+                  }); */
+                  for(var i=0; i<data.length; i++)
+                  {
+                    console.log(data[i]);
+                    $('#id_section').append('<option value="' + data[i] + '">' + data[i] +'</option>');
+                  }
+
+                  }
+                  else
+                    $('#id_toggle_section').css('display', 'none');
+                }
+              })
+        });
+     // });
 }); 
 
-    </script>
+    </script>  
 <script type="text/javascript" src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
