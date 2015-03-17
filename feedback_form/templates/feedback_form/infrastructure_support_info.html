@@ -4,56 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Infrastructure Support</title>
 <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
-<style type="text/css">
-
-             h2{           
-                 font-weight: bold;
-                 }
-             .container{
-                 font-size: 15px;
-                 }
-              label{
-                padding:10px;
-                }
-              hr{
-               margin-top:10px;
-                }
-                #instructions{
-                  background-color: #d4cfe9;
-                }
-             .panel-title{
-              /*background-color: #5bc0de;*/
-              background-color: #8878c3;
-              /*background-color: #b666d2;*/
-                }
-              .radio_button{
-                position: relative;
-                left: 30%;
-                /*margin-left:0.9em;*/
-                display: inline;
-                margin-left:15px;
-
-              }
-              /*.panel-default{
-                height: 50%;
-              }*/
-              #inlineRadio{
-                margin-left: 1.5em;
-                margin-top: -0.55em;
-                display: inline;
-              }
-              /*.form-inline{
-                background-color:  #8878c3;
-              }
-              #A{
-                background-color:  #8878c3;
-              }*/
-              input,label{
-       vertical-align: top;
-}
-
-      
-</style>
+<link rel="stylesheet" type="text/css" href="../../static/feedback_form/bootstrap/dist/css/infrastructure.css">
 </head>
 
 
@@ -75,7 +26,7 @@
 
 
  <!--<div class="panel panel-primary">  Outermost panel panel-primary-->
-   <div class="container" ><!--class container-->
+   <div class="container"  ><!--class container-->
       <div class="panel-body" id="instructions">    <!--class=panelbody-->
             <div ><!--class=" row alert alert-info"-->
                      <strong class="col-md-6">Instructions</strong>
@@ -99,9 +50,10 @@
  <div  style="margin-left:75px;"><!-- div class panel-->
   
    {% for q in infrastructure_qlist %}
-   <div class="panel panel-default"> <!-- div class panel_default-->
-   <label>{{q.question_text}}</label>
-  
+   <div class="panel panel-default "> <!-- div class panel_default-->
+     <div class="row">
+   <div class="col-xs-6"><label>{{q.question_text}}</label></div>
+  <div class="col-xs-6 align_radio" >
     {% for i in "12345" %}
         <div class="radio_button" > <!-- div class radio_button-->
            <label class="radio-inline">
@@ -110,6 +62,8 @@
         </div> <!-- div closing radio_button-->
 
       {% endfor %}
+    </div>
+  </div>
        </div>  <!--  closing class panel_default-->
   </br>
   

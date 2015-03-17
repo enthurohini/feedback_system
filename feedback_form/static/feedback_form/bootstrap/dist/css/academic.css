@@ -1,0 +1,79 @@
+ h2{           
+                 font-weight: bold;
+
+               }
+            .container{
+                 font-size: 15px;
+               }
+             label{
+                padding:10px;
+               }
+             hr{
+               margin-top:10px;
+               }
+               #instructions{
+                  background-color: #d4cfe9;
+                }
+            .panel-title{
+              background-color: #8878c3;
+               }
+            .radio_button{
+                position: relative;
+                left: 30%;
+                /*margin-left:0.9em;*/
+                display: inline;
+                margin-left:15px;
+
+              }
+            #inlineRadio{
+                margin-left: 1.5em;
+                margin-top: -0.55em;
+                display: inline;
+              }
+            /*input{
+              width: 250px;
+            }*/
+            .form-control{
+              width: 25%;
+              margin-top: -0.98em;
+              /*margin-bottom:-7.7em;*/
+              margin-left: 9.5em;
+            }
+            #subject{
+             margin-top: 1.5em;
+             margin-left:3.9em;
+            }
+            /*#select_subject{
+              margin-left: 9.5em;
+            }*/
+            #id_subject{
+              margin-top: -2.99em;
+            }
+            #faculty{
+             margin-top: -5.1em;
+             margin-left:32.9em;
+            }
+            #id_faculty_name{
+              margin-top: -4.99em;
+              margin-left: 40.9em;
+            }
+            #text_area_1{
+              width: 50%;
+
+            }
+            #text_area_2{
+              height: 60%;
+            }
+            #comment_1{
+             margin-top: -4.99em;
+            }
+            #comment_2{
+              margin-top: -4.99em;
+            }
+            .align_radio{
+              margin-left: -9.9em;
+            }
+           / #q2{
+              width: 1223px;
+              
+            }

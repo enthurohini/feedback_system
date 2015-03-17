@@ -3,70 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Academic Assessment</title>
-<link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css"> 
-<style type="text/css">
-
-            
-             h2{           
-                 font-weight: bold;
-
-               }
-            .container{
-                 font-size: 15px;
-               }
-             label{
-                padding:10px;
-               }
-             hr{
-               margin-top:10px;
-               }
-               #instructions{
-                  background-color: #d4cfe9;
-                }
-            .panel-title{
-              background-color: #8878c3;
-               }
-            .radio_button{
-                position: relative;
-                left: 30%;
-                /*margin-left:0.9em;*/
-                display: inline;
-                margin-left:15px;
-
-              }
-            #inlineRadio{
-                margin-left: 1.5em;
-                margin-top: -0.55em;
-                display: inline;
-              }
-            /*input{
-              width: 250px;
-            }*/
-            .form-control{
-              width: 25%;
-              margin-top: -0.98em;
-              /*margin-bottom:-7.7em;*/
-              margin-left: 9.5em;
-            }
-            #subject{
-             margin-top: 1.5em;
-             margin-left:3.9em;
-            }
-            /*#select_subject{
-              margin-left: 9.5em;
-            }*/
-            #id_subject{
-              margin-top: -2.99em;
-            }
-            #faculty{
-             margin-top: -5.1em;
-             margin-left:32.9em;
-            }
-            #id_faculty_name{
-              margin-top: -4.99em;
-              margin-left: 40.9em;
-            }
-</style>
+<link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../../static/feedback_form/bootstrap/dist/css/academic.css">
 </head>
 
 
@@ -140,15 +78,20 @@
 
 	{% for q in faculty_qlist %}
    <div class="panel panel-default"> <!-- div class panel_default-->
-	<label >{{q.question_text}}</label>
+    <div class="row" >
+	<div class="col-xs-6"><label >{{q.question_text}}</label></div>
+  <div class="col-xs-6 align_radio" >
 		{% for i in "12345" %}
     <div class="radio_button"> <!-- div class radio_button-->
-      <label class="radio-inline">
+      <label class="radio-inline" >
         	<input type = "radio" id="inlineRadio" name={{q.id}} value={{i}} required /> {{i}}
         </label> 
     	</div> <!-- div closing radio_button-->
       {% endfor %}
-       </div>  <!--  closing class panel_default-->
+    </div>
+       </div>  
+     </div><!--  closing class panel_default-->
+
 	</br>
 
 	{% endfor %}
@@ -156,15 +99,18 @@
 	</br>
 
 	{% for c in comment %}
-	<label>{{c.question_text}}</label>
-	<textarea name = "comment1"></textarea>
+	<label id="comment_1">{{c.question_text}}</label>
+	<textarea id =" text_area_1" name = "comment1"></textarea>
 	{% endfor %}
 
 	</br> </br>
 
 	{% for c in course_qlist %}
-   <div class="panel panel-default"> <!-- div class panel_default-->
-	<label>{{c.question_text}}</label>
+   <div class="panel panel-default row" id="q2"> <!-- div class panel_default-->
+	<div class="col-xs-6">
+    <label >{{c.question_text}}</label>
+  </div>
+  <div class="col-xs-6 align_radio" ><!-- div class align_radio-->
 		{% for i in "12345" %}
     <div class="radio_button"> <!-- div class radio_button-->
       <label class="radio-inline">
@@ -172,16 +118,18 @@
           </label> 
     </div> <!-- div closing radio_button-->
     	{% endfor %}
+    </div><!-- closing div class align_radio-->
        </div>  <!--  closing class panel_default-->
 	</br>
+
 
 	{% endfor %}
 
 	</br>
 
 	{% for c in comment %}
-	<label>{{c.question_text}}</label>
-	<textarea name = "comment2"></textarea>
+	<label id="comment_1">{{c.question_text}}</label>
+	<textarea id =" text_area_2" name = "comment2"></textarea>
 	{% endfor %}
 
 	</br> </br>

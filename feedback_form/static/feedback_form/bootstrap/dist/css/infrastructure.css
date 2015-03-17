@@ -1,0 +1,48 @@
+             h2{           
+                 font-weight: bold;
+                 }
+             .container{
+                 font-size: 15px;
+                 }
+              label{
+                padding:10px;
+                }
+              hr{
+               margin-top:10px;
+                }
+                #instructions{
+                  background-color: #d4cfe9;
+                }
+             .panel-title{
+              /*background-color: #5bc0de;*/
+              background-color: #8878c3;
+              /*background-color: #b666d2;*/
+                }
+              .radio_button{
+                position: relative;
+                left: 30%;
+                /*margin-left:0.9em;*/
+                display: inline;
+                margin-left:25px;
+
+              }
+              /*.panel-default{
+                height: 50%;
+              }*/
+              
+              #inlineRadio{
+                margin-left: 1.5em;
+                margin-top: -0.55em;
+                display: inline;
+              }
+              /*.form-inline{
+                background-color:  #8878c3;
+              }
+              #A{
+                background-color:  #8878c3;}*/
+                .align_radio{
+              margin-left: -9.9em;
+            }
+       i{
+        text-align: 50%;
+       }
