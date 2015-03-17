@@ -18,10 +18,10 @@ class loginForm(forms.Form):
 	sem_choices = [('0', '-----')]
 
 	''' ~~~~~~~~~~~~~~~~~~~~~~~ loginForm fields ~~~~~~~~~~~~~~~~~~~~~~ '''
-	programme = forms.ChoiceField(course_choices,required=True, widget=forms.Select())
-	semester = forms.ChoiceField(sem_choices,required=True, widget=forms.Select())
-	section = forms.ChoiceField(section_choices, required= False, widget=forms.Select())
-	batch = forms.ChoiceField(sem_choices,required=True, widget=forms.Select())
+	programme = forms.ChoiceField(course_choices,required=True, widget=forms.Select(attrs={'required':'required'}))
+	semester = forms.ChoiceField(sem_choices,required=True, widget=forms.Select(attrs={'required':'required'}))
+	section = forms.ChoiceField(section_choices, required= False, widget=forms.Select(attrs={'required':'required'}))
+	batch = forms.ChoiceField(sem_choices,required=True, widget=forms.Select(attrs={'required':'required'}))
 	
 
 class Meta:
