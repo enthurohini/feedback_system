@@ -1,4 +1,4 @@
-''''' ~~~ Import Statements ~~~ '''
+''' ~~~ Import Statements ~~~ '''
 from django import forms                                       # importing Django's forms library
 from feedback_form.models import course, batch, section_info   # importing models of feedback_form app
 

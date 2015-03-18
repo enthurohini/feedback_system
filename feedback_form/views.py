@@ -190,6 +190,8 @@ def get_faculty_name(request, sub_name):
 	current_course_id = request.session['course_id']
 	current_section = request.session['section']
 
+	if current_section == '0':
+		current_section = ''
 	#current_subject_id = subject.objects.values_list('subject_id', flat = True).filter(name_of_subject = sub_name, course_id = current_course_id)
 	current_faculty_id = time_table.objects.values_list('faculty_id', flat = True).filter(subject_id = sub_name, section = current_section)
 	faculty_name = faculty_table.objects.filter(user_id = current_faculty_id)
@@ -198,3 +200,4 @@ def get_faculty_name(request, sub_name):
 		data = [f.name]
 	
 	return HttpResponse(json.dumps(data))
+	
