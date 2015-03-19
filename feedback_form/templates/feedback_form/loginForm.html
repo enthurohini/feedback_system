@@ -19,26 +19,24 @@
       <div class="panel-title">   
         <div class="container">    
             <div class="row">
-	           <h1 class = 'tetxt-center' align="center"> Feedback|Home </h1>
+	           <h1 class = 'tetxt-center' align="center" style="color:white"> STUDENT's FEEDBACK </h1>
               </div> 
         </div>     
     </div> 
 </div>
-<table>  
-    
-   <!--<div class="text-center" align="center">
-        <h3><strong class="col-md-12" >Thank-you for registering with IIPS. You may now proceed for feedback anonymously.
-      </strong></h3><br>
-   </div>-->
- </table>
- </br><br>
+
+ 
    </div>
    <div> <div class="container-fluid">
+      <div class="row alert alert-info" id="form">
+      <div class="panel-body">
         <h3><strong>INSTRUCTIONS:</strong></h3>
           <p><small>1.)You are requested to give your frank and objective opinion about various aspects of the subject taught to you for improving and maintaining quality of teaching.</br>
-          2.) Your response will be kept confidential.</br>
-          3.) Specify the BatchId correctly you have provided e.g:IC-2k10</small>
+          2.) Your response will be kept <b>confidential</b>.</br>
+          3.) Specify the BatchId correctly you have provided e.g: <b>IC-2K-11</b></small>
           </p>
+      </div>
+      </div>
   </div>
 </div>  
   
@@ -50,7 +48,7 @@
     {% endif %}
 
     <form action="" method="post">
-       <div class="jumbotron container-custom" id="form"><!--opening class jumbotron container-custom"-->
+       <div class="jumbotron container-custom" ><!--opening class jumbotron container-custom"-->
             <!--<div class="form-group">opening class form group--> 
                <div class="row" align="centre"> <!--opening class row-->  
     <!--	<table>
@@ -116,10 +114,11 @@
      <!-- </div> closing class form group-->
   </div><!--closing class jumbotron container-custom"-->
 </div>
-     <div class="col-md-offset-1" align="center">
-    	 <input type="submit" value="Submit" class="btn btn-primary"></input>
+     <div class="col-md-11" align="center">
+          <input type="submit" value="Submit" class="btn btn-primary"></input>
+          <a href="{% url 'index' %}" class="btn btn-danger"> Back </a>
          <!--<button type="button" class="btn btn-primary">Submit</button>-->
-         </div>
+     </div>
     </form>
 
    <!-- JavaScript Section -->
@@ -132,16 +131,9 @@
     $(document).ready(function(){
 
           $('#id_programme').change(function(){
-          // $('#id_section').parent().addClass('remove');
-          //  $('.remove').parent().addClass('hatYar');
-          //  $('#hatYar').css('display', 'none');
             c_id =$(this).val();
-            /*if( c_id == "MTECH")
-	             $('.hatYar').css('display', 'none');
-	          else
-	             $('.hatYar').css('display', 'block'); */
 
-           request_url = 'login/get_batch/' + c_id + '/';
+            request_url = 'login/get_batch/' + c_id + '/';
             $.ajax({
                 url: request_url,
                 success: function(data){
@@ -154,10 +146,7 @@
                     //console.log(typeof(key), typeof(value));
                     $('#id_batch').append('<option value="' + key + '">' + value +'</option>');
                 }); 
-                /*$.each(data[1], function(key, value){
-                    $('#id_semester').append('<option value="' + key + '">' + value +'</option>');
-                }); */
-                //console.log(typeof(data[1]));
+                
                 for(var i = 1; i<=data[1]; i++)
                     //console.log(typeof(i))
                     $('#id_semester').append('<option value="' + parseInt(i) + '">' + parseInt(i) +'</option>');
@@ -183,10 +172,7 @@
                 {
                   $('#id_toggle_section').css('display', 'block');
                   $('#id_section').html('<option selected="' + "selected" + '">' + '' +'</option>');
-                 /* $.each(data, function(key){
-                      console.log(key);
-                      $('#id_batch').append('<option value="' + key + '">' + key +'</option>');
-                  }); */
+                 
                   for(var i=0; i<data.length; i++)
                   {
                     console.log(data[i]);

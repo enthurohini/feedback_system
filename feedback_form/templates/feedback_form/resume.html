@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feedback|Home</title>
+  <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css"> 
+	<style type="text/css">
+
+     .panel-title{
+              background-color: #8878c3;
+               }
+      #form{
+        /*background-color: #c1b9e0;*/
+        background-color: #d4cfe9;
+      }
+</style>
+</head>
+<body> 
+	<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Enter the ID provided to you :</h4>
+				  </div>
+				  <div class="modal-body">
+                  <form action="#" method="POST">
+                    <div class="row">
+                      <div class="col-md-8"><input required="required"  id="fs_id" type="text" class="form-control" class="col-md-7" placeholder="Enter ID"  name="fs_id">  </div>
+                      <div class="col-md-2"><button type="submit" name="submit" class="btn btn-primary" class="col-md-3">Submit</button></div>
+                      <div class="col-md-2"><button type="button" class="btn btn-default" class="col-md-2" data-dismiss="modal">Close</button></div>
+                    </div> 
+				  </div>
+                  </form>  
+				  
+				</div><!-- ./modal-content -->
+			  </div>
+			</div><!-- ./modal-dialog -->
+        </div> <!-- ./modal -->
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+
+
+
+
+<script src="static/feedback_form/jquery.min.js"></script>
+<script src="static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

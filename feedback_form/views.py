@@ -177,11 +177,6 @@ def academic_action(request):
 			return HttpResponseRedirect('/feedback_system/thankyou/')
 		else:
 			return HttpResponseRedirect('/feedback_system/academic_assessment/')
-	#if ('subject' and '7' and '8' and 'comment1' and '18') in request.POST:		
-	#		#message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['7']), request.POST['8'], request.POST['9'], request.POST['10'], request.POST['11'], request.POST['12'], request.POST['13'], request.POST['14'], request.POST['15'], request.POST['16'], request.POST['comment1'], request.POST['18'], request.POST['19'], request.POST['comment2'])
-	#		message = request.POST['subject']+request.POST['7']+request.POST['8']+request.POST['comment1']+request.POST['18']
-
-	#		return HttpResponse(message)
 
 	else:
 		return HttpResponse('You submitted an empty form.') 
@@ -200,4 +195,6 @@ def get_faculty_name(request, sub_name):
 		data = [f.name]
 	
 	return HttpResponse(json.dumps(data))
-	
+
+def resume(request):
+		return render(request, 'feedback_form/resume.html')
