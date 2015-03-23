@@ -127,6 +127,16 @@
     
     <script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>
     <script>
+      // Function to avoid back page functionality of the browser.
+      function noBack()
+         {
+             window.history.forward()
+         }
+        noBack();
+        window.onload = noBack;
+        window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+        window.onunload = function() { void (0) }
+
 
     $(document).ready(function(){
 

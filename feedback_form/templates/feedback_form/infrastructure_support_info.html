@@ -84,8 +84,15 @@
 <script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>   
 <script>
     //$(document).load(alert('hello'));
+    function noBack()
+         {
+             window.history.forward()
+         }
+        noBack();
+        window.onload = noBack;
+        window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+        window.onunload = function() { void (0) }
 </script>
-    window.history.forward();function noBack(){window.history.forward();}
 <script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
