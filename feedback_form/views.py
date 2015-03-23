@@ -47,10 +47,14 @@ def login(request):
 			request.session['fs_id'] = q.fs_id
 			request.session['course_name'] = q.course
 			request.session['semester'] = q.semester
-			request.session['section'] = q.section
+			if (request.POST['section'] == '0'):
+				request.session['section'] = ''
+			else:
+				request.session['section'] = q.section
 			request.session['course_id'] = q.batch_id[:2]
 			request.session['batch_id'] = q.batch_id
 			
+			#return HttpResponse(request.session['section'])
 			return HttpResponseRedirect('/feedback_system/infrastructure_support/')
 	else:
 		form = loginForm()
@@ -59,6 +63,12 @@ def login(request):
 
 def thanks(request):
 	del request.session['fs_id']
+	del request.session['course_name']
+	del request.session['semester']
+	del request.session['section']
+	del request.session['course_id']
+	del request.session['batch_id']
+
 	return render(request, 'feedback_form/thankyou.html')
 
 def ajax_color_request(request):
@@ -97,7 +107,8 @@ def get_section(request, current_batch):
 
 def infrastructure_support(request):
 	infrastructure_qlist = Question.objects.filter(type = 'infrastructure support')
-	context = {'infrastructure_qlist':infrastructure_qlist}
+	std_id = request.session['fs_id']
+	context = {'infrastructure_qlist':infrastructure_qlist, 'std_id':std_id}
 	
 	return render(request, 'feedback_form/infrastructure_support_info.html', context)
 
@@ -177,11 +188,6 @@ def academic_action(request):
 			return HttpResponseRedirect('/feedback_system/thankyou/')
 		else:
 			return HttpResponseRedirect('/feedback_system/academic_assessment/')
-	#if ('subject' and '7' and '8' and 'comment1' and '18') in request.POST:		
-	#		#message = "Your submitted entry is: %s , %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (int(request.POST['7']), request.POST['8'], request.POST['9'], request.POST['10'], request.POST['11'], request.POST['12'], request.POST['13'], request.POST['14'], request.POST['15'], request.POST['16'], request.POST['comment1'], request.POST['18'], request.POST['19'], request.POST['comment2'])
-	#		message = request.POST['subject']+request.POST['7']+request.POST['8']+request.POST['comment1']+request.POST['18']
-
-	#		return HttpResponse(message)
 
 	else:
 		return HttpResponse('You submitted an empty form.') 
@@ -190,6 +196,8 @@ def get_faculty_name(request, sub_name):
 	current_course_id = request.session['course_id']
 	current_section = request.session['section']
 
+	if current_section == '0':
+		current_section = ''
 	#current_subject_id = subject.objects.values_list('subject_id', flat = True).filter(name_of_subject = sub_name, course_id = current_course_id)
 	current_faculty_id = time_table.objects.values_list('faculty_id', flat = True).filter(subject_id = sub_name, section = current_section)
 	faculty_name = faculty_table.objects.filter(user_id = current_faculty_id)
@@ -198,3 +206,24 @@ def get_faculty_name(request, sub_name):
 		data = [f.name]
 	
 	return HttpResponse(json.dumps(data))
+
+def resume_action(request):
+	if 'fs_id' in request.POST:
+		is_present = feedback_student_info.objects.filter(pk = request.POST['fs_id'])
+		if (len(is_present) > 0 ):	
+			query_value = feedback_student_info.objects.get(pk = request.POST['fs_id'])
+
+			request.session['fs_id'] = query_value.fs_id
+			request.session['course_name'] = query_value.course
+			request.session['semester'] = query_value.semester
+			request.session['section'] = query_value.section
+			request.session['course_id'] = query_value.batch_id[:2]
+			request.session['batch_id'] = query_value.batch_id
+
+			infrastructure_presence = infrastructure_support_info.objects.filter(fs_id = is_present)
+			if (len(infrastructure_presence) > 0 ):
+				return HttpResponseRedirect('/feedback_system/academic_assessment/')
+			else:
+				return HttpResponseRedirect('/feedback_system/infrastructure_support/')
+		else:
+			return HttpResponse("Oops! You are not a Existing User. Please <a href='../login' > <b>CLICK</b> </a> here to proivide your valuable feedback.")

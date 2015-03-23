@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 10, 2015 at 07:25 PM
+-- Generation Time: Mar 18, 2015 at 03:24 AM
 -- Server version: 5.5.41-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- PHP Version: 5.5.9-1ubuntu4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `content_type_id` (`content_type_id`,`codename`),
   KEY `auth_permission_417f1b1c` (`content_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `auth_permission`
@@ -114,7 +114,10 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (42, 'Can delete subject', 14, 'delete_subject'),
 (43, 'Can add time_table', 15, 'add_time_table'),
 (44, 'Can change time_table', 15, 'change_time_table'),
-(45, 'Can delete time_table', 15, 'delete_time_table');
+(45, 'Can delete time_table', 15, 'delete_time_table'),
+(46, 'Can add question', 16, 'add_question'),
+(47, 'Can change question', 16, 'change_question'),
+(48, 'Can delete question', 16, 'delete_question');
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$12000$RbrJHc8b63Xt$vQtfl+klWrYpxmB04htRVt8CS3XGI0QKPhdsIl599Xg=', '2015-02-04 18:31:39', 1, 'rohini', '', '', 'chaudhary.rohini241@gmail.com', 1, 1, '2015-01-06 06:55:15'),
+(1, 'pbkdf2_sha256$12000$RbrJHc8b63Xt$vQtfl+klWrYpxmB04htRVt8CS3XGI0QKPhdsIl599Xg=', '2015-03-16 09:28:44', 1, 'rohini', '', '', 'chaudhary.rohini241@gmail.com', 1, 1, '2015-01-06 06:55:15'),
 (2, 'pbkdf2_sha256$12000$ZuND5p24rFr4$6/O8lvfL55/t2ep66TEL2mQOCR99avd7sY2Mz2SAfN0=', '2015-01-19 04:12:48', 1, 'swati', '', '', 'mahajanswati108@gmail.com', 1, 1, '2015-01-08 06:39:19');
 
 -- --------------------------------------------------------
@@ -196,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
   PRIMARY KEY (`id`),
   KEY `django_admin_log_417f1b1c` (`content_type_id`),
   KEY `django_admin_log_e8701ad4` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=129 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=158 ;
 
 --
 -- Dumping data for table `django_admin_log`
@@ -327,7 +330,36 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (125, '2015-01-17 04:51:12', '105461', 'Sachin Pradhan', 3, '', 13, 2),
 (126, '2015-01-17 04:51:12', '105460', 'Yogesh Shukla', 3, '', 13, 2),
 (127, '2015-01-17 04:51:12', '105459', 'Bhupendra Verma', 3, '', 13, 2),
-(128, '2015-01-17 04:51:12', '105458', 'S. Das', 3, '', 13, 2);
+(128, '2015-01-17 04:51:12', '105458', 'S. Das', 3, '', 13, 2),
+(129, '2015-02-10 14:46:28', '1', 'Availability of Books in Library', 1, '', 16, 1),
+(130, '2015-02-10 14:47:14', '2', 'Basic Requirements like Furniture, Chalk, Duster', 1, '', 16, 1),
+(131, '2015-02-10 14:47:41', '3', 'Technological Support like OHP/LCD ', 1, '', 16, 1),
+(132, '2015-02-10 14:48:06', '4', 'Photocopy of Study Material', 1, '', 16, 1),
+(133, '2015-02-10 14:48:30', '5', 'Availability of Other Resources Like Internet/Computers/Softwares/Databases etc', 1, '', 16, 1),
+(134, '2015-02-10 14:48:46', '6', 'Cleanliness in the Classroom', 1, '', 16, 1),
+(135, '2015-02-12 11:17:14', '7', 'Availability to bring conceptual clarity', 1, '', 16, 1),
+(136, '2015-02-12 11:17:21', '7', 'Availability to bring conceptual clarity', 2, 'No fields changed.', 16, 1),
+(137, '2015-02-12 11:17:55', '8', 'Teacher''s Subject Knowledge', 1, '', 16, 1),
+(138, '2015-02-12 11:18:19', '9', 'Compliments theory with practical examples', 1, '', 16, 1),
+(139, '2015-02-15 16:13:56', '1', '1.) Availability of Books in Library', 2, 'Changed question_text.', 16, 1),
+(140, '2015-02-15 16:14:27', '2', '2.) Basic Requirements like Furniture, Chalk, Duster', 2, 'Changed question_text.', 16, 1),
+(141, '2015-02-15 16:14:38', '3', '3.) Technological Support like OHP/LCD ', 2, 'Changed question_text.', 16, 1),
+(142, '2015-02-15 16:14:50', '4', '4.) Photocopy of Study Material', 2, 'Changed question_text.', 16, 1),
+(143, '2015-02-15 16:15:01', '5', '5.) Availability of Other Resources Like Internet/Computers/Softwares/Databases etc', 2, 'Changed question_text.', 16, 1),
+(144, '2015-02-15 16:15:12', '6', '6.) Cleanliness in the Classroom', 2, 'Changed question_text.', 16, 1),
+(145, '2015-02-15 16:15:25', '7', '1.) Availability to bring conceptual clarity', 2, 'Changed question_text.', 16, 1),
+(146, '2015-02-15 16:15:36', '8', '2.) Teacher''s Subject Knowledge', 2, 'Changed question_text.', 16, 1),
+(147, '2015-02-15 16:15:46', '9', '3.) Compliments theory with practical examples', 2, 'Changed question_text.', 16, 1),
+(148, '2015-02-15 16:18:39', '10', '4.) Handling of cases/ assignment/ exercises/ activities', 1, '', 16, 1),
+(149, '2015-02-15 16:19:07', '11', '5.) Motivation Provided By Teacher', 1, '', 16, 1),
+(150, '2015-02-15 16:19:34', '12', '6.) Ability of control the class', 1, '', 16, 1),
+(151, '2015-02-15 16:20:05', '13', '7.) Completion and coverage of course', 1, '', 16, 1),
+(152, '2015-02-15 16:20:26', '14', '8.) Teacher''s communication of skill ', 1, '', 16, 1),
+(153, '2015-02-15 16:20:52', '15', '9.) Teacher''s Regularity and Punctuality', 1, '', 16, 1),
+(154, '2015-02-15 16:21:14', '16', '10.) Interaction and Guidance Outside the Classroom', 1, '', 16, 1),
+(155, '2015-02-15 16:22:40', '17', 'Any Other Suggestions(Regarding Subject):', 1, '', 16, 1),
+(156, '2015-02-15 16:23:18', '18', '1.) Relevance Of Syllabus As Per Industry Requirement', 1, '', 16, 1),
+(157, '2015-02-15 16:23:45', '19', '2.) Sufficiency Of Course Content', 1, '', 16, 1);
 
 -- --------------------------------------------------------
 
@@ -342,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_45f3b1d93ec8c61c_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `django_content_type`
@@ -363,7 +395,8 @@ INSERT INTO `django_content_type` (`id`, `name`, `app_label`, `model`) VALUES
 (12, 'section_info', 'feedback_form', 'section_info'),
 (13, 'faculty_table', 'feedback_form', 'faculty_table'),
 (14, 'subject', 'feedback_form', 'subject'),
-(15, 'time_table', 'feedback_form', 'time_table');
+(15, 'time_table', 'feedback_form', 'time_table'),
+(16, 'question', 'feedback_form', 'question');
 
 -- --------------------------------------------------------
 
@@ -377,7 +410,7 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `django_migrations`
@@ -404,7 +437,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (24, 'feedback_form', '0014_auto_20150114_1454', '2015-01-14 14:54:58'),
 (25, 'feedback_form', '0015_auto_20150114_1503', '2015-01-14 15:03:42'),
 (26, 'feedback_form', '0016_auto_20150114_1507', '2015-01-14 15:07:08'),
-(27, 'feedback_form', '0017_auto_20150114_1514', '2015-01-14 15:14:45');
+(27, 'feedback_form', '0017_auto_20150114_1514', '2015-01-14 15:14:45'),
+(28, 'feedback_form', '0018_question', '2015-02-10 14:35:17');
 
 -- --------------------------------------------------------
 
@@ -434,10 +468,12 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 ('eevmor4pb1h9k17fh5gxb6mxfpvh1855', 'NTEyNTc5YmQ0YTc5YTVmODM5MWE2MzU2OTdkMWFhNzRhZGZiYmZkNTp7fQ==', '2015-01-22 06:55:30'),
 ('fvccgf6x78eq8j0s2rqq76vli2iin9vh', 'NTEyNTc5YmQ0YTc5YTVmODM5MWE2MzU2OTdkMWFhNzRhZGZiYmZkNTp7fQ==', '2015-01-22 06:59:23'),
 ('ivs2lq32rbowf81qs7rnnwj6gwyu732e', 'NzdjNTZlOTcxNjk1YmFjNTFhZGQwZjM0NTkyMWY1ZGYwYTdkODA3Yjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9', '2015-01-28 15:52:31'),
-('llb4tzwv0ybxgayfdf7e5bv79x3gtb77', 'NzdjNTZlOTcxNjk1YmFjNTFhZGQwZjM0NTkyMWY1ZGYwYTdkODA3Yjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9', '2015-02-18 18:31:39'),
+('llb4tzwv0ybxgayfdf7e5bv79x3gtb77', 'YTE0ZmY0YTdlZjZiOTJhYzhkZGExZjk2NDdmYTE5MTI0Y2ZkNzNmYTp7Im5vX3N1YmplY3QiOjUsImNvdXJzZV9uYW1lIjoiTUNBIiwiX2F1dGhfdXNlcl9pZCI6MSwic2VjdGlvbiI6IkIiLCJ0b3RhbF9zdWJqZWN0IjoxLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsImNvdXJzZV9pZCI6IklDIiwic2VtZXN0ZXIiOiI3IiwiYmF0Y2hfaWQiOiJJQy0ySy0xMSIsIl9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJzdWJqZWN0X2xpc3Rfc2Vzc2lvbiI6e319', '2015-03-27 05:27:00'),
 ('oq5g9hdcycb03hv2j4xldg8939tknd32', 'NTEyNTc5YmQ0YTc5YTVmODM5MWE2MzU2OTdkMWFhNzRhZGZiYmZkNTp7fQ==', '2015-01-22 06:58:48'),
 ('tfltrxbc4taphlxf8z6av1uj7xhwvda0', 'NzdjNTZlOTcxNjk1YmFjNTFhZGQwZjM0NTkyMWY1ZGYwYTdkODA3Yjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9', '2015-01-22 07:00:32'),
-('vzl99027uc864fp4o5957b69dxhrbd7e', 'NzdjNTZlOTcxNjk1YmFjNTFhZGQwZjM0NTkyMWY1ZGYwYTdkODA3Yjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9', '2015-02-02 08:15:37');
+('tvkeplwf9w48hzl4e0v6m0q7zf7yiddo', 'NTdhNDk4MmRmNjYzZjBjNDY2OWFmYzNlZDZjZTNjNWNlM2NkMjI2ZTp7ImNvdXJzZV9uYW1lIjoiTVRFQ0giLCJfYXV0aF91c2VyX2lkIjoxLCJzZWN0aW9uIjoiMCIsInRvdGFsX3N1YmplY3QiOjQsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiY291cnNlX2lkIjoiSVQiLCJzZW1lc3RlciI6IjUiLCJmc19pZCI6NjIsImJhdGNoX2lkIjoiSVQtMkstMTAiLCJfYXV0aF91c2VyX2hhc2giOiIzYmI1ZTdmMTc2ZTkwZmY4OWVlOGI0ZThkY2U4OWIzNDAxYzNhOGJjIn0=', '2015-03-31 10:29:15'),
+('vzl99027uc864fp4o5957b69dxhrbd7e', 'NzdjNTZlOTcxNjk1YmFjNTFhZGQwZjM0NTkyMWY1ZGYwYTdkODA3Yjp7Il9hdXRoX3VzZXJfaGFzaCI6IjNiYjVlN2YxNzZlOTBmZjg5ZWU4YjRlOGRjZTg5YjM0MDFjM2E4YmMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9', '2015-02-02 08:15:37'),
+('yghx7qlawru1t18ae4r9z6woqwrvrjuc', 'MzFkZTQ4ODRkZmU5NGVjYmM4ZDNhODBkZjcyNTZkNzM1ZGU3OTFkYzp7ImNvdXJzZV9uYW1lIjoiTUNBIiwic2VjdGlvbiI6IkIiLCJzZW1lc3RlciI6IjExIiwiYmF0Y2hfaWQiOiJJQy0ySy05IiwidG90YWxfc3ViamVjdCI6NCwiZnNfaWQiOjUyLCJjb3Vyc2VfaWQiOiJJQyJ9', '2015-03-27 12:05:15');
 
 -- --------------------------------------------------------
 
@@ -465,14 +501,48 @@ CREATE TABLE IF NOT EXISTS `feedback_form_academic_assessment_info` (
   `suggestion_for_course` mediumtext NOT NULL,
   `fs_id_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `feedback_form_academic_assessment_info`
 --
 
 INSERT INTO `feedback_form_academic_assessment_info` (`id`, `subject_id`, `faculty_id`, `conceptual_clarity`, `subject_knowledge`, `practical_example`, `handling_capability`, `motivation`, `control_ability`, `course_completion`, `communication_skill`, `regularity_punctuality`, `outside_guidance`, `syllabus_industry_relevance`, `sufficiency_of_course`, `suggestion_for_subject`, `suggestion_for_course`, `fs_id_id`) VALUES
-(1, '1', '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'dsgfhsgfyuieyfisekljdnasmdmbajbgjsahdyiaudiouasodnasm,dnm,asbdjsa', 'SFDHSAGDJ.''/.;sdfaghdjad', 12);
+(1, '1', '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'dsgfhsgfyuieyfisekljdnasmdmbajbgjsahdyiaudiouasodnasm,dnm,asbdjsa', 'SFDHSAGDJ.''/.;sdfaghdjad', 12),
+(2, 'IC-702', '105521', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 'sfhgfjhgk', 'asfdsgf', 40),
+(3, 'IT-501A', '105520', 3, 3, 1, 3, 3, 1, 3, 3, 1, 3, 3, 1, '', '', 41),
+(4, 'IC-701', '105379', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 48),
+(5, 'IC-702', '105521', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 48),
+(6, 'IC-708', '105391', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 48),
+(7, 'IC-703', '105386', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 48),
+(8, 'IC-705A', '105387', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 48),
+(9, 'IC-1105', '105522', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'fhgjgj', 'hjgkjk', 49),
+(10, 'IC-1107A', '105358', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'gjkhkjhkl', 'bkjhjoioppo', 49),
+(11, 'IC-1109A', '105373', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'iuiououo', 'vvbkjhj', 49),
+(12, 'IC-1108', '105531', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', ' ', 49),
+(13, 'IT-501A', '105520', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 50),
+(14, 'IT-503A', '105526', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 50),
+(15, 'IT-510', '105386', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 50),
+(16, 'IT-504', '105353', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 50),
+(17, 'IT-506', '105360', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 50),
+(18, 'IC-701', '105379', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', ' ', 51),
+(19, 'IC-702', '105521', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 51),
+(20, 'IC-703', '105386', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 51),
+(21, 'IC-705A', '105387', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 51),
+(22, 'IC-708', '105391', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 51),
+(23, 'IC-701', '105379', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 54),
+(24, 'IC-702', '105521', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 54),
+(25, 'IC-701', '105379', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', ' ', 55),
+(26, 'IC-702', '105521', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 55),
+(27, 'IC-703', '105386', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 55),
+(28, 'IC-705A', '105387', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 55),
+(29, 'IC-708', '105391', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 55),
+(30, 'IC-701', '105379', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 56),
+(31, 'IC-702', '105521', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 56),
+(32, 'IC-703', '105386', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ' ', '', 56),
+(33, 'IC-705A', '105387', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 56),
+(34, 'IC-708', '105391', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 56),
+(35, 'IC-701', '105379', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '', 58);
 
 -- --------------------------------------------------------
 
@@ -694,7 +764,7 @@ CREATE TABLE IF NOT EXISTS `feedback_form_feedback_student_info` (
   `section` varchar(1) NOT NULL,
   `feedback_session` int(11) NOT NULL,
   PRIMARY KEY (`fs_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
 
 --
 -- Dumping data for table `feedback_form_feedback_student_info`
@@ -713,7 +783,52 @@ INSERT INTO `feedback_form_feedback_student_info` (`fs_id`, `batch_id`, `course`
 (14, '2K10', 'MTECH', 3, 'A', 2014),
 (15, 'IC-2K-9', 'MCA', 12, 'A', 2014),
 (16, 'IC-2K-9', 'MCA', 12, 'A', 2014),
-(17, 'IT-2K-10', 'MTECH', 11, 'A', 2014);
+(17, 'IT-2K-10', 'MTECH', 11, 'A', 2014),
+(18, 'IC-2K-9', 'MCA', 12, 'B', 2015),
+(19, 'IC-2K-9', 'MCA', 12, 'B', 2015),
+(20, 'IC-2K-11', 'MCA', 8, 'B', 2015),
+(21, 'IC-2K-11', 'MCA', 8, 'B', 2015),
+(22, 'IC-2K-12', 'MCA', 3, 'A', 2015),
+(23, 'IC-2K-14', 'MCA', 1, 'A', 2015),
+(24, 'IC-2K-14', 'MCA', 1, 'A', 2015),
+(25, 'IT-2K-10', 'MTECH', 11, '', 2015),
+(26, 'IT-2K-10', 'MTECH', 11, '', 2015),
+(27, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(28, 'IC-2K-9', 'MCA', 12, 'A', 2015),
+(29, 'IC-2K-9', 'MCA', 12, 'A', 2015),
+(30, 'IC-2K-9', 'MCA', 12, 'A', 2015),
+(31, 'IC-2K-9', 'MCA', 12, 'A', 2015),
+(32, 'IC-2K-9', 'MCA', 11, 'A', 2015),
+(33, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(34, 'IT-2K-10', 'MTECH', 11, '', 2015),
+(35, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(36, 'IT-2K-12', 'MTECH', 5, '', 2015),
+(37, '0', 'MCA', 0, '', 2015),
+(38, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(39, 'IT-2K-10', 'MTECH', 5, '', 2015),
+(40, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(41, 'IT-2K-10', 'MTECH', 5, '', 2015),
+(42, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(43, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(44, 'IC-2K-9', 'MCA', 11, 'B', 2015),
+(45, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(46, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(47, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(48, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(49, 'IC-2K-9', 'MCA', 11, 'B', 2015),
+(50, 'IT-2K-12', 'MTECH', 5, '', 2015),
+(51, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(52, 'IC-2K-9', 'MCA', 11, 'B', 2015),
+(53, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(54, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(55, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(56, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(57, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(58, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(59, 'IC-2K-11', 'MCA', 7, 'B', 2015),
+(60, 'IC-2K-9', 'MCA', 11, 'B', 2015),
+(61, 'IC-2K-11', 'MCA', 7, '', 2015),
+(62, 'IT-2K-10', 'MTECH', 5, '0', 2015);
 
 -- --------------------------------------------------------
 
@@ -732,14 +847,98 @@ CREATE TABLE IF NOT EXISTS `feedback_form_infrastructure_support_info` (
   `fs_id_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `feedback_form_infrastructure_support_info_38d333c1` (`fs_id_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `feedback_form_infrastructure_support_info`
 --
 
 INSERT INTO `feedback_form_infrastructure_support_info` (`id`, `books_availability`, `basic_requirements`, `technological_support`, `study_material`, `resourse_availability`, `cleaniliness_of_class`, `fs_id_id`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 12);
+(1, 1, 1, 1, 1, 1, 1, 12),
+(2, 5, 5, 5, 5, 5, 5, 18),
+(3, 5, 5, 5, 5, 5, 5, 19),
+(4, 5, 5, 5, 5, 5, 5, 19),
+(5, 5, 5, 5, 5, 5, 5, 19),
+(6, 5, 4, 3, 2, 1, 1, 19),
+(7, 5, 4, 3, 2, 1, 1, 19),
+(8, 3, 2, 1, 3, 4, 1, 20),
+(9, 1, 1, 1, 1, 1, 1, 21),
+(10, 1, 1, 1, 1, 1, 1, 22),
+(11, 1, 1, 1, 1, 1, 1, 23),
+(12, 1, 1, 1, 1, 1, 1, 24),
+(13, 1, 1, 1, 1, 1, 1, 25),
+(14, 1, 1, 1, 1, 1, 1, 26),
+(15, 1, 1, 1, 1, 1, 1, 27),
+(16, 1, 1, 1, 1, 1, 1, 27),
+(17, 1, 1, 1, 1, 1, 1, 28),
+(18, 1, 1, 1, 1, 1, 1, 28),
+(19, 1, 1, 1, 1, 1, 1, 29),
+(20, 1, 1, 1, 1, 1, 1, 31),
+(21, 1, 1, 1, 1, 1, 1, 32),
+(22, 1, 1, 1, 1, 1, 1, 33),
+(23, 1, 1, 1, 1, 1, 1, 34),
+(24, 1, 1, 1, 1, 1, 1, 35),
+(25, 1, 1, 1, 1, 1, 1, 36),
+(26, 1, 1, 1, 1, 1, 1, 38),
+(27, 1, 1, 1, 1, 1, 1, 39),
+(28, 1, 1, 1, 1, 1, 1, 40),
+(29, 5, 4, 3, 2, 1, 5, 41),
+(30, 4, 4, 4, 4, 4, 4, 42),
+(31, 1, 1, 1, 1, 1, 1, 43),
+(32, 1, 1, 1, 1, 1, 1, 44),
+(33, 1, 1, 1, 1, 1, 1, 45),
+(34, 1, 1, 1, 1, 1, 1, 46),
+(35, 1, 1, 1, 1, 1, 1, 47),
+(36, 1, 1, 1, 1, 1, 1, 48),
+(37, 1, 1, 1, 1, 1, 1, 48),
+(38, 1, 1, 1, 1, 1, 1, 49),
+(39, 1, 1, 1, 1, 1, 1, 50),
+(40, 1, 1, 1, 1, 1, 1, 51),
+(41, 1, 1, 1, 1, 1, 1, 52),
+(42, 1, 1, 1, 1, 1, 1, 54),
+(43, 1, 1, 1, 1, 1, 1, 55),
+(44, 1, 1, 1, 1, 1, 1, 56),
+(45, 1, 1, 1, 1, 1, 1, 58),
+(46, 1, 1, 1, 1, 1, 1, 59),
+(47, 1, 1, 1, 1, 1, 1, 60);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback_form_question`
+--
+
+CREATE TABLE IF NOT EXISTS `feedback_form_question` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_text` longtext NOT NULL,
+  `type` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Dumping data for table `feedback_form_question`
+--
+
+INSERT INTO `feedback_form_question` (`id`, `question_text`, `type`) VALUES
+(1, '1.) Availability of Books in Library', 'infrastructure support'),
+(2, '2.) Basic Requirements like Furniture, Chalk, Duster', 'infrastructure support'),
+(3, '3.) Technological Support like OHP/LCD ', 'infrastructure support'),
+(4, '4.) Photocopy of Study Material', 'infrastructure support'),
+(5, '5.) Availability of Other Resources Like Internet/Computers/Softwares/Databases etc', 'infrastructure support'),
+(6, '6.) Cleanliness in the Classroom', 'infrastructure support'),
+(7, '1.) Availability to bring conceptual clarity', 'faculty assesment'),
+(8, '2.) Teacher''s Subject Knowledge', 'faculty assesment'),
+(9, '3.) Compliments theory with practical examples', 'faculty assesment'),
+(10, '4.) Handling of cases/ assignment/ exercises/ activities', 'faculty assesment'),
+(11, '5.) Motivation Provided By Teacher', 'faculty assesment'),
+(12, '6.) Ability of control the class', 'faculty assesment'),
+(13, '7.) Completion and coverage of course', 'faculty assesment'),
+(14, '8.) Teacher''s communication of skill ', 'faculty assesment'),
+(15, '9.) Teacher''s Regularity and Punctuality', 'faculty assesment'),
+(16, '10.) Interaction and Guidance Outside the Classroom', 'faculty assesment'),
+(17, 'Any Other Suggestions(Regarding Subject):', 'subject comment'),
+(18, '1.) Relevance Of Syllabus As Per Industry Requirement', 'course assessment'),
+(19, '2.) Sufficiency Of Course Content', 'course assessment');
 
 -- --------------------------------------------------------
 
