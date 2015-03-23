@@ -1,4 +1,8 @@
- h2{           
+             h1{
+              color: white;
+             }
+
+             h2{           
                  font-weight: bold;
 
                }
@@ -25,6 +29,9 @@
                 margin-left:15px;
 
               }
+              #color_text{
+                color: red;
+              }
             #inlineRadio{
                 margin-left: 1.5em;
                 margin-top: -0.55em;
@@ -41,39 +48,44 @@
             }
             #subject{
              margin-top: 1.5em;
-             margin-left:3.9em;
+             margin-left:0.01em;
             }
             /*#select_subject{
               margin-left: 9.5em;
             }*/
             #id_subject{
               margin-top: -2.99em;
+              margin-left:5.5em;
             }
             #faculty{
              margin-top: -5.1em;
-             margin-left:32.9em;
+             margin-left:46.2em;
             }
             #id_faculty_name{
               margin-top: -4.99em;
-              margin-left: 40.9em;
+              margin-left: 53.9em;
             }
             #text_area_1{
-              width: 50%;
+               width: 60%;
+               margin-left: 47.7em;
+               margin-top: -6.8em;
 
             }
             #text_area_2{
-              height: 60%;
+              width: 60%;
+             margin-left:4.2em;
             }
-            #comment_1{
+            .comment_1{
              margin-top: -4.99em;
             }
-            #comment_2{
+            /*#comment_2{
               margin-top: -4.99em;
-            }
+            }*/
             .align_radio{
               margin-left: -9.9em;
             }
-           / #q2{
-              width: 1223px;
+              #question2{
+              width: 1202px;
               
             }
+            
