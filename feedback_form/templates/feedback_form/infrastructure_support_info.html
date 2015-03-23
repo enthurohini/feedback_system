@@ -24,7 +24,7 @@
   </div>       <!--closing of class=panelheading-->
 </div>         <!--closing of outermost panel--> 
 
-
+<strong>Your Feedback Id: {{ std_id }}</strong>
  <!--<div class="panel panel-primary">  Outermost panel panel-primary-->
    <div class="container"  ><!--class container-->
       <div class="panel-body" id="instructions">    <!--class=panelbody-->
@@ -80,6 +80,12 @@
 
 {% endif %}
 <!--</div>  Closing of class panel primary-->
+
+<script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>   
+<script>
+    //$(document).load(alert('hello'));
+</script>
+    window.history.forward();function noBack(){window.history.forward();}
 <script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
