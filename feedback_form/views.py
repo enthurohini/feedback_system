@@ -160,7 +160,7 @@ def academic_assessment(request):
 	#request.session['subject_list_session'] = subject_list_session
 	request.session['total_subject'] = len(subject_list)
 
-	context = {'subject_list': subject_list, 'faculty_qlist': faculty_qlist, 'faculty_name_list': faculty_name_list, 'course_qlist': course_qlist, 'comment': comment}
+	context = {'subject_list': subject_list, 'faculty_qlist': faculty_qlist, 'faculty_name_list': faculty_name_list, 'course_qlist': course_qlist, 'comment': comment, 'std_id':std_id}
 	
 	return render(request, 'feedback_form/academic_assessment_info.html', context)
 	#return HttpResponse(no_subject)

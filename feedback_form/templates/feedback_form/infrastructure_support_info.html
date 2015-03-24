@@ -24,7 +24,13 @@
   </div>       <!--closing of class=panelheading-->
 </div>         <!--closing of outermost panel--> 
 
-<strong>Your Feedback Id: {{ std_id }}</strong>
+<!--<div data-toggle="tooltip" data-placement="left" title="Please Note this Id">-->
+<div data-toggle="popover" data-container="body" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+    <center id = "id_show_tooltip"><strong>Your Feedback Id: {{ std_id }}</strong></center>
+</div>
+
+</br>
+
  <!--<div class="panel panel-primary">  Outermost panel panel-primary-->
    <div class="container"  ><!--class container-->
       <div class="panel-body" id="instructions">    <!--class=panelbody-->
@@ -92,6 +98,11 @@
         window.onload = noBack;
         window.onpageshow = function(evt) { if (evt.persisted) noBack() }
         window.onunload = function() { void (0) }
+
+    /*$(document).ready(function(){
+            $('#id_show_tooltip').tooltip('show');
+        })*/
+    
 </script>
 <script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
