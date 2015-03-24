@@ -78,14 +78,19 @@
             .comment_1{
              margin-top: -4.99em;
             }
-            /*#comment_2{
-              margin-top: -4.99em;
-            }*/
             .align_radio{
               margin-left: -9.9em;
             }
-              #question2{
+            #question2{
               width: 1202px;
               
             }
+           .student_id{
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: #d4cff0;
+            width: 93%;
+            margin-left: 2.8em;   
+       }
             

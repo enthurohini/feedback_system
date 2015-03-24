@@ -18,22 +18,22 @@
   <div class="panel-title">   <!--paneltitle-->
       <div class="container"> <!--container-->
          <div class="panel-title text-center">
-           <h1 style="color:white">INFRASTRUCTURE SUPPORT</h1>
+           <h1>InfraStructure Support</h1>
          </div>
       </div>     <!--closing of class=container-->
   </div>       <!--closing of class=panelheading-->
 </div>         <!--closing of outermost panel--> 
 
-
-
-
-<!--<div data-toggle="tooltip" data-placement="left" title="Please Note this Id">-->
-<div data-toggle="popover" data-container="body" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-    <center id = "id_show_tooltip"><strong>Your Feedback Id: {{ std_id }}</strong></center>
+<!--<a href="#" id ="example" rel="popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</a>
+</br>-->
+<div  class="student_id">
+<!--a href="#"-->
+<label  id ="feedback_id"  align=" center" rel="popover" data-toggle="popover"  data-animation="5s" title="Important" data-content="Please,note this  id. Needed in case you want to resume the  feedback form.">
+    <strong  >Your Feedback Id: {{ std_id }} </strong>
+    <label>
+<!--</a>-->
 </div>
-
-</br>
-
+<br>
 
  <!--<div class="panel panel-primary">  Outermost panel panel-primary-->
    <div class="container"  ><!--class container-->
@@ -61,19 +61,21 @@
   
    {% for q in infrastructure_qlist %}
    <div class="panel panel-default "> <!-- div class panel_default-->
-     <div class="row">
-   <div class="col-xs-6"><label>{{q.question_text}}</label></div>
-  <div class="col-xs-6 align_radio" >
+     <div class="row"><!-- div class row-->
+   <div class="col-xs-6"><!-- div class col-xs-6-->
+    <label  for="label1">{{q.question_text}}</label>
+  </div><!-- div closing col-xs-6 -->
+  <div class="col-xs-6 align_radio" > 
     {% for i in "12345" %}
         <div class="radio_button" > <!-- div class radio_button-->
-           <label class="radio-inline">
-             <input type = "radio" id="inlineRadio" name={{q.id}} value={{i}} required /> {{i}}
+           <label class="radio-inline"> 
+             <input type = "radio" id="inlineRadio" onClick="changeColor('label1', 'green')" name={{q.id}} value={{i}} required /> {{i}}
            </label> 
-        </div> <!-- div closing radio_button-->
+        </div> <!-- div closing radio_button      onClick="changeColor('label1', 'green')"--> 
 
       {% endfor %}
     </div>
-  </div>
+  </div><!-- div closing row-->
        </div>  <!--  closing class panel_default-->
   </br>
   
@@ -89,10 +91,9 @@
 
 
 {% endif %}
-<!--</div>  Closing of class panel primary-->
-
 <script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>   
 <script>
+
     //$(document).load(alert('hello'));
 
     window.history.forward();function noBack(){window.history.forward();}
@@ -100,18 +101,63 @@
     function noBack()
          {
              window.history.forward()
+             //$('[data-toggle="popover"]').popover();
          }
         noBack();
         window.onload = noBack;
         window.onpageshow = function(evt) { if (evt.persisted) noBack() }
         window.onunload = function() { void (0) }
 
-    /*$(document).ready(function(){
-            $('#id_show_tooltip').tooltip('show');
-        })*/
-    
+    $(function () {
+  //$('[data-toggle="popover"]').popover()
+  $("#feedback_id").popover('show');
+});
+    $("#feedback_id").on('shown.bs.popover', function () {
+    var pop = $(this);
+    setTimeout(function () {
+        pop.popover('hide');
+    }, 6000);
+});
+  
 </script>
 
+  <!--$(document).ready(function(){
+   $('#inlineRadio').click(function(){
+    $('#label').addclass("question");
+
+   });
+ });*/
+    function changeColor(id, newColor) {
+
+var labelObject = document.getElementById(id);
+
+$("#" + id).css("color", newColor);
+
+}
+ /*var json = ["label1"];
+ $(document).click(function(){
+  $.each(json,function(index,value){
+    $("label[for='']").css("color","red");
+  });
+
+ });*/
+( "#inlineRadio" ).click(function() {
+  $( "label" ).each(function() {
+  var colortext = $('input[name=q.id]':Checked).val();
+      $( this ).toggleClass( "question" );
+});
+});-->
+<script>
+ function changeColor(id, newColor) {
+
+var labelObject = document.getElementById(id);
+
+$("#" + id).css("color", newColor);
+
+}
+
+</script>
+<!--</div>  Closing of class panel primary-->
 <script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

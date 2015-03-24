@@ -18,19 +18,19 @@
   <div class="panel-title">   <!--paneltitle-->
       <div class="container"> <!--container-->
          <div class="panel-title text-center">
-	       <h1 style="color:white">ACADEMIC ASSESSMENT</h1>
-         </div>	
+           <h1>Academic Assessment</h1>
+         </div> 
       </div>     <!--closing of class=container-->
   </div>       <!--closing of class=panelheading-->
 </div>         <!--closing of outermost panel--> 
-
-<div data-toggle="popover" data-container="body" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-    <center id = "id_show_tooltip"><strong>Your Feedback Id: {{ std_id }}</strong></center>
+ <div class="student_id">
+<label  id ="feedback_id"  align=" center" rel="popover" data-toggle="popover"  data-animation="5s" title="Important" data-content="Please,note this  id. Needed in case you want to resume the  feedback form.">
+    <strong  >Your Feedback Id: {{ std_id }} </strong>
+    <label>
 </div>
-
 </br>
 
-<div class="panel panel-primary">   <!-- Outermost panel panel-primary-->
+<!--div class="panel panel-primary">   Outermost panel panel-primary-->
    <div class="container">
       <div class="panel-body" id="instructions">    <!--class=panelbody-->
             <div ><!--class=" row alert alert-info"-->
@@ -55,89 +55,103 @@
    <div  class= "panel" style="margin-left:75px;"><!-- div class panel-->
 
  <!-- <div class="row" class="form-inline">div class row-->
-	<label id="subject">Subject</label>
-	<select name="subject" id="id_subject" class="form-inline form-control"><!--class="form-inline"-->
+  <label id="subject">Subject</label>
+  <select name="subject" id="id_subject" class="form-inline form-control"><!--class="form-inline"-->
     <!--<div id="select_subject"-->
-	<option >--- Select Subject ---</option>
-	{% for s in  subject_list%}
+  <option >--- Select Subject ---</option>
+  {% for s in  subject_list%}
   
+
 		<option value = {{s.subject_id}}> {{s.name_of_subject}} </option>
 		  <!-- </div-->
 	{% endfor %}
 	</select> &nbsp; &nbsp; &nbsp; &nbsp; 
+  <label id="faculty">Faculty</label>
+  <!--<label id = "id_faculty_name">-->
+  <select name="faculty" id = "id_faculty_name" class="form-inline form-control" ><!--class="form-control"-->
+  <!--{% for f in  faculty_name_list%}
+    {% for i in f%}
+    <option value = {{i}} >{{i}}</option>
+    }
+  {% endfor %}
+  {% endfor %}-->
+  </select>
 
-
-	<label id="faculty">Faculty</label>
-	<!--<label id = "id_faculty_name">-->
-	<select name="faculty" id = "id_faculty_name" class="form-inline form-control" ><!--class="form-control"-->
-	</select>
 <!--</div>  closing div class row-->
-	<br/> <br/> 
+  <br/> <br/> 
 
-	<div id = "id_questions" style = 'visibility:hidden;'>
+  <div id = "id_questions" style = 'visibility:hidden;'>
 
-	{% for q in faculty_qlist %}
+  {% for q in faculty_qlist %}
    <div class="panel panel-default"> <!-- div class panel_default-->
-    <div class="row" >
-	<div class="col-xs-6"><label >{{q.question_text}}</label></div>
-  <div class="col-xs-6 align_radio" >
-		{% for i in "12345" %}
+    <div class="row" ><!-- div closing row-->
+  <div class="col-xs-6">
+    <label id="label1">{{q.question_text}}</label>
+  </div>
+  <div class="col-xs-6 align_radio" > <!-- div class align_radio-->
+    {% for i in "12345" %}
     <div class="radio_button"> <!-- div class radio_button-->
       <label class="radio-inline" >
-        	<input type = "radio" id="inlineRadio" name={{q.id}} value={{i}} required /> {{i}}
+          <input type = "radio" id="inlineRadio" onClick="changeColor('label1', 'green')" name={{q.id}} value={{i}} required /> {{i}}
         </label> 
-    	</div> <!-- div closing radio_button-->
+      </div> <!-- div closing radio_button-->
       {% endfor %}
-    </div>
-       </div>  
+    </div> <!--  closing class align_radio--> 
+       </div> <!--  closing class row--> 
      </div><!--  closing class panel_default-->
 
-	</br>
+  </br>
 
-	{% endfor %}
+  {% endfor %}
  </div> <!-- Closing of class panel body-->
-	</br>
+  </br></br>
+  </br></br></br>
 
-	{% for c in comment %}
-	<label id="comment_1">{{c.question_text}}</label>
-	<textarea id =" text_area_1" name = "comment1"></textarea>
-	{% endfor %}
+  {% for c in comment %}
+  <label class="col-md-6 comment_1">{{c.question_text}}</label>
+  <div class="col-sm-6"> <!--div class col-sm-6-->
+  <textarea id="text_area_1" rows="3" class="form-control" placeholder="Comments" name = "comment1"></textarea>
+</div> <!-- Closing of class col-sm-6--> 
+  {% endfor %}
 
-	</br> </br>
+  </br> </br>
 
-	{% for c in course_qlist %}
-   <div class="panel panel-default row" id="q2"> <!-- div class panel_default-->
-	<div class="col-xs-6">
-    <label >{{c.question_text}}</label>
-  </div>
+  {% for c in course_qlist %}
+   <div class="panel panel-default row" id="question2" class="label1" style="margin-left:5px;"> <!-- div class panel_default-->
+  <div class="col-xs-6" ><!-- div class col-xs-6-->
+    <label class="color_text"  >{{c.question_text}}</label>
+  </div><!-- div closing col-xs-6-->
   <div class="col-xs-6 align_radio" ><!-- div class align_radio-->
-		{% for i in "12345" %}
+    {% for i in "12345" %}
     <div class="radio_button"> <!-- div class radio_button-->
       <label class="radio-inline">
-        	<input type = "radio" id="inlineRadio" name={{c.id}} value={{i}} required /> {{i}} 
+          <input type = "radio" id="inlineRadio" onClick="changeColor('label1', 'green')" name={{c.id}} value={{i}} required /> {{i}} 
           </label> 
     </div> <!-- div closing radio_button-->
-    	{% endfor %}
+      {% endfor %}
     </div><!-- closing div class align_radio-->
        </div>  <!--  closing class panel_default-->
-	</br>
+  </br>
 
 
-	{% endfor %}
+  {% endfor %}
 
-	</br>
+  </br>
+ 
+  {% for c in comment %}
+  <label class="col-md-6">{{c.question_text}}</label>
+  <div class="col-sm-6"> <!--div class col-sm-6-->
+      <textarea id="text_area_2" rows="3" class="form-control" placeholder="Comments" name = "comment2">
+       </textarea>
+  </div> <!-- Closing of class col-sm-6--> 
+  {% endfor %}
+  </br> </br>
+  </br> </br>
 
-	{% for c in comment %}
-	<label id="comment_1">{{c.question_text}}</label>
-	<textarea id =" text_area_2" name = "comment2"></textarea>
-	{% endfor %}
-
-	</br> </br>
-
-	</br> </br>
+  </br> </br>
   <div class="col-sm-offset-6"> <!--div class sm offfset-->
-    <input type="submit" value="Submit" class="btn btn-primary"></input>
-     </div>  <!-- Closing of class sm offfset--> 
+     <input type="submit" value="Submit" class="btn btn-primary"></input>
+  </div>  <!-- Closing of class sm offfset--> 
 
 </form>
 
@@ -163,15 +177,15 @@
 
     // To dynamically update semester, batch and section fields.
     $(document).ready(function(){
-    	console.log("hiii");
-    	$('#id_subject').change(function(){
-    		$('#id_questions').css('visibility', 'visible');
-    		sub_name = $(this).val();
+      console.log("hiii");
+      $('#id_subject').change(function(){
+        $('#id_questions').css('visibility', 'visible');
+        sub_name = $(this).val();
 
-    		console.log("hii");
-    		request_url = 'academic_assessment/get_faculty_name/' + sub_name + '/';
-    		console.log(request_url);
-    		$.ajax({
+        console.log("hii");
+        request_url = 'academic_assessment/get_faculty_name/' + sub_name + '/';
+        console.log(request_url);
+        $.ajax({
                 url: request_url,
                 success: function(faculty_name){
                 data = $.parseJSON(faculty_name);
@@ -180,13 +194,41 @@
                 //$('#id_faculty_name').html()
                 $('#id_faculty_name').html('<option >'  + data[0] +'</option>');
             }
-    	
-    	})
-    	});
+      
+      })
+      });
 
     });
-</script>
+  /* $(document).ready(function(){
+   $('#inlineRadio').click(function(){
+    $('#question').addclass("color_text");
 
+   });
+ });*/
+ $(function () {
+  //$('[data-toggle="popover"]').popover()
+  $("#feedback_id").popover('show');
+});
+    $("#feedback_id").on('shown.bs.popover', function () {
+    var pop = $(this);
+    setTimeout(function () {
+        pop.popover('hide');
+    }, 6000);
+});
+  
+</script>
+<!--<script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>-->   
+<script>
+ function changeColor(id, newColor) {
+
+//var labelObject = document.getElementById(id);
+
+$('"." + id').css("color", newColor);
+console.log(id);
+console.log(newColor);
+}
+</script>
+</script>
 <!-- End of JavaScript section -->
 </div>   <!-- Closing of class panel primary-->
 

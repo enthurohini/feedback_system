@@ -1,3 +1,6 @@
+             h1{
+              color: white;
+             }
              h2{           
                  font-weight: bold;
                  }
@@ -29,7 +32,9 @@
               /*.panel-default{
                 height: 50%;
               }*/
-              
+              .question{
+                color: green;
+              }
               #inlineRadio{
                 margin-left: 1.5em;
                 margin-top: -0.55em;
@@ -45,4 +50,15 @@
             }
        i{
         text-align: 50%;
+       }
+      /* #feedback_id{
+        text-align: center;
+       }*/
+       .student_id{
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        background-color: #d4cff0;
+        width: 93%;
+        margin-left: 2.8em;   
        }
