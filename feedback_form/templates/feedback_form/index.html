@@ -57,6 +57,24 @@
 
 
 <script src="../../static/feedback_form/jquery.min.js"></script>
+
+
+
+<script src="../../static/feedback_form/jquery.min.js"></script>
+
+<script>
+    //$(document).load(alert('hello'));
+    function noBack()
+         {
+             window.history.forward()
+         }
+        noBack();
+        window.onload = noBack;
+        window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+        window.onunload = function() { void (0) }
+</script>
+
+>>>>>>> 8fdbd2fefea878472c0226268a90941dc33ebd58
 <script src="../../static/feedback_form//bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
