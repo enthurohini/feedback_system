@@ -6,24 +6,68 @@
     </title>
 
     <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css"> 
-    <style type="text/css">
-    .row{
-      background-color:#d4cfe9;
-    }
-    #user{
-      background-color:#8878c3;
-    }
-    #resume{
-      color: #8878c3; 
-    }
-      
-    </style>
-
+    <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/index.css">
 	</head>
 <body>
-          <h2 class="text-center">FEEDBACK | HOME</h2>
+  <div class="panel panel-primary"> <!--Outermost panel-->
+    <div class="panel-title">   <!--class=panelheading-->
+        <div class="container">    <!--class=container-->
+            <div class="row">   <!--class=row-->
+               <div><img src="../../static/feedback_form/img/iips_logo.png"></div>
+            </div> <!--closing of class=row-->
+        </div>     <!--closing of class=container-->
+    </div> <!--closing of class=panelheading--> 
+</div>  <!--closing of outermost panel-->
 
-   <div class="row alert alert-info">
+<div class="row alert alert-info" id="user_panel">
+    <div class="col-sm-3" style="margin-left:-10px;">
+     
+    </div>
+    <div class="col-sm-6" style="margin-left:-10px;" >
+       <div class="panel panel-primary" align="center">
+            <div class="panel-heading "id="user" >
+                <h2 class="panel-title text-center">New User </h2>
+            </div>
+             <a  href="#"  id="text_color">
+            <h2 align="center"> IIPS Registration </h2> 
+            </a> 
+
+       </div> 
+     </div>  
+    
+    <div class="col-sm-3" style="margin-left:-10px;">
+     
+    </div>
+    
+    
+</div>
+
+
+<div class="row alert alert-info" id="user_panel">
+    <div class="col-sm-3" style="margin-left:-10px;">
+     
+    </div>
+    <div class="col-sm-6" style="margin-left:-10px;" >
+       <div class="panel panel-primary" align="center">
+            <div class="panel-heading" id="user">
+                <h2 class="panel-title text-center">Already Registered ?? </h2>
+            </div>
+
+            <a  href="login"  id="text_color">
+            <h2 align="center"> Home | Feedback  </h2> 
+            </a>
+
+       </div> 
+     </div>  
+    
+    <div class="col-sm-3" style="margin-left:-10px;">
+
+    </div>
+
+</div> 
+
+
+   <div class="row alert alert-info" id="user_panel">
 <div class="col-sm-3"></div>
 <div class="col-sm-6" style="margin-left:-10px ;" align="center" >
        <div class="panel panel-primary" align="center" >
@@ -32,7 +76,7 @@
             </div>
        
             <!-- Button trigger modal -->
-        <a  href="#" class="" data-toggle="modal" data-target="#myModal" id="resume">
+        <a  href="#" class="" data-toggle="modal" data-target="#myModal" id="text_color">
               <h2 align="center">Resume</h2>
           </a>
 
@@ -48,7 +92,7 @@
                   <form action="{% url 'resume_action' %}" method="POST">
                   {% csrf_token %}
                     <div class="row">
-                      <div class="col-md-8"><input required="required"  id="fs_id" type="text" class="form-control" class="col-md-7" placeholder="Enter ID"  name="fs_id" autofocus=autofocus>  </div>
+                      <div class="col-md-8"><input required="required"  id="fs_id" type="text" class="form-control" class="col-md-7" placeholder="Enter ID"  name="fs_id" autofocus>  </div>
                       <div class="col-md-2"><button type="submit" name="submit" class="btn btn-primary" class="col-md-3">Submit</button></div>
                       <div class="col-md-2"><button type="button" class="btn btn-danger" class="col-md-2" data-dismiss="modal">Close</button></div>
                     </div> 
@@ -72,14 +116,14 @@
 
 <script>
     //$(document).load(alert('hello'));
-    function noBack()
+    /*function noBack()
          {
              window.history.forward()
          }
         noBack();
         window.onload = noBack;
         window.onpageshow = function(evt) { if (evt.persisted) noBack() }
-        window.onunload = function() { void (0) }
+        window.onunload = function() { void (0) }*/
 </script>
 
 

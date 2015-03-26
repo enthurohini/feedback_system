@@ -37,9 +37,9 @@
 
  <!--<div class="panel panel-primary">  Outermost panel panel-primary-->
    <div class="container"  ><!--class container-->
-      <div class="panel-body" id="instructions">    <!--class=panelbody-->
+      <div class="panel-body" id="instruction_panel">    <!--class=panelbody-->
             <div ><!--class=" row alert alert-info"-->
-                     <strong class="col-md-6">Instructions</strong>
+                     <strong class="col-md-6" id="instruction">Instructions</strong>
                   <div class="col-sm-6" style="margin-left:-10px;">
                      <label>1-Very poor</label> 
                      <label>2-Poor</label>
@@ -57,11 +57,12 @@
 <form action="{% url 'infrastructure_action' %}" method="post" class="form-inline" class="form-control">
   {% csrf_token %}
 <!--<div class="col-md-6">-->
- <div  style="margin-left:75px;"><!-- div class panel-->
+ <div   style="margin-left:75px;"><!-- div class panel-->
   
    {% for q in infrastructure_qlist %}
-   <div class="panel panel-default "> <!-- div class panel_default-->
-     <div class="row" ><!-- div class row-->
+   <div class="panel panel-default " class="A"> <!-- div class panel_default-->
+     <div class="row"><!-- div class row-->
+
    <div class="col-xs-6"><!-- div class col-xs-6-->
     <label  for="label1">{{q.question_text}}</label>
   </div><!-- div closing col-xs-6 -->
@@ -93,9 +94,6 @@
 {% endif %}
 <script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>   
 <script>
-
-
- function noBack(){window.history.forward();}
 
     function noBack()
          {
