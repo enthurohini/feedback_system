@@ -61,7 +61,7 @@
   
    {% for q in infrastructure_qlist %}
    <div class="panel panel-default "> <!-- div class panel_default-->
-     <div class="row"><!-- div class row-->
+     <div class="row" ><!-- div class row-->
    <div class="col-xs-6"><!-- div class col-xs-6-->
     <label  for="label1">{{q.question_text}}</label>
   </div><!-- div closing col-xs-6 -->
@@ -69,7 +69,7 @@
     {% for i in "12345" %}
         <div class="radio_button" > <!-- div class radio_button-->
            <label class="radio-inline"> 
-             <input type = "radio" id="inlineRadio" onClick="changeColor('label1', 'green')" name={{q.id}} value={{i}} required /> {{i}}
+             <input type = "radio" id="inlineRadio" onClick="changeColor('inlineRadio')" name={{q.id}} value={{i}} required /> {{i}}
            </label> 
         </div> <!-- div closing radio_button      onClick="changeColor('label1', 'green')"--> 
 
@@ -94,9 +94,8 @@
 <script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>   
 <script>
 
-    //$(document).load(alert('hello'));
 
-    window.history.forward();function noBack(){window.history.forward();}
+ function noBack(){window.history.forward();}
 
     function noBack()
          {
@@ -119,41 +118,15 @@
     }, 6000);
 });
   
+   
+
 </script>
 
-  <!--$(document).ready(function(){
-   $('#inlineRadio').click(function(){
-    $('#label').addclass("question");
-
-   });
- });*/
-    function changeColor(id, newColor) {
-
-var labelObject = document.getElementById(id);
-
-$("#" + id).css("color", newColor);
-
-}
- /*var json = ["label1"];
- $(document).click(function(){
-  $.each(json,function(index,value){
-    $("label[for='']").css("color","red");
-  });
-
- });*/
-( "#inlineRadio" ).click(function() {
-  $( "label" ).each(function() {
-  var colortext = $('input[name=q.id]':Checked).val();
-      $( this ).toggleClass( "question" );
-});
-});-->
 <script>
- function changeColor(id, newColor) {
+ function changeColour(id)
+{
 
-var labelObject = document.getElementById(id);
-
-$("#" + id).css("color", newColor);
-
+    document.getElementsByTagName(id).style.backgroundColor = "#D9F7BC";
 }
 
 </script>
