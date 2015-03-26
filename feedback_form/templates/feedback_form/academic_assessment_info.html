@@ -23,18 +23,19 @@
       </div>     <!--closing of class=container-->
   </div>       <!--closing of class=panelheading-->
 </div>         <!--closing of outermost panel--> 
- <div class="student_id">
+
+ <div class="student_id"> 
 <label  id ="feedback_id"  align=" center" rel="popover" data-toggle="popover"  data-animation="5s" title="Important" data-content="Please,note this  id. Needed in case you want to resume the  feedback form.">
     <strong  >Your Feedback Id: {{ std_id }} </strong>
     <label>
 </div>
 </br>
 
-<!--div class="panel panel-primary">   Outermost panel panel-primary-->
-   <div class="container">
-      <div class="panel-body" id="instructions">    <!--class=panelbody-->
+<!--<div class="panel panel-primary">   Outermost panel panel-primary-->
+   <div class="container"> <!--class container -->
+      <div class="panel-body" id="instruction_panel">    <!--class panelbody-->
             <div ><!--class=" row alert alert-info"-->
-                     <strong class="col-md-6">Instructions</strong>
+                     <strong class="col-md-6" id="instruction">Instructions</strong>
                   <div class="col-sm-6" style="margin-left:-10px;">
                      <label>1-Very poor</label> 
                      <label>2-Poor</label>
@@ -156,6 +157,7 @@
 </form>
 
 </div> <!-- Closing of hidden paragraph -- >
+
 {% endif %}
 
 

@@ -15,9 +15,12 @@
              hr{
                margin-top:10px;
                }
-               #instructions{
+            #instruction_panel{
                   background-color: #d4cfe9;
                 }
+                 #instruction{
+                margin-top: 0.8em;
+              }
             .panel-title{
               background-color: #8878c3;
                }
@@ -29,7 +32,7 @@
                 margin-left:15px;
 
               }
-              #color_text{
+            #color_text{
                 color: red;
               }
             #inlineRadio{

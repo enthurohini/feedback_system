@@ -1,0 +1,10 @@
+ #user_panel{
+      background-color:#d4cfe9;
+    }
+    #user{
+      background-color:#8878c3;
+    }
+    #resume{
+      color: #8878c3; 
+    }
+      
