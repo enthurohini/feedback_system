@@ -21,7 +21,7 @@
               background-color: #8878c3;
               /*background-color: #b666d2;*/
                 }
-                .row:hover{
+                 .panel.panel-default:hover{
                   background-color:#d4cfe9;
                 }
               .radio_button{
@@ -59,10 +59,10 @@
        }
       /* #feedback_id{
         text-align: center;
-       }*/
+       }
        .A{
         margin-left: 7.5em;
-       }
+       }*/
        .student_id{
         text-align: center;
         font-weight: bold;
