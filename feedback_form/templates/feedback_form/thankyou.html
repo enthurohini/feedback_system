@@ -13,5 +13,32 @@
 		</div> 
 		</h1>
 	<script src="./../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src = "../../static/feedback_form/jquery.min.js"></script>   
+	<script>
+	jQuery(document).ready(function($) {
+
+      if (window.history && window.history.pushState) {
+
+        $(window).on('popstate', function() {
+          var hashLocation = location.hash;
+          var hashSplit = hashLocation.split("#!/");
+          var hashName = hashSplit[1];
+
+          if (hashName !== '') {
+            var hash = window.location.hash;
+            if (hash === '') {
+                window.location='..';
+                return false;
+            }
+          }
+        });
+
+        window.history.pushState('forward', null, './#forward');
+      }
+
+    });
+
+    </script>
+
 </body>
 </html>
