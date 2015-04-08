@@ -1,0 +1,53 @@
+{% load crispy_forms_tags %}
+<!Doctype html>
+<html>
+   <head>
+      <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
+      <style type="text/css">
+        #a{
+          width: 80%;
+        }
+        #id_First_Name{
+          margin-left: -5.9em;
+        }
+        #id_first_name{
+          margin-left:1.9em;
+    }
+          #id_Last_Name,#submit-id-submit{
+            margin-top: 50px;
+            /*margin-left: -4.9em;*/
+              margin-right: 26.8em;
+          }
+       
+       #id_permanent_address{
+         margin-left:6.6em;
+         margin-top:-3.8;
+       }
+      </style>
+   </head>
+ <body>
+ 	<div class="panel panel-primary"> <!--Outermost panel-->
+  <div class="panel-title">   <!--paneltitle-->
+      <div class="container"> <!--container-->
+         <div class="panel-title text-center">
+           <h1>Registration Form</h1>
+         </div> 
+      </div>     <!--closing of class=container-->
+  </div>       <!--closing of class=panelheading-->
+</div>         <!--closing of outermost panel-->
+<!--div class="panel panel-primary" id="a"-->
+ 
+ 	<div class="container" align="center">
+ 		<div class="row col-lg-10 ">
+     
+    
+ 		{% crispy form %}
+      			
+ 		</div>
+ 	</div>
+</div>  
+ 
+ 	<script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
+
+ </body>
+</html>
