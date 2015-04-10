@@ -1,5 +1,5 @@
 from django.contrib import admin
-from feedback_form.models import feedback_student_info, infrastructure_support_info, academic_assessment_info, course, batch, section_info, faculty_table, subject, time_table, Question
+from feedback_form.models import feedback_student_info, infrastructure_support_info, academic_assessment_info, course, batch, section_info, faculty_table, subject, time_table, Question, Student_personal_info, Student_academic_info
 
 # Register your models here.
 class batchAdmine(admin.ModelAdmin):
@@ -39,6 +39,14 @@ class studentAdmin(admin.ModelAdmin):
 	inlines = [infrastructureInline, academicInline]
 	list_display = ('fs_id', 'batch_id', 'course', 'semester', 'section', 'feedback_session')
 
+class student_academic_info(admin.ModelAdmin):
+	list_display = ('')
+
+class student_personal_infoAdmin(admin.ModelAdmin):
+	fieldsets = [
+		('Student Personal Information', {'fields': ['student_no', 'first_name', 'last_name', 'type'], 'classes': ['collapse']})
+	]
+
 admin.site.register(feedback_student_info, studentAdmin)
 admin.site.register(course, courseAdmin)
 admin.site.register(batch, batchAdmine)
@@ -47,4 +55,5 @@ admin.site.register(faculty_table, facultyAdmin)
 admin.site.register(subject, subjectAdmin)
 admin.site.register(time_table, time_tableAdmin)
 admin.site.register(Question, questionAdmin)
+admin.site.register(Student_personal_info, student_personal_infoAdmin)
 

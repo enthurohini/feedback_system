@@ -1,3 +1,4 @@
+
 ''' ~~~ Import Statements ~~~ '''
 from django import forms                                       # importing Django's forms library
 from feedback_form.models import course, batch, section_info   # importing models of feedback_form app
@@ -26,3 +27,7 @@ class Meta:
         model = batch, course
         fields = ('course_name', 'batch', 'semester')
 
+class student_personal_infoForm(forms.Form):
+	first_name = forms.CharField(label = "First Name", required = True, max_length=100)
+
+	
