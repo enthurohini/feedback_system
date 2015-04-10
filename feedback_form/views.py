@@ -223,7 +223,16 @@ def resume_action(request):
 
 			infrastructure_presence = infrastructure_support_info.objects.filter(fs_id = is_present)
 			if (len(infrastructure_presence) > 0 ):
-				return HttpResponseRedirect('/feedback_system/academic_assessment/')
+				''' fetching the data from the session variables '''
+				courseId = request.session['course_id']
+				sem = request.session['semester']
+				batch = request.session['batch_id']
+				std_id = request.session['fs_id']
+				subject_list = subject.objects.filter(course_id = courseId, semester = sem, is_viva_or_lab = 0).exclude(pk__in=academic_assessment_info.objects.values_list('subject_id', flat = True).filter(fs_id = std_id))
+				if len(subject_list) == 0:
+					return HttpResponse("Your feedback form has been submitted successfully.")
+				else:
+					return HttpResponseRedirect('/feedback_system/academic_assessment/')
 			else:
 				return HttpResponseRedirect('/feedback_system/infrastructure_support/')
 		else:
