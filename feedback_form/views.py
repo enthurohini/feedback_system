@@ -10,8 +10,9 @@ import feedback_form.models
 from django.core import serializers
 from django.template import RequestContext, loader, context
 
-from feedback_form.forms import loginForm, student_personal_infoForm
+from feedback_form.forms import loginForm
 from feedback_form.models import feedback_student_info
+from django.template.response import TemplateResponse
 
 # Create your views here.
 def index(request):
@@ -236,8 +237,16 @@ def resume_action(request):
 				return HttpResponseRedirect('/feedback_system/infrastructure_support/')
 		else:
 			return HttpResponse("Oops! You are not a Existing User. Please <a href='../login' > <b>CLICK</b> </a> here to proivide your valuable feedback.")
-
-def student_personal_info(request):
-	
-	#	a = (request.method)
-		return render(request, 'feedback_form/student_personal_info.html', {'form': student_personal_infoForm(request.GET)})
+    
+'''def student_personal_info(request):
+	if request.method == 'GET':
+		return TemplateResponse(request, 'feedback_form/student_personal_info.html',{'form': student_personal_infoForm()})
+	else:
+		
+		form = student_personal_infoForm(request.POST)
+		
+		if form.is_valid():
+			return HttpResponse(request.POST['first_name'])
+		else:
+			#return HttpResponse(request.POST['first_name'])
+			return HttpResponse("invalid")'''

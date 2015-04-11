@@ -16,7 +16,7 @@ urlpatterns = patterns('',
 		url(r'^login/login/get_section/(?P<current_batch>\S+)/$', views.get_section, name = 'get_section'),
 		url(r'^academic_assessment/academic_assessment/get_faculty_name/(?P<sub_name>\S+)/$', views.get_faculty_name, name = 'get_faculty_name'),
 		url(r'^resume_action/$', views.resume_action, name = 'resume_action'),
-		url(r'^student_personal_info/$', views.student_personal_info, name = 'student_personal_info'),
+		#url(r'^student_personal_info/$', views.student_personal_info, name = 'student_personal_info'),
 	)
 
 
