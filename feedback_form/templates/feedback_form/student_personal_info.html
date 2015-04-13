@@ -5,9 +5,9 @@
    <head>
       <link rel="stylesheet" href="../../static/feedback_form/bootstrap/dist/css/bootstrap.min.css">
       <style type="text/css">
-        #a{
+       /* #a{
           width: 80%;
-        }
+        }*/
         #id_First_Name{
           margin-left: -5.9em;
         }
@@ -19,10 +19,21 @@
             /*margin-left: -4.9em;*/
               margin-right: 26.8em;
           }
-       
+       #id_middle_name,{
+        margin-left: -1.0em;
+       }
+       #id_last_Name{
+        margin-left: -1.0em;
+       }
        #id_permanent_address{
          margin-left:6.6em;
          margin-top:-3.8;
+       }
+       #form_body{
+        width:  75%;
+       }
+       #title{
+      background-color: #8878c3;
        }
       </style>
    </head>
@@ -39,14 +50,19 @@
 <!--div class="panel panel-primary" id="a"-->
  
  	<div class="container" align="center">
- 		<div class="row col-lg-10 ">
+ 		<div class="row col-lg-12 ">
      
-    
- 		{% crispy form %}
-      			
+    <div class="panel panel-primary" id="form_body">
+        <div class="panel-heading " id="title"><h4>Personal Information</h4></div>
+          <div class="panel-body">
+                        
+ 		         {% crispy form%}
+      		</div>
+        </div>
+    </div>    
  		</div>
  	</div>
-</div>  
+  
  
  	<script src="../../static/feedback_form/bootstrap/dist/js/bootstrap.min.js"></script>
 
