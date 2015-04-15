@@ -22,6 +22,5 @@ urlpatterns = patterns('',
 
 
 
-url(r'^academic_info/$', views.student_academic_info, name = 'student_academic_info'),
 
 

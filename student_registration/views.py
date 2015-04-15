@@ -21,9 +21,9 @@ def student_personal_info(request):
 			#return HttpResponse(request.POST['first_name'])
 			return HttpResponse("invalid")
 
-def student_academic_info(request):
+def student_academic_info_view(request):
 	if request.method == 'GET':
-		return TemplateResponse(request, 'feedback_form/student_academic_info.html',{'form': student_academic_infoForm()})
+		return TemplateResponse(request, 'student_registration/student_academic_info.html',{'form': student_academic_infoForm()})
 	else:
 		
 		form = student_academic_infoForm(request.POST)
