@@ -14,7 +14,8 @@
                margin-top:10px;
                 }
                 #instruction_panel{
-                  background-color: #d4cfe9;
+                  /*background-color: #d4cfe9;*/
+                  background-color:#d4cff0 ;
                 }
              .panel-title{
               /*background-color: #5bc0de;*/
@@ -48,6 +49,7 @@
               }
               /*.form-inline{
                 background-color:  #8878c3;
+                background-color: #d4cff0;
               }
               #A{
                 background-color:  #8878c3;}*/
@@ -67,7 +69,7 @@
         text-align: center;
         font-weight: bold;
         font-size: 18px;
-        background-color: #d4cff0;
+        background-color: #b8aedb;
         width: 93%;
         margin-left: 2.8em;   
        }
