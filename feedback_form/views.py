@@ -238,15 +238,3 @@ def resume_action(request):
 		else:
 			return HttpResponse("Oops! You are not a Existing User. Please <a href='../login' > <b>CLICK</b> </a> here to proivide your valuable feedback.")
     
-'''def student_personal_info(request):
-	if request.method == 'GET':
-		return TemplateResponse(request, 'feedback_form/student_personal_info.html',{'form': student_personal_infoForm()})
-	else:
-		
-		form = student_personal_infoForm(request.POST)
-		
-		if form.is_valid():
-			return HttpResponse(request.POST['first_name'])
-		else:
-			#return HttpResponse(request.POST['first_name'])
-			return HttpResponse("invalid")'''
