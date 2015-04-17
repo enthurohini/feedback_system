@@ -21,6 +21,8 @@ class student_personal_infoForm(forms.Form):
 	father_name = forms.CharField(label="Father's Name", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Father Name'}))
 	mother_name = forms.CharField(label="Mother's Name", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Mother Name'}))
 	birth_date = forms.CharField(label="Birth Date", required=True,widget = forms.TextInput(attrs={'placeholder':'Birth Date'}))
+	day = forms.ChoiceField(label="day", required=True,choices=(('male','Male'),('female','Female')))
+	month = forms.ChoiceField(label="month", required=True,choices=(('male','Male'),('female','Female')))
 	gender = forms.ChoiceField(label="Gender", required=True,choices=(('male','Male'),('female','Female')))
 	category = forms.ChoiceField (label="Category", required=True,choices=CATEGORY_CHOICES)
 	mobile_number= forms.CharField(label="Mobile Number",max_length=10, required=True)
@@ -41,13 +43,13 @@ class student_personal_infoForm(forms.Form):
             Field('first_name',css_class='control-label'),
             Field('middle_name',css_class='control-label'),
             Field('last_name',css_class='control-label'),
-            css_class='row-fluid divs panel',css_id="row1")
+            css_class='row-fluid divs panel')
       ),
   Div(
         Row(
             Field('father_name', css_class='control-label'),
             Field('mother_name', css_class='control-label'),
-        css_class='row-fluid divs panel')
+        	css_class='row-fluid divs panel')
         ), 
   Div( 
            Field('birth_date', css_class='control-label'),
