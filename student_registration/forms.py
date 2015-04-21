@@ -14,22 +14,22 @@ class student_personal_infoForm(forms.Form):
         (3, u'ST'),   
     )
 
-	first_name = forms.CharField(label="First Name",required=True,max_length=20, widget = forms.TextInput(attrs={'placeholder':'First Name'}))
-	middle_name = forms.CharField(label="",required=False,max_length=20, widget = forms.TextInput(attrs={'placeholder':'Middle Name'}))
-	last_name= forms.CharField(label="", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Last Name'}))
+	first_name = forms.CharField(label="First Name",required=True,max_length=20, widget = forms.TextInput(attrs={'placeholder':'First Name', 'required':True, 'class': 'col-md-4 pull-right'}))
+	middle_name = forms.CharField(label="",required=False,max_length=20, widget = forms.TextInput(attrs={'placeholder':'Middle Name', 'class': 'col-md-6'}))
+	last_name= forms.CharField(label="", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Last Name', 'required':True, 'class': 'col-md-6'}))
 	
-	father_name = forms.CharField(label="Father's Name", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Father Name'}))
-	mother_name = forms.CharField(label="Mother's Name", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Mother Name'}))
-	birth_date = forms.CharField(label="Birth Date", required=True,widget = forms.TextInput(attrs={'placeholder':'Birth Date'}))
+	father_name = forms.CharField(label="Father's Name", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Father Name', 'required':True, 'class': 'col-md-6'}))
+	mother_name = forms.CharField(label="Mother's Name", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Mother Name', 'required':True, 'class': 'col-md-6'}))
+	birth_date = forms.CharField(label="Birth Date", required=True,widget = forms.TextInput(attrs={'placeholder':'Birth Date', 'required':True,}))
 	day = forms.ChoiceField(label="day", required=True,choices=(('male','Male'),('female','Female')))
 	month = forms.ChoiceField(label="month", required=True,choices=(('male','Male'),('female','Female')))
 	gender = forms.ChoiceField(label="Gender", required=True,choices=(('male','Male'),('female','Female')))
 	category = forms.ChoiceField (label="Category", required=True,choices=CATEGORY_CHOICES)
-	mobile_number= forms.CharField(label="Mobile Number",max_length=10, required=True)
-	telephone_number = forms.CharField(label="Telephone Number", max_length=10,required=True)
-	email= forms.CharField(label="Email", required=True)
-	current_address= forms.CharField(label="Current Address",max_length=50,required=True)  
-	permanent_address= forms.CharField(label="Permanent Address",max_length=50,required=True)
+	mobile_number= forms.CharField(label="Mobile Number",max_length=10, required=True, widget = forms.TextInput(attrs={'placeholder':'First Name', 'required':True}))
+	telephone_number = forms.CharField(label="Telephone Number", max_length=10,required=True, widget = forms.TextInput(attrs={'placeholder':'First Name', 'required':True}))
+	email= forms.CharField(label="Email", required=True, widget = forms.EmailInput(attrs={'placeholder':'First Name', 'required':True}))
+	current_address= forms.CharField(label="Current Address",max_length=50,required=True, widget = forms.TextInput(attrs={'placeholder':'First Name', 'required':True}))  
+	permanent_address= forms.CharField(label="Permanent Address",max_length=50,required=True, widget = forms.TextInput(attrs={'placeholder':'First Name', 'required':True}))
    
 
 	helper = FormHelper()
@@ -47,8 +47,12 @@ class student_personal_infoForm(forms.Form):
       ),
   Div(
         Row(
-            Field('father_name', css_class='control-label'),
-            Field('mother_name', css_class='control-label'),
+        	Div(
+            	Field('father_name', css_class='control-label'), 
+            	css_class='pull-left'),
+            Div(
+            	Field('mother_name', css_class='control-label'), 
+            	css_class='col-md-6'),
         	css_class='row-fluid divs panel')
         ), 
   Div( 
@@ -99,7 +103,7 @@ class student_academic_infoForm(forms.Form):
   higher_secondary_school_name= forms.CharField(label="Higher Sec. School Name(12th)", required=True,max_length=20,widget = forms.TextInput(attrs={'placeholder':'Name Of School'}))  
   year_of_passing_secondary_school = forms.ChoiceField(label="Passing Year(12th)", required=True,choices=(('2010','2010'),('2011','2011')))
   enrollment_number= forms.CharField(label="Enrollment Number", required=True,max_length=20)
-  enrollment_year = forms.ChoiceField(label="Enrollment Year", required=True)
+  enrollment_year = forms.ChoiceField(label="Enrollment Year", required=True, choices = SEM_CHOICES)
   roll_number = forms.CharField(label="Roll Number", required=True,widget = forms.TextInput(attrs={'placeholder':'Birth Date'}))
   course = forms.ChoiceField(label="Course", required=True,choices=(('Course','Course'),('M.C.A','M.C.A'),('M.Tech','M.Tech')))
   sem= forms.ChoiceField(label="Semester", required=True,choices=SEM_CHOICES)
@@ -142,7 +146,7 @@ class student_academic_infoForm(forms.Form):
            ),
   
   Div(
-          Field(' roll_number', css_class='input-md'),
+          Field('roll_number', css_class='input-md'),
           css_class='row-fluid divs panel '
        ),
 
@@ -155,7 +159,7 @@ class student_academic_infoForm(forms.Form):
        ),
   Div(
       Row(
-          Field(' alternate_email', css_class='input-md'),
+          Field('alternate_email', css_class='input-md'),
          )
        ),
    

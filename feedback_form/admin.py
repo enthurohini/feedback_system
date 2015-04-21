@@ -46,7 +46,7 @@ class student_academic_infoInline(admin.StackedInline):
 
 class student_personal_infoAdmin(admin.ModelAdmin):
 	fieldsets = [
-		('Student Personal Information', {'fields': ['first_name', 'last_name', 'type'], 'classes': ['collapse']})
+		('Student Personal Information', {'fields': ['first_name', 'mid_name', 'last_name', 'father_name', 'mother_name', 'birth_date', 'gender', 'category', 'mobile_no', 'telephone_no', 'email_id', 'current_address', 'permanent_address', 'type', 'status'], 'classes': ['collapse']})
 	]
 	inlines = [student_academic_infoInline]
 	list_display = ('student_no', 'first_name', 'last_name', 'email_id')
