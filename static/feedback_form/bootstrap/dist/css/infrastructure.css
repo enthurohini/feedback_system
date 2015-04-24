@@ -1,0 +1,75 @@
+             h1{
+              color: white;
+             }
+             h2{           
+                 font-weight: bold;
+                 }
+             .container{
+                 font-size: 15px;
+                 }
+              label{
+                padding:10px;
+                }
+              hr{
+               margin-top:10px;
+                }
+                #instruction_panel{
+                  /*background-color: #d4cfe9;*/
+                  background-color:#d4cff0 ;
+                }
+             .panel-title{
+              /*background-color: #5bc0de;*/
+              background-color: #8878c3;
+              /*background-color: #b666d2;*/
+                }
+                 .panel.panel-default:hover{
+                  background-color:#d4cfe9;
+                }
+              .radio_button{
+                position: relative;
+                left: 30%;
+                /*margin-left:0.9em;*/
+                display: inline;
+                margin-left:25px;
+
+              }
+              #instruction{
+                margin-top: 0.8em;
+              }
+              /*.panel-default{
+                height: 50%;
+              }*/
+              .question{
+                color: green;
+              }
+              #inlineRadio{
+                margin-left: 1.5em;
+                margin-top: -0.55em;
+                display: inline;
+              }
+              /*.form-inline{
+                background-color:  #8878c3;
+                background-color: #d4cff0;
+              }
+              #A{
+                background-color:  #8878c3;}*/
+                .align_radio{
+              margin-left: -9.9em;
+            }
+       i{
+        text-align: 50%;
+       }
+      /* #feedback_id{
+        text-align: center;
+       }
+       .A{
+        margin-left: 7.5em;
+       }*/
+       .student_id{
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        background-color: #b8aedb;
+        width: 93%;
+        margin-left: 2.8em;   
+       }

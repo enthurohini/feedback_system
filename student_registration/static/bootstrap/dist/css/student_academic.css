@@ -1,0 +1,24 @@
+#submit-id-submit{
+          margin-top: 50px;
+          margin-right: 26.8em;
+       }
+       #form_body{
+        width:  74.5%;
+       }
+       #title{
+       background-color: #8878c3;
+      /*background-color: #b8aedb;*/
+       }  
+       #id_passing_year,#id_enrollment_year,#id_year_of_passing_secondary_school,#id_course,#id_sem,#id_section{
+        width:170px;
+       }
+       #id_year{
+        text-align: 50px;
+       }
+       h4{
+        color: white;
+       }
+       #id_high_school_name,#id_higher_secondary_school_name{
+         margin-left:-0.5em; 
+         width: 400px;
+       }

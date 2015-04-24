@@ -1,0 +1,103 @@
+             h1{
+              color: white;
+             }
+
+             h2{           
+                 font-weight: bold;
+
+               }
+            .container{
+                 font-size: 15px;
+               }
+             label{
+                padding:10px;
+               }
+             hr{
+               margin-top:10px;
+               }
+            #instruction_panel{
+                  background-color:#d4cff0 ;
+
+                }
+                 #instruction{
+                margin-top: 0.8em;
+              }
+            .panel-title{
+              background-color: #8878c3;
+               }
+            .radio_button{
+                position: relative;
+                left: 30%;
+                /*margin-left:0.9em;*/
+                display: inline;
+                margin-left:15px;
+
+              }
+            #color_text{
+                color: red;
+              }
+            #inlineRadio{
+                margin-left: 1.5em;
+                margin-top: -0.55em;
+                display: inline;
+              }
+            /*input{
+              width: 250px;
+            }*/
+            .form-control{
+              width: 25%;
+              margin-top: -0.98em;
+              /*margin-bottom:-7.7em;*/
+              margin-left: 9.5em;
+            }
+            #subject{
+             margin-top: 1.5em;
+             margin-left:0.01em;
+            }
+            /*#select_subject{
+              margin-left: 9.5em;
+            }*/
+             .panel.panel-default:hover{
+                  background-color:#d4cfe9;
+                }
+            #id_subject{
+              margin-top: -2.99em;
+              margin-left:5.5em;
+            }
+            #faculty{
+             margin-top: -5.1em;
+             margin-left:46.2em;
+            }
+            #id_faculty_name{
+              margin-top: -4.99em;
+              margin-left: 53.9em;
+            }
+            #text_area_1{
+               width: 60%;
+               margin-left: 47.7em;
+               margin-top: -6.8em;
+
+            }
+            #text_area_2{
+              width: 60%;
+             margin-left:4.2em;
+            }
+            .comment_1{
+             margin-top: -4.99em;
+            }
+            .align_radio{
+              margin-left: -9.9em;
+            }
+            #question2{
+              width: 1202px;
+              
+            }
+           .student_id{
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: #b8aedb;
+            width: 93%;
+            margin-left: 2.8em;   
+       }
+          

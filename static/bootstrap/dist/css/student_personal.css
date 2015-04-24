@@ -1,0 +1,55 @@
+ #submit-id-submit{
+          margin-top: 50px;
+          margin-right: 26.8em;
+          }
+        #id_father_name{
+          margin-left: -1.2em;
+          width: 222px;
+        }
+        #id_mother_name{
+          width: 225px;
+        }
+
+       #id_middle_name,{
+        margin-left: -6.4em;
+       }
+       #id_last_name{
+        margin-left: -1.9em;
+       }
+       #id_permanent_address{
+         margin-left:6.6em;
+         margin-top:-3.8;
+       }
+       #form_body{
+        width:  74.5%;
+       }
+       #title{
+       background-color: #8878c3;
+      /*background-color: #b8aedb;*/
+       }  
+       #submit-id-submit{
+        margin-top: 1.6em;
+        margin-left: -0.09em;
+       }
+       #reset-id-reset{
+        margin-top: -3.7em;
+        margin-right: 0.8em;
+       }
+       #id_birth_date,#id_year,#id_gender,#id_category{
+        width: 150px;
+       }
+       h4{
+        color: white;
+       }
+       #id_permanent_address{
+        margin-left: -1.3em;
+        width: 250px;
+        height: 70px;
+       }
+       #id_current_address{
+        width: 250px;
+        height: 70px;
+       }
+      #id_mobile_number{
+        width: 150px;
+      }
