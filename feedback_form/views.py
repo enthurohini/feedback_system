@@ -56,7 +56,7 @@ def login(request):
 			request.session['batch_id'] = q.batch_id
 			
 			#return HttpResponse(request.session['section'])
-			return HttpResponseRedirect('/feedback_system/infrastructure_support/')
+			return HttpResponseRedirect('/infrastructure_support/')
 	else:
 		form = loginForm()
 
@@ -124,7 +124,7 @@ def infrastructure_action(request):
 			q = feedback_student_info.objects.get(pk=std_id)
 			q.infrastructure_support_info_set.create(books_availability=request.POST['1'], basic_requirements=request.POST['2'], technological_support=request.POST['3'], study_material=request.POST['4'], resourse_availability=request.POST['5'], cleaniliness_of_class=request.POST['6'])
 
-			return HttpResponseRedirect('/feedback_system/academic_assessment/')
+			return HttpResponseRedirect('/academic_assessment/')
 			
 		else:
 			return HttpResponse('You submitted an empty form.')
@@ -186,9 +186,9 @@ def academic_action(request):
 		a.academic_assessment_info_set.create(subject_id = request.POST['subject'], faculty_id = current_faculty_id, conceptual_clarity = request.POST['7'], subject_knowledge = request.POST['8'], practical_example = request.POST['9'], handling_capability = request.POST['10'], motivation = request.POST['11'], control_ability = request.POST['12'], course_completion = request.POST['13'], communication_skill = request.POST['14'], regularity_punctuality = request.POST['15'], outside_guidance = request.POST['16'], syllabus_industry_relevance = request.POST['18'], sufficiency_of_course = request.POST['19'], suggestion_for_subject = request.POST['comment1'], suggestion_for_course = request.POST['comment2'])
 		
 		if no_of_subject == 1:
-			return HttpResponseRedirect('/feedback_system/thankyou/')
+			return HttpResponseRedirect('/thankyou/')
 		else:
-			return HttpResponseRedirect('/feedback_system/academic_assessment/')
+			return HttpResponseRedirect('/academic_assessment/')
 
 	else:
 		return HttpResponse('You submitted an empty form.') 
@@ -232,9 +232,9 @@ def resume_action(request):
 				if len(subject_list) == 0:
 					return HttpResponse("Your feedback form has been submitted successfully.")
 				else:
-					return HttpResponseRedirect('/feedback_system/academic_assessment/')
+					return HttpResponseRedirect('/academic_assessment/')
 			else:
-				return HttpResponseRedirect('/feedback_system/infrastructure_support/')
+				return HttpResponseRedirect('/infrastructure_support/')
 		else:
 			return HttpResponse("Oops! You are not a Existing User. Please <a href='../login' > <b>CLICK</b> </a> here to proivide your valuable feedback.")
     
