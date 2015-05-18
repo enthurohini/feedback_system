@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django import forms
-from feedback_form.models import course, batch, section_info, Question, infrastructure_support_info, feedback_student_info, subject, faculty_table, time_table, academic_assessment_info
+from feedback_form.models import course, batch, section_info, Question, infrastructure_support_info, feedback_student_info, subject, faculty_table, time_table, academic_assessment_info, Student_unique_id
 import json
 import feedback_form.models
 from django.core import serializers
@@ -19,7 +19,7 @@ def index(request):
 	return render(request, 'feedback_form/index.html')
 
 def action(request):
-	if ('course' and 'semester' and 'course_id' and 'batch_id' and 'section') in request.POST:
+	if ('id' and 'course' and 'semester' and 'course_id' and 'batch_id' and 'section') in request.POST:
 		message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course'], request.POST['semester'], request.POST['course_id'], request.POST['batch_id'], request.POST['section'])
 		q = feedback_student_info(batch_id = request.POST['batch_id'],course = request.POST['course'], semester = request.POST['semester'][:2], section = request.POST['section'], feedback_session = timezone.now().year)
 		q.save()
@@ -40,9 +40,14 @@ def login(request):
 		form.fields['section'].choices = [(s, s)]
         
 		if form.is_valid():
-			#message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course_name'], request.POST['semester'], request.POST['section'], request.POST['batch'], request.POST['section'])
-			q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['programme'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = timezone.now().year)
-			q.save()
+			#return HttpResponse(request.POST['cur_id']) #message = "Your submitted entry is: %s , %s, %s, %s, %s" % (request.POST['course_name'], request.POST['semester'], request.POST['section'], request.POST['batch'], request.POST['section'])
+			current_id = Student_unique_id.objects.values_list('unique_id', flat=True).filter(unique_id = request.POST['cur_id'])
+			#return HttpResponse(current_id)
+			if int(request.POST['cur_id']) in current_id:
+				#return HttpResponse('True')
+				Student_unique_id.objects.filter(unique_id = request.POST['cur_id']).update(current_sem = request.POST['semester'], current_year = timezone.now().year)
+				q = feedback_student_info(batch_id = request.POST['batch'],course = request.POST['programme'], semester = request.POST['semester'], section = request.POST['section'], feedback_session = timezone.now().year)
+				q.save()
 
 			''' --- sessions of the variables are maintained here --- '''
 			request.session['fs_id'] = q.fs_id
@@ -60,7 +65,7 @@ def login(request):
 	else:
 		form = loginForm()
 
-	return render(request, 'feedback_form/loginForm.html', {'form': form})
+	return render(request, 'feedback_form/loginForm.html', {'form': form}) 
 
 def thanks(request):
 	del request.session['fs_id']

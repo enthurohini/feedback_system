@@ -125,3 +125,10 @@ class Question(models.Model):
 	def __unicode__(self):
 		return self.question_text 
 
+class Student_unique_id(models.Model):
+	unique_id = models.CharField(max_length = 15)
+	current_sem = models.IntegerField(max_length = 2, default = 0)
+	current_year = models.IntegerField(max_length = 4, default = 0)
+
+	def __unicode__(self):
+		return str(self.unique_id)

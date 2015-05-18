@@ -51,14 +51,27 @@
     		{{ form.as_table }}
     	</table> -->
      {{ form.non_field_errors }}
+
+<div class="form-group">
+<div class="row"> 
+<div class="fieldWrapper">
+    {{ form.id.errors }}
+    <label class="control-label col-sm-offset-4 col-sm-2" for="id_programme">Id (provided to you):</label>
+    
+    {{ form.cur_id }}
+
+</div>
+</div>    
+</div>
+
 <div class="form-group">
 <div class="row"> 
 <div class="fieldWrapper">
     {{ form.programme.errors }}
     <label class="control-label col-sm-offset-4 col-sm-2" for="id_programme">Programme Name:</label>
     
-    <!-- <select class="form-control"> <option>{{ form.programme }} </option></select> -->
     {{ form.programme }}
+
 </div>
 </div>    
 </div>

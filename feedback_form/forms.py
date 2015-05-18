@@ -20,6 +20,7 @@ class loginForm(forms.Form):
 	sem_choices = [('0', '-----')]
 
 	''' ~~~ loginForm fields ~~~ '''
+	cur_id = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'required':'required'}))
 	programme = forms.ChoiceField(course_choices,required=True, widget=forms.Select(attrs={'required':'required'}))
 	semester = forms.ChoiceField(sem_choices,required=True, widget=forms.Select(attrs={'required':'required'}))
 	section = forms.ChoiceField(section_choices, required= False, widget=forms.Select(attrs={'required':'required'}))

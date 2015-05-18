@@ -36,4 +36,10 @@ class Student_academic_info(models.Model):
 	section = models.CharField(max_length = 1, blank = True)
 	alternate_email = models.EmailField(max_length = 254, blank = True)
 
+class Student_unique_id(models.Model):
+	unique_id = models.IntegerField()
+
+	def __unicode__(self):
+		return str(self.unique_id)
+
 	
