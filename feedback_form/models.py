@@ -42,8 +42,8 @@ class academic_assessment_info(models.Model):
 	outside_guidance = models.IntegerField(max_length = 1)
 	syllabus_industry_relevance = models.IntegerField(max_length = 1)
 	sufficiency_of_course = models.IntegerField(max_length = 1)
-	suggestion_for_subject = models.CharField(max_length = 80000, blank = True)
-	suggestion_for_course = models.CharField(max_length = 80000, blank = True)
+	suggestion_for_subject = models.CharField(max_length = 6000, blank = True)
+	suggestion_for_course = models.CharField(max_length = 6000, blank = True)
 	
 	def __unicode__(self):
 		return str(self.fs_id)
